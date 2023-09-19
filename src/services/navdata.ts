@@ -308,7 +308,7 @@ class NavdataManager {
         inPositionSection = true;
         continue;
       }
-      if (inPositionSection && (line.startsWith(";=") || line.length < 5)) {
+      if (inPositionSection && line.startsWith("[") && !line.startsWith("[POSITIONS]")) {
         inPositionSection = false;
         continue;
       }
