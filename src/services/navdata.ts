@@ -4,7 +4,7 @@ import { Gate } from "../models/gate.js";
 import { PackageAtcPosition } from "../models/position.js";
 import { Procedure } from "../models/procedure.js";
 import { geoHelper } from "../libs/geo-helper.js";
-import { ESE, Position, SCT, toGeoJson } from "sector-file-tools";
+import { ESE, Position, SCT, toGeoJson, Segment, Navaid } from "sector-file-tools";
 import { multiLineString } from "@turf/turf";
 import { Segment, Navaid } from "sector-file-tools/dist/src/sct.js";
 
@@ -42,6 +42,20 @@ class NavdataManager {
         // Sectorlines
         if (line.startsWith("SECTORLINE:")) {
           const id = line.split(":")[1].replace("\r", "");
+<<<<<<< Updated upstream
+=======
+          const isnum = /^\d+$/.test(id);
+          if (!isnum) {
+            numericIDReplacementMatrix[id] = baseMatrixInt;
+            baseMatrixInt++;
+            console.log(
+              "Replacement matrix for non numeric sector ID is  for " +
+              id +
+              " is " +
+              numericIDReplacementMatrix[id]
+            );
+          }
+>>>>>>> Stashed changes
           currentSectorLine = {
             id: id,
             points: [],
@@ -335,7 +349,11 @@ class NavdataManager {
     const geoJsonData = toGeoJson(sctData, eseData, null, "WGS84");
     let features = geoJsonData.features as any[];
 
+<<<<<<< Updated upstream
     sctData.lowAirway.forEach(async (airway) => {
+=======
+    sctData.lowAirway.forEach((airway) => {
+>>>>>>> Stashed changes
       const lines = airway.segments.map((segment): number[][] => {
         const segmentExtract = this.extractSegment(segment);
         return segmentExtract;
