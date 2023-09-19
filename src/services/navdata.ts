@@ -6,7 +6,6 @@ import { Procedure } from "../models/procedure.js";
 import { geoHelper } from "../libs/geo-helper.js";
 import { ESE, Position, SCT, toGeoJson, Segment, Navaid } from "sector-file-tools";
 import { multiLineString } from "@turf/turf";
-import { Segment, Navaid } from "sector-file-tools/dist/src/sct.js";
 
 const log = debug("NavdataManager");
 
@@ -26,6 +25,9 @@ class NavdataManager {
     const sectorLines: any[] = [];
     const sectors: any[] = [];
 
+    let baseMatrixInt = 690;
+    const numericIDReplacementMatrix: Record<string, number> = {};
+
     let inAirspaceSection = false;
 
     let currentSectorLine: any;
@@ -42,8 +44,6 @@ class NavdataManager {
         // Sectorlines
         if (line.startsWith("SECTORLINE:")) {
           const id = line.split(":")[1].replace("\r", "");
-<<<<<<< Updated upstream
-=======
           const isnum = /^\d+$/.test(id);
           if (!isnum) {
             numericIDReplacementMatrix[id] = baseMatrixInt;
@@ -55,9 +55,8 @@ class NavdataManager {
               numericIDReplacementMatrix[id]
             );
           }
->>>>>>> Stashed changes
           currentSectorLine = {
-            id: id,
+            id: isnum ? Number(id) : numericIDReplacementMatrix[id],
             points: [],
             display: [],
           };
@@ -76,10 +75,10 @@ class NavdataManager {
         }
         if (line.startsWith("DISPLAY:")) {
           const parts = line.split(":");
-          const displayData = parts[1];
+          const displayData = parts[1].split("�");
           const dsp = {
-            fir: "EIXX",
-            name: displayData,
+            fir: displayData[0].replace("\r", ""),
+            name: displayData[1].replace("\r", ""),
             floor: Number(displayData[2].replace("\r", "")),
             ceiling: Number(displayData[3].replace("\r", "")),
           };
@@ -90,10 +89,18 @@ class NavdataManager {
 
         if (line.startsWith("SECTOR:")) {
           const parts = line.split(":");
+          const nameParts = parts[1].split("�");
+          let name, fir;
+          if (nameParts.length > 1) {
+            name = nameParts[1].replace("\r", "");
+            fir = nameParts[0].replace("\r", "");
+          } else {
+            name = fir = parts[1];
+          }
           currentSector = {
             layerUniqueId: sectorCounter++,
-            name: parts[1],
-            fir: "EIXX",
+            name: name,
+            fir: fir,
             floor: Number(parts[2].replace("\r", "")),
             ceiling: Number(parts[3].replace("\r", "")),
             actives: [],
@@ -106,9 +113,18 @@ class NavdataManager {
         }
         if (line.startsWith("BORDER:")) {
           const parts = line.replace("BORDER:", "").split(":");
-          currentSector.borders = parts.map((item) =>
-            Number(item.replace("\r", ""))
-          );
+          currentSector.borders = parts.map((item) => {
+            let cleanItem = item.replace("\r", "");
+            const isnum = /^\d+$/.test(cleanItem);
+            if (isnum) {
+              return Number(cleanItem);
+            } else {
+              if (!numericIDReplacementMatrix[cleanItem]) {
+                console.error("No replacement matrix available for " + cleanItem);
+              }
+              return numericIDReplacementMatrix[cleanItem];
+            }
+          });
         }
         if (line.startsWith("DEPAPT:")) {
           const parts = line.replace("DEPAPT:", "").split(":");
@@ -349,11 +365,7 @@ class NavdataManager {
     const geoJsonData = toGeoJson(sctData, eseData, null, "WGS84");
     let features = geoJsonData.features as any[];
 
-<<<<<<< Updated upstream
-    sctData.lowAirway.forEach(async (airway) => {
-=======
     sctData.lowAirway.forEach((airway) => {
->>>>>>> Stashed changes
       const lines = airway.segments.map((segment): number[][] => {
         const segmentExtract = this.extractSegment(segment);
         return segmentExtract;
@@ -380,7 +392,6 @@ class NavdataManager {
       };
       features.push(multiline);
     });
-
     for (const feature of features) {
       if (feature.properties.color) {
         let color = `rgba(${feature.properties.color.join(",")},1)`;
@@ -429,7 +440,7 @@ class NavdataManager {
         );
       });
     }
-    console.log(datasets);
+
     return datasets;
   }
 
@@ -480,7 +491,5 @@ class NavdataManager {
     return JSON.parse(data);
   }
 }
-
 const sleep = (ms: number) => new Promise((r) => setTimeout(r, ms));
 export const navdata = new NavdataManager();
-
