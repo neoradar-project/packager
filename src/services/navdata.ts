@@ -4,7 +4,7 @@ import { Gate } from "../models/gate.js";
 import { PackageAtcPosition } from "../models/position.js";
 import { Procedure } from "../models/procedure.js";
 import { geoHelper } from "../libs/geo-helper.js";
-import { ESE, Position, SCT, toGeoJson } from "sector-file-tools";
+import { ESE, Position, SCT, toGeoJson, Segment, Navaid } from "sector-file-tools";
 import { multiLineString } from "@turf/turf";
 
 const log = debug("NavdataManager");
@@ -50,9 +50,9 @@ class NavdataManager {
             baseMatrixInt++;
             console.log(
               "Replacement matrix for non numeric sector ID is  for " +
-                id +
-                " is " +
-                numericIDReplacementMatrix[id]
+              id +
+              " is " +
+              numericIDReplacementMatrix[id]
             );
           }
           currentSectorLine = {
@@ -366,17 +366,9 @@ class NavdataManager {
     let features = geoJsonData.features as any[];
 
     sctData.lowAirway.forEach((airway) => {
-      const lines = airway.segments.map((segment) => {
-        return [
-          [
-            (segment.start as Position).lonFloat,
-            (segment.start as Position).latFloat,
-          ],
-          [
-            (segment.end as Position).lonFloat,
-            (segment.end as Position).latFloat,
-          ],
-        ];
+      const lines = airway.segments.map((segment): number[][] => {
+        const segmentExtract = this.extractSegment(segment);
+        return segmentExtract;
       });
       const multiline = multiLineString(lines);
       multiline.properties = {
@@ -388,17 +380,9 @@ class NavdataManager {
     });
 
     sctData.highAirway.forEach((airway) => {
-      const lines = airway.segments.map((segment) => {
-        return [
-          [
-            (segment.start as Position).lonFloat,
-            (segment.start as Position).latFloat,
-          ],
-          [
-            (segment.end as Position).lonFloat,
-            (segment.end as Position).latFloat,
-          ],
-        ];
+      const lines = airway.segments.map((segment): number[][] => {
+        const segmentExtract = this.extractSegment(segment);
+        return segmentExtract;
       });
       const multiline = multiLineString(lines);
       multiline.properties = {
@@ -458,6 +442,33 @@ class NavdataManager {
     }
 
     return datasets;
+  }
+
+  private extractSegment(segment: Segment): number[][] {
+    let returnSegment: number[][] = [];
+    returnSegment.push(
+      "position" in segment.start
+        ? [
+          (segment.start as Navaid).position.lonFloat,
+          (segment.start as Navaid).position.latFloat,
+        ]
+        : [
+          (segment.start as Position).lonFloat,
+          (segment.start as Position).latFloat,
+        ]
+    );
+    returnSegment.push(
+      "position" in segment.end
+        ? [
+          (segment.end as Navaid).position.lonFloat,
+          (segment.end as Navaid).position.latFloat,
+        ]
+        : [
+          (segment.end as Position).lonFloat,
+          (segment.end as Position).latFloat,
+        ]
+    );
+    return returnSegment;
   }
 
   private async generateGeoJsonFilesForType(
