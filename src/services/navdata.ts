@@ -4,8 +4,9 @@ import { Gate } from "../models/gate.js";
 import { PackageAtcPosition } from "../models/position.js";
 import { Procedure } from "../models/procedure.js";
 import { geoHelper } from "../libs/geo-helper.js";
-import { ESE, Position, SCT, toGeoJson, Segment, Navaid } from "sector-file-tools";
+import { ESE, Position, SCT, toGeoJson } from "sector-file-tools";
 import { multiLineString } from "@turf/turf";
+import { Navaid, Segment } from "sector-file-tools/dist/src/sct.js";
 
 const log = debug("NavdataManager");
 
