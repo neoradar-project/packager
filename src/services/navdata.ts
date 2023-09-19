@@ -6,6 +6,7 @@ import { Procedure } from "../models/procedure.js";
 import { geoHelper } from "../libs/geo-helper.js";
 import { ESE, Position, SCT, toGeoJson } from "sector-file-tools";
 import { multiLineString } from "@turf/turf";
+import { Segment, Navaid } from "sector-file-tools/dist/src/sct.js";
 
 const log = debug("NavdataManager");
 
@@ -25,9 +26,6 @@ class NavdataManager {
     const sectorLines: any[] = [];
     const sectors: any[] = [];
 
-    let baseMatrixInt = 690;
-    const numericIDReplacementMatrix: Record<string, number> = {};
-
     let inAirspaceSection = false;
 
     let currentSectorLine: any;
@@ -44,19 +42,8 @@ class NavdataManager {
         // Sectorlines
         if (line.startsWith("SECTORLINE:")) {
           const id = line.split(":")[1].replace("\r", "");
-          const isnum = /^\d+$/.test(id);
-          if (!isnum) {
-            numericIDReplacementMatrix[id] = baseMatrixInt;
-            baseMatrixInt++;
-            console.log(
-              "Replacement matrix for non numeric sector ID is  for " +
-                id +
-                " is " +
-                numericIDReplacementMatrix[id]
-            );
-          }
           currentSectorLine = {
-            id: isnum ? Number(id) : numericIDReplacementMatrix[id],
+            id: id,
             points: [],
             display: [],
           };
@@ -75,10 +62,10 @@ class NavdataManager {
         }
         if (line.startsWith("DISPLAY:")) {
           const parts = line.split(":");
-          const displayData = parts[1].split("�");
+          const displayData = parts[1];
           const dsp = {
-            fir: displayData[0].replace("\r", ""),
-            name: displayData[1].replace("\r", ""),
+            fir: "EIXX",
+            name: displayData,
             floor: Number(displayData[2].replace("\r", "")),
             ceiling: Number(displayData[3].replace("\r", "")),
           };
@@ -89,18 +76,10 @@ class NavdataManager {
 
         if (line.startsWith("SECTOR:")) {
           const parts = line.split(":");
-          const nameParts = parts[1].split("�");
-          let name, fir;
-          if (nameParts.length > 1) {
-            name = nameParts[1].replace("\r", "");
-            fir = nameParts[0].replace("\r", "");
-          } else {
-            name = fir = parts[1];
-          }
           currentSector = {
             layerUniqueId: sectorCounter++,
-            name: name,
-            fir: fir,
+            name: parts[1],
+            fir: "EIXX",
             floor: Number(parts[2].replace("\r", "")),
             ceiling: Number(parts[3].replace("\r", "")),
             actives: [],
@@ -113,18 +92,9 @@ class NavdataManager {
         }
         if (line.startsWith("BORDER:")) {
           const parts = line.replace("BORDER:", "").split(":");
-          currentSector.borders = parts.map((item) => {
-            let cleanItem = item.replace("\r", "");
-            const isnum = /^\d+$/.test(cleanItem);
-            if (isnum) {
-              return Number(cleanItem);
-            } else {
-              if (!numericIDReplacementMatrix[cleanItem]) {
-                console.error("No replacement matrix available for " + cleanItem);
-              }
-              return numericIDReplacementMatrix[cleanItem];
-            }
-          });
+          currentSector.borders = parts.map((item) =>
+            Number(item.replace("\r", ""))
+          );
         }
         if (line.startsWith("DEPAPT:")) {
           const parts = line.replace("DEPAPT:", "").split(":");
@@ -365,18 +335,10 @@ class NavdataManager {
     const geoJsonData = toGeoJson(sctData, eseData, null, "WGS84");
     let features = geoJsonData.features as any[];
 
-    sctData.lowAirway.forEach((airway) => {
-      const lines = airway.segments.map((segment) => {
-        return [
-          [
-            (segment.start as Position).lonFloat,
-            (segment.start as Position).latFloat,
-          ],
-          [
-            (segment.end as Position).lonFloat,
-            (segment.end as Position).latFloat,
-          ],
-        ];
+    sctData.lowAirway.forEach(async (airway) => {
+      const lines = airway.segments.map((segment): number[][] => {
+        const segmentExtract = this.extractSegment(segment);
+        return segmentExtract;
       });
       const multiline = multiLineString(lines);
       multiline.properties = {
@@ -388,17 +350,9 @@ class NavdataManager {
     });
 
     sctData.highAirway.forEach((airway) => {
-      const lines = airway.segments.map((segment) => {
-        return [
-          [
-            (segment.start as Position).lonFloat,
-            (segment.start as Position).latFloat,
-          ],
-          [
-            (segment.end as Position).lonFloat,
-            (segment.end as Position).latFloat,
-          ],
-        ];
+      const lines = airway.segments.map((segment): number[][] => {
+        const segmentExtract = this.extractSegment(segment);
+        return segmentExtract;
       });
       const multiline = multiLineString(lines);
       multiline.properties = {
@@ -408,6 +362,7 @@ class NavdataManager {
       };
       features.push(multiline);
     });
+
     for (const feature of features) {
       if (feature.properties.color) {
         let color = `rgba(${feature.properties.color.join(",")},1)`;
@@ -456,8 +411,35 @@ class NavdataManager {
         );
       });
     }
-
+    console.log(datasets);
     return datasets;
+  }
+
+  private extractSegment(segment: Segment): number[][] {
+    let returnSegment: number[][] = [];
+    returnSegment.push(
+      "position" in segment.start
+        ? [
+          (segment.start as Navaid).position.lonFloat,
+          (segment.start as Navaid).position.latFloat,
+        ]
+        : [
+          (segment.start as Position).lonFloat,
+          (segment.start as Position).latFloat,
+        ]
+    );
+    returnSegment.push(
+      "position" in segment.end
+        ? [
+          (segment.end as Navaid).position.lonFloat,
+          (segment.end as Navaid).position.latFloat,
+        ]
+        : [
+          (segment.end as Position).lonFloat,
+          (segment.end as Position).latFloat,
+        ]
+    );
+    return returnSegment;
   }
 
   private async generateGeoJsonFilesForType(
@@ -480,5 +462,7 @@ class NavdataManager {
     return JSON.parse(data);
   }
 }
+
 const sleep = (ms: number) => new Promise((r) => setTimeout(r, ms));
 export const navdata = new NavdataManager();
+
