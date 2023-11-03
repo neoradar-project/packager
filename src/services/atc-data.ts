@@ -1,6 +1,7 @@
 import debug from 'debug'
 import { system } from './system.js'
 import { gateCodesData } from '../models/gate.js'
+import { recatDefinition } from '../models/recatDef.model.js'
 const log = debug('AtcDataManager')
 
 class AtcDataManager {
@@ -13,6 +14,7 @@ class AtcDataManager {
         loginProfilesFile: string,
         icaoAircraftPath: string,
         icaoAirlinesPath: string,
+        recatDefinitionPath: string | undefined,
         aliasPath: string,
         outputPath: string
     ): Promise<void> {
@@ -20,7 +22,7 @@ class AtcDataManager {
         let actData: any = {}
 
         actData.loginProfiles = await this.parseLoginProfiles(loginProfilesFile)
-        actData.icaoAircraft = await this.parseIcaoAircraft(icaoAircraftPath)
+        actData.icaoAircraft = await this.parseIcaoAircraft(icaoAircraftPath, recatDefinitionPath)
         actData.icaoAirlines = await this.parseIcaoAirline(icaoAirlinesPath)
         actData.alias = await this.parseAlias(aliasPath)
 
@@ -80,8 +82,13 @@ class AtcDataManager {
         return data
     }
 
-    private async parseIcaoAircraft(icaoAircraftPath: string): Promise<any> {
+    private async parseIcaoAircraft(icaoAircraftPath: string, recatDefinitionPath: string | undefined): Promise<any> {
         const profiles = await system.readFile(icaoAircraftPath)
+        let recatDef: recatDefinition[] | undefined = undefined;
+        if (recatDefinitionPath) {
+            const recatData = await system.readFile(recatDefinitionPath);  
+            recatDef = JSON.parse(recatData) as recatDefinition[];     
+        }
         const lines = profiles.toString().split("\n")
         const data = {}
         for (const line of lines) {
@@ -99,10 +106,19 @@ class AtcDataManager {
                     break
                 }
             }
+            const engines = parts[1].slice(1,);
+            const wakeCat = parts[1].charAt(0);
+            const icao = parts[0];
+            let recat = "";
+            if (recatDef) {
+                recat = recatDef.find(rd => rd.icao === icao)?.categoryLabel || '';
+            }
             const obj = {
-                icao: parts[0],
-                engines: parts[1],
+                icao: icao,
+                engines: engines,
                 builder: parts[2],
+                wakeCat: wakeCat,
+                recatCat: recat,
                 name: parts[3].replace('\r', ''),
                 maxWingSpan: maxWingSpan
             }

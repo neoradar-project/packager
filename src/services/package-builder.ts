@@ -26,6 +26,7 @@ class PackageBuilder {
         loginProfilesPath: string,
         icaoAircraftPath: string,
         icaoAirlinesPath: string,
+        recatDefinitionPath: string | undefined,
         aliasPath: string,
         outputPath: string
     ): Promise<void> {
@@ -109,6 +110,7 @@ class PackageBuilder {
             loginProfilesPath,
             icaoAircraftPath,
             icaoAirlinesPath,
+            recatDefinitionPath,
             aliasPath,
             outputPath
         )
