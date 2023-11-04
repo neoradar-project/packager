@@ -136,7 +136,7 @@ class PackageBuilder {
             }
         ]
 
-        const packageLayers = datasets.filter(d => d !== 'region').map(d => layerManager.generateLayerConfigFor(d, namespace)).filter(l => l !== null)
+        const packageLayers = datasets.filter(d => d !== 'region' && d!== 'artcc' && d!== 'artcc-high' && d!=='artcc-low' && d!=='low-airway' && d!=='high-airway').map(d => layerManager.generateLayerConfigFor(d, namespace)).filter(l => l !== null)
         const regionLayer = layerManager.generateLayerConfigFor('region', regionSource)
         const allLayers = baseLayers.concat(regionLayer).concat(packageLayers)
 
