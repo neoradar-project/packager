@@ -58,8 +58,11 @@ export class PackageAtcPosition {
             let identifier = data[3].replace("\r", "");
             let facility = data[6].replace("\r", "");
 
-            let callsign = sector + "_" + subSector + "_" + facility;
-            callsign = callsign.replace("__", ""); // In case subsector is blank
+            let callsign = sector + "_";
+            if (subSector.length !== 0) {
+                callsign += subSector + "_";
+            }
+            callsign += facility;
 
             const out = new PackageAtcPosition({
                 callsign: callsign,
