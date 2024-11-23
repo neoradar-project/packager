@@ -166,7 +166,7 @@ class NavdataManager {
     log("generateNavdata");
     const path = `${outputPath}/${packageId}/datasets`;
 
-    let navdata: any = {};
+    let nse: any = {};
     const allNavaids: any[] = [];
 
     // regions
@@ -179,7 +179,7 @@ class NavdataManager {
         tmpRegions.push(feature.properties.region);
       }
     }
-    navdata.region = tmpRegions.map((key) => {
+    nse.region = tmpRegions.map((key) => {
       return {
         name: key,
         sourceId: namespace + "-region",
@@ -197,7 +197,7 @@ class NavdataManager {
         tmpGeo.push(feature.properties.section);
       }
     }
-    navdata.geo = tmpGeo.map((key) => {
+    nse.geo = tmpGeo.map((key) => {
       return {
         name: key,
         sourceId: namespace,
@@ -211,7 +211,7 @@ class NavdataManager {
       const typeData = JSON.parse(
         await system.readFile(`${path}/${type}.geojson`)
       ).features;
-      navdata[type] = typeData.map((item: any) => {
+      nse[type] = typeData.map((item: any) => {
         return {
           name: item.properties.name,
           freq: item.properties.freq,
@@ -222,7 +222,7 @@ class NavdataManager {
           sourceId: namespace,
         };
       });
-      allNavaids.push(...navdata[type]);
+      allNavaids.push(...nse[type]);
       await system.deleteFile(`${path}/${type}.geojson`);
     }
 
@@ -230,7 +230,7 @@ class NavdataManager {
     const runwaysData = JSON.parse(
       await system.readFile(`${path}/runway.geojson`)
     ).features;
-    navdata.runway = runwaysData.map((item: any) => {
+    nse.runway = runwaysData.map((item: any) => {
       return {
         id: item.id,
         name: item.properties.name,
@@ -250,7 +250,7 @@ class NavdataManager {
       const data = JSON.parse(
         await system.readFile(`${path}/${awy}.geojson`)
       ).features;
-      navdata[awy] = data.map((item: any) => {
+      nse[awy] = data.map((item: any) => {
         return {
           id: item.id,
           name: item.properties.name,
@@ -278,7 +278,7 @@ class NavdataManager {
         }
       }
     }
-    navdata.label = tmpLabels.map((item: any) => {
+    nse.label = tmpLabels.map((item: any) => {
       return {
         name: item.properties.section,
         value: item.properties.value,
@@ -293,9 +293,9 @@ class NavdataManager {
     const eseData = await system.readFile(eseFilePath);
     const lines = eseData.toString().split("\n");
 
-    navdata.gate = [];
-    navdata.position = [];
-    navdata.procedure = [];
+    nse.gate = [];
+    nse.position = [];
+    nse.procedure = [];
 
     let gateCounter = 5000;
     let positionCounter = 10000;
@@ -316,7 +316,7 @@ class NavdataManager {
         const position = PackageAtcPosition.init(line);
         if (!position) continue;
         position.layerUniqueId = positionCounter++;
-        navdata.position.push(position.toJsonObject());
+        nse.position.push(position.toJsonObject());
       }
 
       if (line.startsWith(";=")) continue;
@@ -330,24 +330,24 @@ class NavdataManager {
         gate.icao = aptIcao;
         gate.layerUniqueId = gateCounter++;
         gate.sourceId = namespace;
-        navdata.gate.push(gate.toJsonObject());
+        nse.gate.push(gate.toJsonObject());
       }
 
       if (data[0].includes("STAR") || data[0].includes("SID")) {
         const proc = Procedure.init(line, allNavaids);
         if (!proc) continue;
         proc.layerUniqueId = procedureCounter++;
-        navdata.procedure.push(proc.toJsonObject());
+        nse.procedure.push(proc.toJsonObject());
       }
     }
 
     const sectorData = await this.parseSectorLines(eseFilePath);
-    navdata.sectors = sectorData.sectors;
-    navdata.sectorLines = sectorData.sectorLines;
+    nse.sectors = sectorData.sectors;
+    nse.sectorLines = sectorData.sectorLines;
 
     await system.writeFile(
-      `${outputPath}/${packageId}/datasets/navdata.json`,
-      JSON.stringify(navdata)
+      `${outputPath}/${packageId}/datasets/nse.json`,
+      JSON.stringify(nse)
     );
   }
 
