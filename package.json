@@ -7,7 +7,7 @@
   "main": "./dist/server.js",
   "type": "module",
   "scripts": {
-    "start": "ts-node --esm src/server.ts",
+    "start": "npx tsx src/server.ts",
     "build": "npx tsc -p .",
     "build:live": "nodemon -r dotenv/config --watch src --exec ts-node --esm src/server.ts"
   },
@@ -28,6 +28,7 @@
     "node-fetch": "^2.6.7",
     "sector-file-tools": "^1.2.1",
     "shelljs": "^0.8.5",
+    "tippecanoe": "^0.6.0",
     "ts-node": "v10.9.1"
   },
   "devDependencies": {
@@ -40,6 +41,7 @@
     "@types/turf": "^3.5.32",
     "debug": "^4.3.4",
     "nodemon": "^2.0.22",
+    "tsx": "^4.19.2",
     "typescript": "^4.7"
   }
 }

@@ -116,3 +116,5 @@ dist
 # Helm files.
 charts/**/*.tgz
 .DS_Store
+
+src/data/lfxx/**

@@ -1,0 +1,14 @@
+{
+    "id": "LFXX_AIRAC_2412_1",
+    "name": "LFXX - AIRAC 2412 Rev 1",
+    "description": "LFXX 2412 with LFMN AVISO v2",
+    "namespace": "lfxx",
+    "sctPath": "src/data/lfxx/lfxx.sct",
+    "esePath": "src/data/lfxx/lfxx.ese",
+    "loginProfilesPath": "src/data/lfxx/LoginProfiles.txt",
+    "icaoAircraftPath": "src/data/lfxx/ICAO_Aircraft.txt",
+    "icaoAirlinesPath": "src/data/lfxx/ICAO_Airlines.txt",
+    "recatDefinitionPath": "src/data/lfxx/recat-eu.json",
+    "aliasPath": "src/data/lfxx/alias.txt",
+    "outputDir": "build/"
+}
