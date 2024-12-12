@@ -118,22 +118,22 @@ class PackageBuilder {
         // Generating layers specs
 
         const baseLayers: LayerSpecification[] = [
-            {
-                id: 'main-bg',
-                type: 'background',
-                paint: {
-                    'background-color': 'rgba(28, 28, 28, 1)'
-                }
-            },
-            {
-                id: 'global',
-                type: 'line',
-                source: 'global',
-                'source-layer': 'world_geo',
-                paint: {
-                    'line-color': 'rgba(70, 70, 70, 1)'
-                }
-            }
+            // {
+            //     id: 'main-bg',
+            //     type: 'background',
+            //     paint: {
+            //         'background-color': 'rgba(28, 28, 28, 1)'
+            //     }
+            // },
+            // {
+            //     id: 'global',
+            //     type: 'line',
+            //     source: 'global',
+            //     'source-layer': 'world_geo',
+            //     paint: {
+            //         'line-color': 'rgba(70, 70, 70, 1)'
+            //     }
+            // }
         ]
 
         const packageLayers = datasets.filter(d => d !== 'region' && d!== 'artcc' && d!== 'artcc-high' && d!=='artcc-low' && d!=='low-airway' && d!=='high-airway').map(d => layerManager.generateLayerConfigFor(d, namespace)).filter(l => l !== null)
