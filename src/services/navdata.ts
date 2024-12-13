@@ -7,6 +7,7 @@ import { geoHelper } from "../libs/geo-helper.js";
 import { ESE, Position, SCT, toGeoJson } from "sector-file-tools";
 import { multiLineString } from "@turf/turf";
 import { Navaid, Segment } from "sector-file-tools/dist/src/sct.js";
+import { Sector, SectorLine } from "../models/nse.js";
 
 const log = debug("NavdataManager");
 
@@ -31,8 +32,23 @@ class NavdataManager {
 
     let inAirspaceSection = false;
 
-    let currentSectorLine: any;
-    let currentSector: any;
+    let currentSectorLine: SectorLine = {
+      id: 0,
+      points: [],
+      display: [],
+    };
+    let currentSector: Sector = {
+      layerUniqueId: 0,
+      name: "",
+      actives: [],
+      owners: [],
+      borders: [],
+      depApts: [],
+      arrApts: [],
+      floor: 0,
+      ceiling: 0,
+      displaySectorLines: [],
+    };
     let sectorCounter = 99000;
 
     for (const line of lines) {
@@ -51,9 +67,9 @@ class NavdataManager {
             baseMatrixInt++;
             console.log(
               "Replacement matrix for non numeric sector ID is  for " +
-              id +
-              " is " +
-              numericIDReplacementMatrix[id]
+                id +
+                " is " +
+                numericIDReplacementMatrix[id]
             );
           }
           currentSectorLine = {
@@ -70,41 +86,33 @@ class NavdataManager {
             coord[2].replace("\r", "")
           );
           currentSectorLine.points.push({
-            lat: geo?.lat,
-            lon: geo?.lon,
+            lat: geo?.lat ?? 0,
+            lon: geo?.lon ?? 0,
           });
         }
         if (line.startsWith("DISPLAY:")) {
-          const parts = line.split(":");
-          const displayData = parts[1].split("�");
-          const dsp = {
-            fir: displayData[0].replace("\r", ""),
-            name: displayData[1].replace("\r", ""),
-            floor: Number(displayData[2].replace("\r", "")),
-            ceiling: Number(displayData[3].replace("\r", "")),
-          };
-          currentSectorLine.display.push(dsp);
+          // const parts = line.split(":");
+          // const dsp = {
+          //   name: parts[1].replace("\r", "").replace("�", ""),
+          // };
+          // currentSectorLine.display.push(dsp);
+          continue; // Display lines are handled automatically based on common borders
         }
-
         // Sectors
 
         if (line.startsWith("SECTOR:")) {
           const parts = line.split(":");
-          const nameParts = parts[1].split("�");
-          let name, fir;
-          if (nameParts.length > 1) {
-            name = nameParts[1].replace("\r", "");
-            fir = nameParts[0].replace("\r", "");
-          } else {
-            name = fir = parts[1];
-          }
           currentSector = {
             layerUniqueId: sectorCounter++,
-            name: name,
-            fir: fir,
+            name: parts[1].replace("\r", "").replace("�", ""),
+            actives: [],
+            owners: [],
+            borders: [],
+            depApts: [],
+            arrApts: [],
             floor: Number(parts[2].replace("\r", "")),
             ceiling: Number(parts[3].replace("\r", "")),
-            actives: [],
+            displaySectorLines: [],
           };
           sectors.push(currentSector);
         }
@@ -121,7 +129,9 @@ class NavdataManager {
               return Number(cleanItem);
             } else {
               if (!numericIDReplacementMatrix[cleanItem]) {
-                console.error("No replacement matrix available for " + cleanItem);
+                console.error(
+                  "No replacement matrix available for " + cleanItem
+                );
               }
               return numericIDReplacementMatrix[cleanItem];
             }
@@ -142,10 +152,21 @@ class NavdataManager {
             runway: parts[1].replace("\r", ""),
           });
         }
-      }
-
-      if (line.startsWith("[RADAR]")) {
-        break;
+        if (line.startsWith("DISPLAY_SECTORLINE:")) {
+          const parts = line.replace("DISPLAY_SECTORLINE:", "").split(":");
+          currentSector.displaySectorLines.push({
+            borderId: Number(parts[0].replace("\r", "")),
+            mySector: parts[1].replace("\r", ""),
+            otherSectors: parts
+              .slice(2)
+              .map((item) =>
+                item
+                  .replace("\r", "")
+                  .replace("�", "")
+                  .replace(parts[1].replace("\r", ""), "") // We ignore our own sector
+              ).filter((item) => item !== ""),
+          });
+        }
       }
     }
 
@@ -182,7 +203,6 @@ class NavdataManager {
     nse.region = tmpRegions.map((key) => {
       return {
         name: key,
-        sourceId: namespace + "-region",
       };
     });
     await system.deleteFile(`${path}/region.geojson`);
@@ -200,10 +220,9 @@ class NavdataManager {
     nse.geo = tmpGeo.map((key) => {
       return {
         name: key,
-        sourceId: namespace,
       };
     });
-    await system.deleteFile(`${path}/geo.geojson`);
+    // await system.deleteFile(`${path}/geo.geojson`);
 
     // navaids
     const typeList = ["vor", "ndb", "fix", "airport"];
@@ -219,11 +238,10 @@ class NavdataManager {
           lat: item.geometry.coordinates[1],
           lon: item.geometry.coordinates[0],
           layerUniqueId: item.properties.id,
-          sourceId: namespace,
         };
       });
       allNavaids.push(...nse[type]);
-      await system.deleteFile(`${path}/${type}.geojson`);
+      // await system.deleteFile(`${path}/${type}.geojson`);
     }
 
     // runways
@@ -238,10 +256,9 @@ class NavdataManager {
         type: item.properties.type,
         icao: item.properties.icao,
         layerUniqueId: item.properties.id,
-        sourceId: namespace,
       };
     });
-    await system.deleteFile(`${path}/runway.geojson`);
+    // await system.deleteFile(`${path}/runway.geojson`);
 
     // Airways
 
@@ -256,10 +273,9 @@ class NavdataManager {
           name: item.properties.name,
           oppositeId: item.properties.oppositeId,
           type: item.properties.type,
-          sourceId: namespace,
         };
       });
-      await system.deleteFile(`${path}/${awy}.geojson`);
+      // await system.deleteFile(`${path}/${awy}.geojson`);
     }
 
     // labels
@@ -283,12 +299,11 @@ class NavdataManager {
         name: item.properties.section,
         value: item.properties.value,
         type: item.properties.type,
-        sourceId: namespace,
         lat: item.geometry.coordinates[1],
         lon: item.geometry.coordinates[0],
       };
     });
-    await system.deleteFile(`${path}/label.geojson`);
+    // await system.deleteFile(`${path}/label.geojson`);
 
     const eseData = await system.readFile(eseFilePath);
     const lines = eseData.toString().split("\n");
@@ -308,7 +323,11 @@ class NavdataManager {
         inPositionSection = true;
         continue;
       }
-      if (inPositionSection && line.startsWith("[") && !line.startsWith("[POSITIONS]")) {
+      if (
+        inPositionSection &&
+        line.startsWith("[") &&
+        !line.startsWith("[POSITIONS]")
+      ) {
         inPositionSection = false;
         continue;
       }
@@ -329,7 +348,6 @@ class NavdataManager {
         const aptIcao = data[2].substring(0, 4);
         gate.icao = aptIcao;
         gate.layerUniqueId = gateCounter++;
-        gate.sourceId = namespace;
         nse.gate.push(gate.toJsonObject());
       }
 
@@ -373,7 +391,6 @@ class NavdataManager {
       });
       const multiline = multiLineString(lines);
       multiline.properties = {
-        id: null,
         type: "lowAirway",
         name: airway.id,
       };
@@ -387,41 +404,10 @@ class NavdataManager {
       });
       const multiline = multiLineString(lines);
       multiline.properties = {
-        id: null,
         type: "highAirway",
         name: airway.id,
       };
       features.push(multiline);
-    });
-    for (const feature of features) {
-      if (feature.properties.color) {
-        let color = `rgba(${feature.properties.color.join(",")},1)`;
-        if (color === "rgba(29,43,43,1)") {
-          color = "rgba(0,0,0,0)";
-        }
-        feature.properties.color = color;
-      }
-    }
-
-    // remove unwanted features
-    features = features.filter((f) => {
-      if (f.properties.type === "geo") {
-        // removing packaged coastlines
-        if (f.properties.section.toLowerCase().includes("coastline")) {
-          return false;
-        }
-        if (
-          f.properties.section.toLowerCase().includes("political boundaries")
-        ) {
-          return false;
-        }
-        if (f.properties.section.toLowerCase().includes("landmark")) {
-          return false;
-        }
-
-        return true;
-      }
-      return true;
     });
 
     const allTypes: string[] = [];
@@ -450,24 +436,24 @@ class NavdataManager {
     returnSegment.push(
       "position" in segment.start
         ? [
-          (segment.start as Navaid).position.lonFloat,
-          (segment.start as Navaid).position.latFloat,
-        ]
+            (segment.start as Navaid).position.lonFloat,
+            (segment.start as Navaid).position.latFloat,
+          ]
         : [
-          (segment.start as Position).lonFloat,
-          (segment.start as Position).latFloat,
-        ]
+            (segment.start as Position).lonFloat,
+            (segment.start as Position).latFloat,
+          ]
     );
     returnSegment.push(
       "position" in segment.end
         ? [
-          (segment.end as Navaid).position.lonFloat,
-          (segment.end as Navaid).position.latFloat,
-        ]
+            (segment.end as Navaid).position.lonFloat,
+            (segment.end as Navaid).position.latFloat,
+          ]
         : [
-          (segment.end as Position).lonFloat,
-          (segment.end as Position).latFloat,
-        ]
+            (segment.end as Position).lonFloat,
+            (segment.end as Position).latFloat,
+          ]
     );
     return returnSegment;
   }

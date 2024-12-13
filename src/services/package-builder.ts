@@ -1,166 +1,260 @@
-import debug from 'debug'
-import { LayerSpecification } from 'maplibre-gl'
-import { parseEse, parseSct } from 'sector-file-tools'
-import { atcData } from './atc-data.js'
-import { layerManager } from './layers.js'
-import { navdata } from './navdata.js'
-import { system } from './system.js'
-import { tilesManager } from './tiles-manager.js'
-const log = debug('PackageBuilder')
+import debug from "debug";
+import { LayerSpecification } from "maplibre-gl";
+import { parseEse, parseSct } from "sector-file-tools";
+import { atcData } from "./atc-data.js";
+import { layerManager } from "./layers.js";
+import { navdata } from "./navdata.js";
+import { system } from "./system.js";
+import { tilesManager } from "./tiles-manager.js";
+import { MapLayer } from "../models/inputManifest.model.js";
+const log = debug("PackageBuilder");
 
 class PackageBuilder {
+  outputPath: string = "";
+  commonPath: string = "";
+  constructor() {
+    this.commonPath = "./src/data/common";
+  }
 
-    outputPath: string = ''
-    commonPath: string = ''
-    constructor() {
-        this.commonPath = './src/data/common'
-    }
+  public async build(
+    id: string,
+    name: string,
+    description: string,
+    namespace: string,
+    sctFilePath: string,
+    eseFilePath: string,
+    loginProfilesPath: string,
+    icaoAircraftPath: string,
+    icaoAirlinesPath: string,
+    recatDefinitionPath: string | undefined,
+    aliasPath: string,
+    outputPath: string
+  ): Promise<void> {
+    this.outputPath = outputPath;
+    await system
+      .createDirectory(this.outputPath)
+      .then(() => log("outputPath created"));
+    log("build", sctFilePath);
 
-    public async build(
-        id: string,
-        name: string,
-        description: string,
-        namespace: string,
-        sctFilePath: string,
-        eseFilePath: string,
-        loginProfilesPath: string,
-        icaoAircraftPath: string,
-        icaoAirlinesPath: string,
-        recatDefinitionPath: string | undefined,
-        aliasPath: string,
-        outputPath: string
-    ): Promise<void> {
-        this.outputPath = outputPath
-        await system.createDirectory(this.outputPath).then(() => log('outputPath created'))
-        log('build', sctFilePath)
+    const sctData = parseSct(await system.readFile(sctFilePath));
+    const eseData = parseEse(await system.readFile(eseFilePath));
 
-        const sctData = parseSct(await system.readFile(sctFilePath))
-        const eseData = parseEse(await system.readFile(eseFilePath))
+    log("generatePackage", namespace, name);
+    const packagePath = `${this.outputPath}/${id}`;
+    // clean
+    await system.deleteDirectory(packagePath);
+    // create
+    await system.createDirectory(packagePath);
 
-        log('generatePackage', namespace, name)
-        const packagePath = `${this.outputPath}/${id}`
-        // clean
-        await system.deleteDirectory(packagePath)
-        // create
-        await system.createDirectory(packagePath)
+    // const sources: any[] = [];
+    // copy fonts
+    // const fonts = await system.listFiles(`${this.commonPath}/fonts`);
+    // await system.createDirectory(`${packagePath}/fonts`);
+    // for (const font of fonts) {
+    //   await system.copyFile(
+    //     `${this.commonPath}/fonts/${font}`,
+    //     `${packagePath}/fonts/${font}`
+    //   );
+    // }
 
-        const sources: any[] = []
-        // copy fonts
-        const fonts = await system.listFiles(`${this.commonPath}/fonts`)
-        await system.createDirectory(`${packagePath}/fonts`)
-        for (const font of fonts) {
-            await system.copyFile(`${this.commonPath}/fonts/${font}`, `${packagePath}/fonts/${font}`)
-        }
+    // // copy images
+    // const images = await system.listFiles(`${this.commonPath}/images`);
+    // await system.createDirectory(`${this.outputPath}/${id}/images`);
+    // for (const image of images) {
+    //   await system.copyFile(
+    //     `${this.commonPath}/images/${image}`,
+    //     `${packagePath}/images/${image}`
+    //   );
+    // }
 
-        // copy images
-        const images = await system.listFiles(`${this.commonPath}/images`)
-        await system.createDirectory(`${this.outputPath}/${id}/images`)
-        for (const image of images) {
-            await system.copyFile(`${this.commonPath}/images/${image}`, `${packagePath}/images/${image}`)
-        }
+    // copy base sources
+    // const baseSources = await system.listFiles(`${this.commonPath}/sources`);
+    // for (const baseSource of baseSources) {
+    //   const baseSourcePath = `${this.commonPath}/sources/${baseSource}`;
+    //   const maxZoom = await tilesManager.getTilesMaxZoom(baseSourcePath);
+    //   sources.push({
+    //     id: baseSource.replace(".mbtiles", ""),
+    //     maxZoom: maxZoom,
+    //   });
+    //   await system.copyFile(
+    //     baseSourcePath,
+    //     `${packagePath}/tiles/${baseSource}`
+    //   );
+    // }
 
+    // Package datasets
+    const datasets = await navdata.generateDataSets(
+      id,
+      sctData,
+      eseData,
+      ["sid", "star"],
+      outputPath
+    );
 
-        // copy base sources
-        const baseSources = await system.listFiles(`${this.commonPath}/sources`)
-        for (const baseSource of baseSources) {
-            const baseSourcePath = `${this.commonPath}/sources/${baseSource}`
-            const maxZoom = await tilesManager.getTilesMaxZoom(baseSourcePath)
-            sources.push({
-                id: baseSource.replace('.mbtiles', ''),
-                maxZoom: maxZoom
-            })
-            await system.copyFile(baseSourcePath, `${packagePath}/tiles/${baseSource}`)
-        }
+    log("datasets", datasets);
 
-        // Package datasets
-        const datasets = await navdata.generateDataSets(id, sctData, eseData, [
-            'sid',
-            'star',
-        ],
-        outputPath
-        )
+    await sleep(1000);
 
-        log('datasets', datasets)
+    const packageTilesDirectory = `${this.outputPath}/${id}/tiles`;
+    // main namespace tiles
+    const path = `${this.outputPath}/${id}/datasets`;
+    const regionSource = namespace + "-region";
 
-        await sleep(1000)
+    // const mainZoom = await tilesManager.generateMBTilesFrom(
+    //   namespace,
+    //   packageTilesDirectory,
+    //   datasets.filter((d) => d !== "region").map((d) => `${path}/${d}.geojson`)
+    // );
+    // sources.push({
+    //   id: namespace,
+    //   maxZoom: mainZoom,
+    // });
 
-        const packageTilesDirectory = `${this.outputPath}/${id}/tiles`
-        // main namespace tiles
-        const path = `${this.outputPath}/${id}/datasets`
-        const regionSource = namespace + '-region'
+    const regionPath = `${this.outputPath}/${id}/datasets/region.geojson`;
+    const regionZoom = await tilesManager.generateMBTilesFrom(
+      regionSource,
+      packageTilesDirectory,
+      [regionPath],
+      16
+    );
 
-        const mainZoom = await tilesManager.generateMBTilesFrom(namespace, packageTilesDirectory, datasets.filter(d => d !== 'region').map(d => `${path}/${d}.geojson`))
-        sources.push({
-            id: namespace,
-            maxZoom: mainZoom
-        })
+    // Package global ATC Data
 
+    await atcData.generateAtcdata(
+      id,
+      loginProfilesPath,
+      icaoAircraftPath,
+      icaoAirlinesPath,
+      recatDefinitionPath,
+      aliasPath,
+      outputPath
+    );
 
-        const regionPath = `${this.outputPath}/${id}/datasets/region.geojson`
-        const regionZoom = await tilesManager.generateMBTilesFrom(regionSource, packageTilesDirectory, [regionPath], 16)
-        sources.push({
-            id: regionSource,
-            maxZoom: regionZoom
-        })
+    // Generating layers specs
 
-        // Package global ATC Data
+    // const packageLayers = datasets
+    //   .filter(
+    //     (d) =>
+    //       d !== "region" &&
+    //       d !== "artcc" &&
+    //       d !== "artcc-high" &&
+    //       d !== "artcc-low" &&
+    //       d !== "low-airway" &&
+    //       d !== "high-airway"
+    //   )
+    //   .map((d) => layerManager.generateLayerConfigFor(d, namespace))
+    //   .filter((l) => l !== null);
+    // const regionLayer = layerManager.generateLayerConfigFor(
+    //   "region",
+    //   regionSource
+    // );
+    // const allLayers = baseLayers.concat(regionLayer).concat(packageLayers);
 
-        await atcData.generateAtcdata(
-            id,
-            loginProfilesPath,
-            icaoAircraftPath,
-            icaoAirlinesPath,
-            recatDefinitionPath,
-            aliasPath,
-            outputPath
-        )
+    const mapLayers: MapLayer[] = [
+      {
+        name: "region",
+        type: "mbtiles",
+        source: regionSource,
+        minZoom: 0,
+        maxZoom: regionZoom,
+      },
+      {
+        name: "artcc",
+        type: "geojson",
+        source: "artcc",
+      },
+      {
+        name: "artcc-high",
+        type: "geojson",
+        source: "artcc-high",
+      },
+      {
+        name: "artcc-low",
+        type: "geojson",
+        source: "artcc-low",
+      },
+      {
+        name: "lowAirway",
+        type: "geojson",
+        source: "lowAirway",
+      },
+      {
+        name: "highAirway",
+        type: "geojson",
+        source: "highAirway",
+      },
+      {
+        name: "sid",
+        type: "geojson",
+        source: "sid",
+      },
+      {
+        name: "star",
+        type: "geojson",
+        source: "star",
+      },
+      {
+        name: "geo",
+        type: "geojson",
+        source: "geo",
+      },
+      {
+        name: "fix",
+        type: "geojson",
+        source: "fix",
+        pointType: "icon+text"
+      },
+      {
+        name: "vor",
+        type: "geojson",
+        source: "vor",
+        pointType: "icon+text"
+      },
+      {
+        name: "ndb",
+        type: "geojson",
+        source: "ndb",
+        pointType: "icon+text"
+      },
+      {
+        name: "airport",
+        type: "geojson",
+        source: "airport",
+        pointType: "icon+text",
+      },
+      {
+        name: "runway",
+        type: "geojson",
+        source: "runway",
+      },
+      {
+        name: "label",
+        type: "geojson",
+        source: "label",
+        pointType: "text"
+      },
+    ];
 
-        // Generating layers specs
+    // Generating computable navdata
+    await navdata.generateNavdata(id, namespace, eseFilePath, outputPath);
 
-        const baseLayers: LayerSpecification[] = [
-            // {
-            //     id: 'main-bg',
-            //     type: 'background',
-            //     paint: {
-            //         'background-color': 'rgba(28, 28, 28, 1)'
-            //     }
-            // },
-            // {
-            //     id: 'global',
-            //     type: 'line',
-            //     source: 'global',
-            //     'source-layer': 'world_geo',
-            //     paint: {
-            //         'line-color': 'rgba(70, 70, 70, 1)'
-            //     }
-            // }
-        ]
+    // generate manifest
+    const manifest = {
+      id: id,
+      name: name,
+      description: description,
+      namespace: namespace,
+      createdAt: new Date().toISOString(),
+      datasets: datasets,
+      mapLayers: mapLayers
+    };
+    await system.writeFile(
+      `${packagePath}/manifest.json`,
+      JSON.stringify(manifest)
+    );
+  }
 
-        const packageLayers = datasets.filter(d => d !== 'region' && d!== 'artcc' && d!== 'artcc-high' && d!=='artcc-low' && d!=='low-airway' && d!=='high-airway').map(d => layerManager.generateLayerConfigFor(d, namespace)).filter(l => l !== null)
-        const regionLayer = layerManager.generateLayerConfigFor('region', regionSource)
-        const allLayers = baseLayers.concat(regionLayer).concat(packageLayers)
-
-
-        // Generating computable navdata
-        await navdata.generateNavdata(id, namespace, eseFilePath, outputPath)
-
-        // generate manifest
-        const manifest = {
-            id: id,
-            name: name,
-            description: description,
-            namespace: namespace,
-            createdAt: new Date().toISOString(),
-            sources: sources,
-            datasets: datasets,
-            defaultLayers: allLayers,
-            images: images
-        }
-        await system.writeFile(`${packagePath}/manifest.json`, JSON.stringify(manifest))
-    }
-
-
-    /*private async generateRegionsLayouts(packageId: string, fromDataset: string, sourceName: string): Promise<{ sourceName: string, maxZoom: number, layers: string[] }> {
+  /*private async generateRegionsLayouts(packageId: string, fromDataset: string, sourceName: string): Promise<{ sourceName: string, maxZoom: number, layers: string[] }> {
         const regionDataSetPath = `${this.packagesPath}/${packageId}/datasets/${fromDataset}.geojson`
         const data = JSON.parse(await system.readFile(regionDataSetPath))
         
@@ -198,4 +292,4 @@ class PackageBuilder {
 
 const sleep = (ms: number) => new Promise((r) => setTimeout(r, ms));
 
-export const packageBuilder = new PackageBuilder()
+export const packageBuilder = new PackageBuilder();
