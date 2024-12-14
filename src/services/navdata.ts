@@ -225,27 +225,43 @@ class NavdataManager {
 
     // sids
     const sidsData = JSON.parse(await system.readFile(`${path}/sid.geojson`)).features;
-    nse.sid = sidsData.map((item: any) => {
-      if (!item.properties.uuid) {
-        console.error(`No UUID found for SID: ${this.getFeatureName(item)}`);
-        throw new Error(`Missing UUID for SID: ${this.getFeatureName(item)}`);
+    const tmpSids: string[] = [];
+    for (const feature of sidsData) {
+      const name = this.getFeatureName(feature);
+      if (name && tmpSids.indexOf(name) === -1) {
+        tmpSids.push(name);
+      }
+    }
+    nse.sid = tmpSids.map((key) => {
+      const feature = sidsData.find((f) => this.getFeatureName(f) === key);
+      if (!feature?.properties.uuid) {
+        console.error(`No UUID found for SID: ${key}`);
+        throw new Error(`Missing UUID for SID: ${key}`);
       }
       return {
-        name: this.getFeatureName(item),
-        uuid: item.properties.uuid,
+        name: key,
+        uuid: feature.properties.uuid,
       };
     });
 
     // stars
     const starsData = JSON.parse(await system.readFile(`${path}/star.geojson`)).features;
-    nse.star = starsData.map((item: any) => {
-      if (!item.properties.uuid) {
-        console.error(`No UUID found for STAR: ${this.getFeatureName(item)}`);
-        throw new Error(`Missing UUID for STAR: ${this.getFeatureName(item)}`);
+    const tmpStars: string[] = [];
+    for (const feature of starsData) {
+      const name = this.getFeatureName(feature);
+      if (name && tmpStars.indexOf(name) === -1) {
+        tmpStars.push(name);
+      }
+    }
+    nse.star = tmpStars.map((key) => {
+      const feature = starsData.find((f) => this.getFeatureName(f) === key);
+      if (!feature?.properties.uuid) {
+        console.error(`No UUID found for STAR: ${key}`);
+        throw new Error(`Missing UUID for STAR: ${key}`);
       }
       return {
-        name: this.getFeatureName(item),
-        uuid: item.properties.uuid,
+        name: key,
+        uuid: feature.properties.uuid,
       };
     });
 
