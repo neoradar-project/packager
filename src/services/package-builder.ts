@@ -88,7 +88,7 @@ class PackageBuilder {
     // }
 
     // Package datasets
-    const datasets = await navdata.generateDataSets(id, sctData, eseData, [], outputPath);
+    const datasets = await navdata.generateDataSets(id, sctData, eseData, ["low-airway", "high-airway"], outputPath);
 
     log("datasets", datasets);
 
@@ -153,14 +153,14 @@ class PackageBuilder {
         source: "artcc",
       },
       {
-        name: "artcc-high",
+        name: "artccHigh",
         type: "geojson",
-        source: "artcc-high",
+        source: "artccHigh",
       },
       {
-        name: "artcc-low",
+        name: "artccLow",
         type: "geojson",
-        source: "artcc-low",
+        source: "artccLow",
       },
       {
         name: "lowAirway",

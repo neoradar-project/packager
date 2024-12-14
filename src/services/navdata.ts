@@ -265,6 +265,69 @@ class NavdataManager {
       };
     });
 
+    // artcc-low
+    const artccLowData = JSON.parse(await system.readFile(`${path}/artccLow.geojson`)).features;
+    const tmpArtccLow: string[] = [];
+    for (const feature of artccLowData) {
+      const name = this.getFeatureName(feature);
+      if (name && tmpArtccLow.indexOf(name) === -1) {
+        tmpArtccLow.push(name);
+      }
+    }
+    nse.artccLow = tmpArtccLow.map((key) => {
+      const feature = artccLowData.find((f) => this.getFeatureName(f) === key);
+      if (!feature?.properties.uuid) {
+        console.error(`No UUID found for ARTCC Low: ${key}`);
+        throw new Error(`Missing UUID for ARTCC Low: ${key}`);
+      }
+      return {
+        name: key,
+        uuid: feature.properties.uuid,
+      };
+    });
+
+    // artcc-high
+    const artccHighData = JSON.parse(await system.readFile(`${path}/artccHigh.geojson`)).features;
+    const tmpArtccHigh: string[] = [];
+    for (const feature of artccHighData) {
+      const name = this.getFeatureName(feature);
+      if (name && tmpArtccHigh.indexOf(name) === -1) {
+        tmpArtccHigh.push(name);
+      }
+    }
+    nse.artccHigh = tmpArtccHigh.map((key) => {
+      const feature = artccHighData.find((f) => this.getFeatureName(f) === key);
+      if (!feature?.properties.uuid) {
+        console.error(`No UUID found for ARTCC High: ${key}`);
+        throw new Error(`Missing UUID for ARTCC High: ${key}`);
+      }
+      return {
+        name: key,
+        uuid: feature.properties.uuid,
+      };
+    });
+
+    // artcc
+    const artccData = JSON.parse(await system.readFile(`${path}/artcc.geojson`)).features;
+    const tmpArtcc: string[] = [];
+    for (const feature of artccData) {
+      const name = this.getFeatureName(feature);
+      if (name && tmpArtcc.indexOf(name) === -1) {
+        tmpArtcc.push(name);
+      }
+    }
+    nse.artcc = tmpArtcc.map((key) => {
+      const feature = artccData.find((f) => this.getFeatureName(f) === key);
+      if (!feature?.properties.uuid) {
+        console.error(`No UUID found for ARTCC: ${key}`);
+        throw new Error(`Missing UUID for ARTCC: ${key}`);
+      }
+      return {
+        name: key,
+        uuid: feature.properties.uuid,
+      };
+    });
+
     // navaids
     const typeList = ["vor", "ndb", "fix", "airport"];
     for (const type of typeList) {
@@ -464,11 +527,7 @@ class NavdataManager {
   }
 
   private getSharedUUID(type: string, name: string): string {
-    const key = `${type}-${name}`;
-    if (!this.uuidMap.has(key)) {
-      this.uuidMap.set(key, uuidv4());
-    }
-    return this.uuidMap.get(key)!;
+    return `${type}-${name}`.toLowerCase().replace(/[^a-z0-9-]/g, "-");
   }
 
   private addUUIDToFeature(feature: any): void {
@@ -476,13 +535,12 @@ class NavdataManager {
     const featureName = this.getFeatureName(feature);
 
     if (featureName) {
-      // All named features share UUID by type and name
+      // All named features get a consistent ID based on type and name
       feature.properties.uuid = this.getSharedUUID(type, featureName);
-      // Store the processed name for mapping
       feature.properties._mappedName = featureName;
     } else {
-      // Features without names get unique UUIDs
-      feature.properties.uuid = uuidv4();
+      // Features without names get a fallback ID
+      feature.properties.uuid = `${type}-unnamed-${Date.now()}`;
     }
   }
 
@@ -601,7 +659,8 @@ class NavdataManager {
       features: features,
     };
     const data = JSON.stringify(geojson);
-    await system.writeFile(`${path}/${type}.geojson`, data);
+    const formattedType = type.replace(/-([a-z])/g, (match, letter) => letter.toUpperCase());
+    await system.writeFile(`${path}/${formattedType}.geojson`, data);
     return;
   }
 
