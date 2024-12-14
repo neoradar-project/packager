@@ -180,6 +180,9 @@ class NavdataManager {
     let nse: any = {};
     const allNavaids: any[] = [];
 
+    // Clear UUID map for new generation
+    this.uuidMap.clear();
+
     // regions
     const regionsData = JSON.parse(await system.readFile(`${path}/region.geojson`)).features;
     const tmpRegions: string[] = [];
@@ -189,11 +192,16 @@ class NavdataManager {
       }
     }
     nse.region = tmpRegions.map((key) => {
+      const feature = regionsData.find((f) => f.properties.region === key);
+      if (!feature?.properties.uuid) {
+        console.error(`No UUID found for region: ${key}`);
+        throw new Error(`Missing UUID for region: ${key}`);
+      }
       return {
         name: key,
+        uuid: feature.properties.uuid,
       };
     });
-    // await system.deleteFile(`${path}/region.geojson`);
 
     // geo
     const geoData = JSON.parse(await system.readFile(`${path}/geo.geojson`)).features;
@@ -204,17 +212,26 @@ class NavdataManager {
       }
     }
     nse.geo = tmpGeo.map((key) => {
+      const feature = geoData.find((f) => f.properties.section === key);
+      if (!feature?.properties.uuid) {
+        console.error(`No UUID found for geo section: ${key}`);
+        throw new Error(`Missing UUID for geo section: ${key}`);
+      }
       return {
         name: key,
+        uuid: feature.properties.uuid,
       };
     });
-    // await system.deleteFile(`${path}/geo.geojson`);
 
     // navaids
     const typeList = ["vor", "ndb", "fix", "airport"];
     for (const type of typeList) {
       const typeData = JSON.parse(await system.readFile(`${path}/${type}.geojson`)).features;
       nse[type] = typeData.map((item: any) => {
+        if (!item.properties.uuid) {
+          console.error(`No UUID found for ${type}: ${item.properties.name}`);
+          throw new Error(`Missing UUID for ${type}: ${item.properties.name}`);
+        }
         return {
           name: item.properties.name,
           freq: item.properties.freq,
@@ -222,15 +239,19 @@ class NavdataManager {
           lat: item.geometry.coordinates[1],
           lon: item.geometry.coordinates[0],
           layerUniqueId: item.properties.id,
+          uuid: item.properties.uuid,
         };
       });
       allNavaids.push(...nse[type]);
-      // await system.deleteFile(`${path}/${type}.geojson`);
     }
 
     // runways
     const runwaysData = JSON.parse(await system.readFile(`${path}/runway.geojson`)).features;
     nse.runway = runwaysData.map((item: any) => {
+      if (!item.properties.uuid) {
+        console.error(`No UUID found for runway: ${item.properties.icao}-${item.properties.name}`);
+        throw new Error(`Missing UUID for runway: ${item.properties.icao}-${item.properties.name}`);
+      }
       return {
         id: item.id,
         name: item.properties.name,
@@ -238,29 +259,31 @@ class NavdataManager {
         type: item.properties.type,
         icao: item.properties.icao,
         layerUniqueId: item.properties.id,
+        uuid: item.properties.uuid,
       };
     });
-    // await system.deleteFile(`${path}/runway.geojson`);
 
     // Airways
-
     const awys = ["lowAirway", "highAirway"];
     for (const awy of awys) {
       const data = JSON.parse(await system.readFile(`${path}/${awy}.geojson`)).features;
       nse[awy] = data.map((item: any) => {
+        if (!item.properties.uuid) {
+          console.error(`No UUID found for ${awy}: ${item.properties.name}`);
+          throw new Error(`Missing UUID for ${awy}: ${item.properties.name}`);
+        }
         return {
           id: item.id,
           name: item.properties.name,
           oppositeId: item.properties.oppositeId,
           type: item.properties.type,
+          uuid: item.properties.uuid,
         };
       });
-      // await system.deleteFile(`${path}/${awy}.geojson`);
     }
 
     // labels
     const labelsData = JSON.parse(await system.readFile(`${path}/label.geojson`)).features;
-    // merge labels with same section value
     const tmpLabels: any[] = [];
     for (const feature of labelsData) {
       const index = tmpLabels.findIndex((item) => item.properties.section === feature.properties.section);
@@ -272,21 +295,24 @@ class NavdataManager {
     }
     nse.label = tmpLabels
       .map((item: any) => {
-        // Skip items that don't have required properties
         if (!item.properties?.section) {
           console.warn("Skipping label with missing section:", item);
           return null;
         }
-
+        if (!item.properties.uuid) {
+          console.error(`No UUID found for label: ${item.properties.value || item.properties.section}`);
+          throw new Error(`Missing UUID for label: ${item.properties.value || item.properties.section}`);
+        }
         return {
           name: item.properties.section,
-          value: item.properties.value || "", // Provide default value if undefined
-          type: item.properties.type || "default", // Provide default value if undefined
+          value: item.properties.value || "",
+          type: item.properties.type || "default",
           lat: item.geometry.coordinates[1],
           lon: item.geometry.coordinates[0],
+          uuid: item.properties.uuid,
         };
       })
-      .filter((label): label is NonNullable<typeof label> => label !== null); // Remove null entries
+      .filter((label): label is NonNullable<typeof label> => label !== null);
     // await system.deleteFile(`${path}/label.geojson`);
 
     const eseData = await system.readFile(eseFilePath);
@@ -348,29 +374,29 @@ class NavdataManager {
 
   private getFeatureName(feature: any): string | null {
     const type = feature.properties.type;
-  
+
     // Standard name property types
-    if (['airport', 'fix', 'highAirway', 'lowAirway', 'ndb', 'vor'].includes(type)) {
+    if (["airport", "fix", "highAirway", "lowAirway", "ndb", "vor"].includes(type)) {
       if (feature.properties.name) {
         return feature.properties.name;
       }
     }
-    
-    if (['region'].includes(type)) {
+
+    if (["region"].includes(type)) {
       if (feature.properties.region) {
         return feature.properties.region;
       }
     }
-  
+
     // Section property types
-    if (['artcc-high', 'artcc-low', 'artcc', 'geo', 'high-airway', 'low-airway'].includes(type)) {
+    if (["artcc-high", "artcc-low", "artcc", "geo", "high-airway", "low-airway"].includes(type)) {
       if (feature.properties.section) {
         return feature.properties.section;
       }
     }
-  
+
     // Label specific
-    if (type === 'label') {
+    if (type === "label") {
       if (feature.properties.section) {
         return feature.properties.value;
       }
@@ -379,19 +405,19 @@ class NavdataManager {
         return feature.properties.value;
       }
     }
-  
+
     // Runway specific (combine ICAO and name)
-    if (type === 'runway') {
+    if (type === "runway") {
       if (feature.properties.icao && feature.properties.name) {
         return `${feature.properties.icao}-${feature.properties.name}`;
       }
     }
-  
+
     // Default fallback
     if (feature.properties.name) {
       return feature.properties.name;
     }
-  
+
     return null;
   }
 
@@ -406,7 +432,7 @@ class NavdataManager {
   private addUUIDToFeature(feature: any): void {
     const type = feature.properties.type;
     const featureName = this.getFeatureName(feature);
-    
+
     if (featureName) {
       // All named features share UUID by type and name
       feature.properties.uuid = this.getSharedUUID(type, featureName);
@@ -422,7 +448,7 @@ class NavdataManager {
     const mapping: Record<string, any[]> = {};
     const seenUUIDs = new Set<string>();
 
-    features.forEach(feature => {
+    features.forEach((feature) => {
       const type = feature.properties.type;
       if (!mapping[type]) {
         mapping[type] = [];
@@ -458,7 +484,7 @@ class NavdataManager {
     let features = geoJsonData.features as any[];
 
     // Add UUIDs to existing features
-    features.forEach(feature => this.addUUIDToFeature(feature));
+    features.forEach((feature) => this.addUUIDToFeature(feature));
 
     // Handle airways with shared UUIDs
     sctData.lowAirway.forEach((airway) => {
@@ -470,7 +496,7 @@ class NavdataManager {
       multiline.properties = {
         type: "lowAirway",
         name: airway.id,
-        uuid: this.getSharedUUID("lowAirway", airway.id)
+        uuid: this.getSharedUUID("lowAirway", airway.id),
       };
       multiline.properties._mappedName = airway.id;
       features.push(multiline);
@@ -485,7 +511,7 @@ class NavdataManager {
       multiline.properties = {
         type: "highAirway",
         name: airway.id,
-        uuid: this.getSharedUUID("highAirway", airway.id)
+        uuid: this.getSharedUUID("highAirway", airway.id),
       };
       multiline.properties._mappedName = airway.id;
       features.push(multiline);
@@ -508,10 +534,6 @@ class NavdataManager {
         );
       });
     }
-
-    // Generate mapping after all features have UUIDs
-    const featureMapping = this.generateFeatureMapping(features);
-    await system.writeFile(`${path}/uuid-mapping.json`, JSON.stringify(featureMapping, null, 2));
 
     return datasets;
   }

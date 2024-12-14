@@ -121,7 +121,6 @@ class PackageBuilder {
 
     await atcData.generateAtcdata(id, loginProfilesPath, icaoAircraftPath, icaoAirlinesPath, recatDefinitionPath, aliasPath, outputPath);
 
-    const uuidMappings: UUIDMapping = JSON.parse(await system.readFile(`${outputPath}/${id}/datasets/uuid-mapping.json`));
     // Generating layers specs
 
     // const packageLayers = datasets
@@ -147,96 +146,81 @@ class PackageBuilder {
         name: "region",
         type: "geojson",
         source: "region",
-        features: uuidMappings["region"] || [],
       },
       {
         name: "artcc",
         type: "geojson",
         source: "artcc",
-        features: uuidMappings["artcc"] || [],
       },
       {
         name: "artcc-high",
         type: "geojson",
         source: "artcc-high",
-        features: uuidMappings["artcc-high"] || [],
       },
       {
         name: "artcc-low",
         type: "geojson",
         source: "artcc-low",
-        features: uuidMappings["artcc-low"] || [],
       },
       {
         name: "lowAirway",
         type: "geojson",
         source: "lowAirway",
-        features: uuidMappings["lowAirway"] || [],
       },
       {
         name: "highAirway",
         type: "geojson",
         source: "highAirway",
-        features: uuidMappings["highAirway"] || [],
       },
       {
         name: "sid",
         type: "geojson",
         source: "sid",
-        features: uuidMappings["sid"] || [],
       },
       {
         name: "star",
         type: "geojson",
         source: "star",
-        features: uuidMappings["star"] || [],
       },
       {
         name: "geo",
         type: "geojson",
         source: "geo",
-        features: uuidMappings["geo"] || [],
       },
       {
         name: "fix",
         type: "geojson",
         source: "fix",
         pointType: "icon+text",
-        features: uuidMappings["fix"] || [],
       },
       {
         name: "vor",
         type: "geojson",
         source: "vor",
         pointType: "icon+text",
-        features: uuidMappings["vor"] || [],
       },
       {
         name: "ndb",
         type: "geojson",
         source: "ndb",
         pointType: "icon+text",
-        features: uuidMappings["ndb"] || [],
       },
       {
         name: "airport",
         type: "geojson",
         source: "airport",
         pointType: "icon+text",
-        features: uuidMappings["airport"] || [],
       },
       {
         name: "runway",
         type: "geojson",
         source: "runway",
-        features: uuidMappings["runway"] || [],
       },
       {
         name: "label",
         type: "geojson",
         source: "label",
         pointType: "text",
-        features: uuidMappings["label"] || [],
       },
     ];
 
@@ -252,7 +236,6 @@ class PackageBuilder {
       createdAt: new Date().toISOString(),
       datasets: datasets,
       mapLayers: mapLayers,
-      uuidMappings: uuidMappings,
     };
     await system.writeFile(`${packagePath}/manifest.json`, JSON.stringify(manifest));
   }
