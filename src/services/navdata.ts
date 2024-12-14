@@ -223,6 +223,32 @@ class NavdataManager {
       };
     });
 
+    // sids
+    const sidsData = JSON.parse(await system.readFile(`${path}/sid.geojson`)).features;
+    nse.sid = sidsData.map((item: any) => {
+      if (!item.properties.uuid) {
+        console.error(`No UUID found for SID: ${this.getFeatureName(item)}`);
+        throw new Error(`Missing UUID for SID: ${this.getFeatureName(item)}`);
+      }
+      return {
+        name: this.getFeatureName(item),
+        uuid: item.properties.uuid,
+      };
+    });
+
+    // stars
+    const starsData = JSON.parse(await system.readFile(`${path}/star.geojson`)).features;
+    nse.star = starsData.map((item: any) => {
+      if (!item.properties.uuid) {
+        console.error(`No UUID found for STAR: ${this.getFeatureName(item)}`);
+        throw new Error(`Missing UUID for STAR: ${this.getFeatureName(item)}`);
+      }
+      return {
+        name: this.getFeatureName(item),
+        uuid: item.properties.uuid,
+      };
+    });
+
     // navaids
     const typeList = ["vor", "ndb", "fix", "airport"];
     for (const type of typeList) {
@@ -233,7 +259,7 @@ class NavdataManager {
           throw new Error(`Missing UUID for ${type}: ${item.properties.name}`);
         }
         return {
-          name: item.properties.name,
+          name: this.getFeatureName(item),
           freq: item.properties.freq,
           type: item.properties.type,
           lat: item.geometry.coordinates[1],
@@ -254,7 +280,7 @@ class NavdataManager {
       }
       return {
         id: item.id,
-        name: item.properties.name,
+        name: this.getFeatureName(item),
         oppositeId: item.properties.oppositeId,
         type: item.properties.type,
         icao: item.properties.icao,
@@ -274,7 +300,7 @@ class NavdataManager {
         }
         return {
           id: item.id,
-          name: item.properties.name,
+          name: this.getFeatureName(item),
           oppositeId: item.properties.oppositeId,
           type: item.properties.type,
           uuid: item.properties.uuid,
@@ -304,7 +330,7 @@ class NavdataManager {
           throw new Error(`Missing UUID for label: ${item.properties.value || item.properties.section}`);
         }
         return {
-          name: item.properties.section,
+          name: this.getFeatureName(item),
           value: item.properties.value || "",
           type: item.properties.type || "default",
           lat: item.geometry.coordinates[1],
@@ -389,7 +415,7 @@ class NavdataManager {
     }
 
     // Section property types
-    if (["artcc-high", "artcc-low", "artcc", "geo", "high-airway", "low-airway"].includes(type)) {
+    if (["artcc-high", "artcc-low", "artcc", "geo", "high-airway", "low-airway", "sid", "star"].includes(type)) {
       if (feature.properties.section) {
         return feature.properties.section;
       }
@@ -479,7 +505,6 @@ class NavdataManager {
 
     // Clear UUID map for new generation
     this.uuidMap.clear();
-
     const geoJsonData = toGeoJson(sctData, eseData, null, "WGS84");
     let features = geoJsonData.features as any[];
 

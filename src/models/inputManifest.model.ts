@@ -32,6 +32,7 @@ export interface MapLayer {
   stroke?: boolean; // Stroke polygons if defined
   pointType?: string; // Point type if defined for DeckGL
   defaultIcon?: string; // Default icon for points
+  pickable?: boolean; // Enable picking for DeckGL
   features?: Array<{
     uuid: string;
     name: string | null;

@@ -88,7 +88,7 @@ class PackageBuilder {
     // }
 
     // Package datasets
-    const datasets = await navdata.generateDataSets(id, sctData, eseData, ["sid", "star"], outputPath);
+    const datasets = await navdata.generateDataSets(id, sctData, eseData, [], outputPath);
 
     log("datasets", datasets);
 
