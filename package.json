@@ -29,7 +29,8 @@
     "sector-file-tools": "^1.2.1",
     "shelljs": "^0.8.5",
     "tippecanoe": "^0.6.0",
-    "ts-node": "v10.9.1"
+    "ts-node": "v10.9.1",
+    "uuid": "^11.0.3"
   },
   "devDependencies": {
     "@types/cors": "^2.8.13",

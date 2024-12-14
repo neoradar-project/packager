@@ -24,14 +24,18 @@ id: id,
       images: images,*/
 
 export interface MapLayer {
-    name: string;
-    type: 'geojson' | 'mbtiles';
-    source: string;
-    minZoom?: number;
-    maxZoom?: number;
-    stroke?: boolean; // Stroke polygons if defined
-    pointType?: string; // Point type if defined for DeckGL
-    defaultIcon?: string; // Default icon for points
+  name: string;
+  type: "geojson" | "mbtiles";
+  source: string;
+  minZoom?: number;
+  maxZoom?: number;
+  stroke?: boolean; // Stroke polygons if defined
+  pointType?: string; // Point type if defined for DeckGL
+  defaultIcon?: string; // Default icon for points
+  features?: Array<{
+    uuid: string;
+    name: string | null;
+  }>;
 }
 
 export interface OutputManifest {
