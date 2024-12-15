@@ -53,7 +53,8 @@ class NavdataManager {
     };
     let sectorCounter = 99000;
 
-    for (const line of lines) {
+    for (let line of lines) {
+      line = line.replaceAll("�", "");
       if (line.startsWith(";=")) continue;
       if (line.startsWith("[AIRSPACE]")) {
         inAirspaceSection = true;
@@ -150,6 +151,7 @@ class NavdataManager {
           });
         }
         if (line.startsWith("DISPLAY_SECTORLINE:")) {
+          line = line.replace("�", "");
           const parts = line.replace("DISPLAY_SECTORLINE:", "").split(":");
           currentSector.displaySectorLines.push({
             borderId: Number(parts[0].replace("\r", "")),
