@@ -7,7 +7,7 @@ import { geoHelper } from "../libs/geo-helper.js";
 import { ESE, Position, SCT, toGeoJson } from "sector-file-tools";
 import { multiLineString } from "@turf/turf";
 import { Navaid, Segment } from "sector-file-tools/dist/src/sct.js";
-import { Sector, SectorLine } from "../models/nse.js";
+import { NseNavaid, Sector, SectorLine } from "../models/nse.js";
 import { v4 as uuidv4 } from "uuid";
 const log = debug("NavdataManager");
 
@@ -22,7 +22,10 @@ class NavdataManager {
     log("Init");
   }
 
-  private async parseSectorLines(eseFile: string): Promise<any> {
+  private async parseSectorData(
+    eseFile: string,
+    navaids: NseNavaid[]
+  ): Promise<any> {
     const eseData = await system.readFile(eseFile);
     const lines = eseData.toString().split("\n");
 
@@ -90,31 +93,54 @@ class NavdataManager {
         sectorLines.push(currentSectorLine);
         if (line.startsWith("CIRCLE_SECTORLINE:")) {
           const parts = line.split(":");
-          if (!parts[2] || !parts[3] || !parts[4]) {
+
+          let geo: { lat: number; lon: number } | null = null;
+          if (parts.length < 4) {
             console.error("Invalid CIRCLE_SECTORLINE format", line);
             continue;
           }
-          const geo = geoHelper.convertESEGeoCoordinates(parts[2], parts[3]);
-          if (geo) {
-            const point = turf.point([geo[1], geo[0]]);
-            const circle = turf.circle(
-              point,
-              Number(parts[4]),
-              10,
-              "nauticalmiles"
-            );
 
-            const circlePoints = circle.geometry.coordinates[0].map(
-              (coord: number[]) => {
-                return {
-                  lat: coord[1],
-                  lon: coord[0],
-                };
-              }
+          if (parts.length === 5) {
+            // Here we have lat lon defined
+            geo = geoHelper.convertESEGeoCoordinates(parts[2], parts[3]);
+            console.info(
+              "CIRCLE_SECTORLINE with 5 parts with reference to navaid",
+              line
             );
-
-            currentSectorLine.points = circlePoints;
+          } else {
+            // here we have a ref to navaids
+            const navaid = navaids.find((n) => n.name === parts[2]);
+            console.info(
+              "CIRCLE_SECTORLINE with 4 parts with reference to navaid",
+              line,
+              parts[2],
+            );
+            geo = navaid ? { lat: navaid.lat, lon: navaid.lon } : null;
           }
+
+          if (!geo) {
+            console.error("Invalid CIRCLE_SECTORLINE geo", line);
+            continue;
+          }
+
+          const point = turf.point([geo[1], geo[0]]);
+          const circle = turf.circle(
+            point,
+            Number(parts[4]),
+            10,
+            "nauticalmiles"
+          );
+
+          const circlePoints = circle.geometry.coordinates[0].map(
+            (coord: number[]) => {
+              return {
+                lat: coord[1],
+                lon: coord[0],
+              };
+            }
+          );
+
+          currentSectorLine.points = circlePoints;
         }
       }
       if (line.startsWith("COORD:")) {
@@ -229,7 +255,7 @@ class NavdataManager {
     const path = `${outputPath}/${packageId}/datasets`;
 
     let nse: any = {};
-    const allNavaids: any[] = [];
+    const allNavaids: NseNavaid[] = [];
 
     // Clear UUID map for new generation
     this.uuidMap.clear();
@@ -394,8 +420,8 @@ class NavdataManager {
     });
 
     // navaids
-    const typeList = ["vor", "ndb", "fix", "airport"];
-    for (const type of typeList) {
+    const navaidsTypeList = ["vor", "ndb", "fix", "airport"];
+    for (const type of navaidsTypeList) {
       const typeData = JSON.parse(
         await system.readFile(`${path}/${type}.geojson`)
       ).features;
@@ -561,7 +587,7 @@ class NavdataManager {
       }
     }
 
-    const sectorData = await this.parseSectorLines(eseFilePath);
+    const sectorData = await this.parseSectorData(eseFilePath, allNavaids);
     nse.sectors = sectorData.sectors;
     nse.sectorLines = sectorData.sectorLines;
 
@@ -651,33 +677,33 @@ class NavdataManager {
     }
   }
 
-  private generateFeatureMapping(features: any[]): Record<string, any[]> {
-    const mapping: Record<string, any[]> = {};
-    const seenUUIDs = new Set<string>();
+  // private generateFeatureMapping(features: any[]): Record<string, any[]> {
+  //   const mapping: Record<string, any[]> = {};
+  //   const seenUUIDs = new Set<string>();
 
-    features.forEach((feature) => {
-      const type = feature.properties.type;
-      if (!mapping[type]) {
-        mapping[type] = [];
-      }
+  //   features.forEach((feature) => {
+  //     const type = feature.properties.type;
+  //     if (!mapping[type]) {
+  //       mapping[type] = [];
+  //     }
 
-      const uuid = feature.properties.uuid;
-      const name = feature.properties._mappedName;
+  //     const uuid = feature.properties.uuid;
+  //     const name = feature.properties._mappedName;
 
-      // Only add each UUID once per type
-      const key = `${type}-${uuid}`;
-      if (!seenUUIDs.has(key)) {
-        seenUUIDs.add(key);
-        if (name) {
-          mapping[type].push({ uuid, name });
-        } else {
-          mapping[type].push({ uuid });
-        }
-      }
-    });
+  //     // Only add each UUID once per type
+  //     const key = `${type}-${uuid}`;
+  //     if (!seenUUIDs.has(key)) {
+  //       seenUUIDs.add(key);
+  //       if (name) {
+  //         mapping[type].push({ uuid, name });
+  //       } else {
+  //         mapping[type].push({ uuid });
+  //       }
+  //     }
+  //   });
 
-    return mapping;
-  }
+  //   return mapping;
+  // }
 
   public async generateDataSets(
     packageId: string,
