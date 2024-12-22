@@ -634,7 +634,10 @@ class NavdataManager {
   }
 
   private getSharedUUID(type: string, name: string): string {
-    return `${type}-${name}`.toLowerCase().replace(/[^a-z0-9-]/g, "-");
+    const formatted = `${type}-${name}`.toLowerCase().replace(/[^a-z0-9-]/g, "-");
+    return formatted
+      .replace(/-+/g, "-") // Replace multiple dashes with single dash
+      .replace(/-$/g, ""); // Remove trailing dash
   }
 
   private addUUIDToFeature(feature: any): void {
