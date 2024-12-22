@@ -1,15 +1,16 @@
-import Debug from "debug"
-const debug = Debug("MainServer")
-import { packageBuilder } from "./services/package-builder.js"
-import { system } from "./services/system.js"
-import { InputManifest } from "./models/inputManifest.model.js"
+import Debug from "debug";
+const debug = Debug("MainServer");
+import { packageBuilder } from "./services/package-builder.js";
+import { system } from "./services/system.js";
+import { InputManifest } from "./models/inputManifest.model.js";
+import AsrFolderConverter from "./services/asr-converter.js";
 
 async function startJobs() {
-  debug("Starting !")
-  const inputFilePath = process.argv[2]
-  console.log("Input file path: ", inputFilePath)
-  const data = JSON.parse(await system.readFile(inputFilePath)) as InputManifest
-  console.log("Data: ", data)
+  debug("Starting !");
+  const inputFilePath = process.argv[2];
+  console.log("Input file path: ", inputFilePath);
+  const data = JSON.parse(await system.readFile(inputFilePath)) as InputManifest;
+  console.log("Data: ", data);
 
   await packageBuilder.build(
     data.id,
@@ -24,8 +25,19 @@ async function startJobs() {
     data.recatDefinitionPath,
     data.aliasPath,
     data.outputDir
-  )
+  );
+
+  try {
+    if (!data.asrDirectory) {
+      console.log("No ASR directory provided, skipping ASR conversion");
+      return;
+    }
+    const path = `${data.outputDir}/${data.id}/ASR`;
+    await system.deleteDirectory(path);
+    AsrFolderConverter.convertFolder(data.asrDirectory, path);
+  } catch (error) {
+    console.error("Conversion failed:", error);
+  }
 }
 
-
-startJobs()
+startJobs();
