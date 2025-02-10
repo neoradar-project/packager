@@ -89,8 +89,8 @@ class PackageBuilder {
       namespace: namespace,
       createdAt: new Date().toISOString(),
       mapLayers: defaultMapLayers,
-      centerPointer: [847183.3480445864, -6195983.977450224]
-    } as unknown as Package;
+      centerPoint: [847183.3480445864, -6195983.977450224]
+    } as Package;
 
     await system.writeFile(
       `${packagePath}/manifest.json`,

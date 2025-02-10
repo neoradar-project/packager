@@ -459,12 +459,8 @@ class NavdataManager {
         );
       }
       return {
-        id: item.id,
         name: this.getFeatureName(item),
-        oppositeId: item.properties.oppositeId,
         type: item.properties.type,
-        icao: item.properties.icao,
-        layerUniqueId: item.properties.id,
         uuid: item.properties.uuid,
       };
     });
@@ -481,9 +477,7 @@ class NavdataManager {
           throw new Error(`Missing UUID for ${awy}: ${item.properties.name}`);
         }
         return {
-          id: item.id,
-          name: this.getFeatureName(item),
-          oppositeId: item.properties.oppositeId,
+          name: item.properties.uuid, // TODO get the actual name
           type: item.properties.type,
           uuid: item.properties.uuid,
         };
