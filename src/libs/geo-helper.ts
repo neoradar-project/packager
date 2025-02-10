@@ -1,7 +1,20 @@
 import DmsCoordinates from 'dms-conversion'
 import Coordinates from 'coordinate-parser'
+import { toCartesian } from '../services/projection'
 
 export class GeoHelper {
+
+    public convertESEGeoCoordinatesToCartesian(latStr: string, lonStr: string): [number, number] | null {
+        try {
+            const lat = this.reformatCoordinates(latStr)
+            const lon = this.reformatCoordinates(lonStr)
+            const coord = new Coordinates(`${lat} ${lon}`)
+            const cartesian = toCartesian([coord.getLongitude(), coord.getLatitude()])
+            return [cartesian[0], cartesian[1]]
+        } catch (error) {
+            return null;
+        }
+    }
 
     public convertESEGeoCoordinates(latStr: string, lonStr: string): { lat: number, lon: number } | null {
         try {
@@ -10,7 +23,7 @@ export class GeoHelper {
             const coord = new Coordinates(`${lat} ${lon}`)
             return { lat: coord.getLatitude(), lon: coord.getLongitude() }
         } catch (error) {
-            return null
+            return null;
         }
     }
 

@@ -1,14 +1,14 @@
 import debug from "debug";
 import { system } from "./system.js";
-import { Gate } from "../models/gate.js";
 import { PackageAtcPosition } from "../models/position.js";
 import { Procedure } from "../models/procedure.js";
 import { geoHelper } from "../libs/geo-helper.js";
 import { ESE, Position, SCT, toGeoJson } from "sector-file-tools";
 import { multiLineString } from "@turf/turf";
 import { Navaid, Segment } from "sector-file-tools/dist/src/sct.js";
-import { NseNavaid, Sector, SectorLine } from "../models/nse.js";
-import { v4 as uuidv4 } from "uuid";
+import { NseNavaid, Sector } from "../models/nse.js";
+import { EseDataset, SectorLine } from "../models/fromZod.js";
+import { toCartesian } from "./projection.js";
 const log = debug("NavdataManager");
 
 class NavdataManager {
@@ -113,7 +113,7 @@ class NavdataManager {
             console.info(
               "CIRCLE_SECTORLINE with 4 parts with reference to navaid",
               line,
-              parts[2],
+              parts[2]
             );
             geo = navaid ? { lat: navaid.lat, lon: navaid.lon } : null;
           }
@@ -133,10 +133,7 @@ class NavdataManager {
 
           const circlePoints = circle.geometry.coordinates[0].map(
             (coord: number[]) => {
-              return {
-                lat: coord[1],
-                lon: coord[0],
-              };
+              return toCartesian([coord[1], coord[0]]);
             }
           );
 
@@ -145,11 +142,10 @@ class NavdataManager {
       }
       if (line.startsWith("COORD:")) {
         const coord = line.split(":");
-        const geo = geoHelper.convertESEGeoCoordinates(coord[1], coord[2]);
-        currentSectorLine.points.push({
-          lat: geo?.lat ?? 0,
-          lon: geo?.lon ?? 0,
-        });
+        const point = geoHelper.convertESEGeoCoordinatesToCartesian(coord[1], coord[2]);
+        if (point) {
+          currentSectorLine.points.push(point);
+        }
       }
       if (line.startsWith("DISPLAY:")) {
         // const parts = line.split(":");
@@ -254,7 +250,13 @@ class NavdataManager {
     log("generateNavdata");
     const path = `${outputPath}/${packageId}/datasets`;
 
-    let nse: any = {};
+    const nse: EseDataset = {
+      sectorLines: [],
+      sectors: [],
+      position: [],
+      procedure: [],
+      mapItemsIndex: {},
+    };
     const allNavaids: NseNavaid[] = [];
 
     // Clear UUID map for new generation
@@ -270,7 +272,7 @@ class NavdataManager {
         tmpRegions.push(feature.properties.region);
       }
     }
-    nse.region = tmpRegions.map((key) => {
+    nse.mapItemsIndex["region"] = tmpRegions.map((key) => {
       const feature = regionsData.find((f) => f.properties.region === key);
       if (!feature?.properties.uuid) {
         console.error(`No UUID found for region: ${key}`);
@@ -292,7 +294,7 @@ class NavdataManager {
         tmpGeo.push(feature.properties.section);
       }
     }
-    nse.geo = tmpGeo.map((key) => {
+    nse.mapItemsIndex["geo"] = tmpGeo.map((key) => {
       const feature = geoData.find((f) => f.properties.section === key);
       if (!feature?.properties.uuid) {
         console.error(`No UUID found for geo section: ${key}`);
@@ -315,7 +317,7 @@ class NavdataManager {
         tmpSids.push(name);
       }
     }
-    nse.sid = tmpSids.map((key) => {
+    nse.mapItemsIndex["sid"] = tmpSids.map((key) => {
       const feature = sidsData.find((f) => this.getFeatureName(f) === key);
       if (!feature?.properties.uuid) {
         console.error(`No UUID found for SID: ${key}`);
@@ -338,7 +340,7 @@ class NavdataManager {
         tmpStars.push(name);
       }
     }
-    nse.star = tmpStars.map((key) => {
+    nse.mapItemsIndex["star"] = tmpStars.map((key) => {
       const feature = starsData.find((f) => this.getFeatureName(f) === key);
       if (!feature?.properties.uuid) {
         console.error(`No UUID found for STAR: ${key}`);
@@ -361,7 +363,7 @@ class NavdataManager {
         tmpArtccLow.push(name);
       }
     }
-    nse.artccLow = tmpArtccLow.map((key) => {
+    nse.mapItemsIndex["artccLow"] = tmpArtccLow.map((key) => {
       const feature = artccLowData.find((f) => this.getFeatureName(f) === key);
       if (!feature?.properties.uuid) {
         console.error(`No UUID found for ARTCC Low: ${key}`);
@@ -384,7 +386,7 @@ class NavdataManager {
         tmpArtccHigh.push(name);
       }
     }
-    nse.artccHigh = tmpArtccHigh.map((key) => {
+    nse.mapItemsIndex["artccHigh"] = tmpArtccHigh.map((key) => {
       const feature = artccHighData.find((f) => this.getFeatureName(f) === key);
       if (!feature?.properties.uuid) {
         console.error(`No UUID found for ARTCC High: ${key}`);
@@ -407,7 +409,7 @@ class NavdataManager {
         tmpArtcc.push(name);
       }
     }
-    nse.artcc = tmpArtcc.map((key) => {
+    nse.mapItemsIndex["artcc"] = tmpArtcc.map((key) => {
       const feature = artccData.find((f) => this.getFeatureName(f) === key);
       if (!feature?.properties.uuid) {
         console.error(`No UUID found for ARTCC: ${key}`);
@@ -447,7 +449,7 @@ class NavdataManager {
     const runwaysData = JSON.parse(
       await system.readFile(`${path}/runway.geojson`)
     ).features;
-    nse.runway = runwaysData.map((item: any) => {
+    nse.mapItemsIndex["runway"] = runwaysData.map((item: any) => {
       if (!item.properties.uuid) {
         console.error(
           `No UUID found for runway: ${item.properties.icao}-${item.properties.name}`
@@ -473,7 +475,7 @@ class NavdataManager {
       const data = JSON.parse(
         await system.readFile(`${path}/${awy}.geojson`)
       ).features;
-      nse[awy] = data.map((item: any) => {
+      nse.mapItemsIndex[awy] = data.map((item: any) => {
         if (!item.properties.uuid) {
           console.error(`No UUID found for ${awy}: ${item.properties.name}`);
           throw new Error(`Missing UUID for ${awy}: ${item.properties.name}`);
@@ -503,7 +505,7 @@ class NavdataManager {
         }
       }
     }
-    nse.label = tmpLabels
+    nse.mapItemsIndex["label"] = tmpLabels
       .map((item: any) => {
         if (!item.properties?.section) {
           console.warn("Skipping label with missing section:", item);
@@ -521,12 +523,13 @@ class NavdataManager {
             }`
           );
         }
+        const featureName = this.getFeatureName(item);
+        if (!featureName) {
+          return;
+        }
+
         return {
-          name: this.getFeatureName(item),
-          value: item.properties.value || "",
-          type: item.properties.type || "default",
-          lat: item.geometry.coordinates[1],
-          lon: item.geometry.coordinates[0],
+          name: featureName,
           uuid: item.properties.uuid,
         };
       })
@@ -536,11 +539,9 @@ class NavdataManager {
     const eseData = await system.readFile(eseFilePath);
     const lines = eseData.toString().split("\n");
 
-    nse.gate = [];
     nse.position = [];
     nse.procedure = [];
 
-    let gateCounter = 5000;
     let positionCounter = 10000;
     let procedureCounter = 30000;
     // TODO : AMSR, TWY?, VFR points
@@ -569,15 +570,6 @@ class NavdataManager {
       if (line.startsWith(";=")) continue;
       const data = line.split(":");
       if (data.length < 3) continue;
-
-      if (data[2].includes("Gates")) {
-        const gate = Gate.init(line);
-        if (!gate) continue;
-        const aptIcao = data[2].substring(0, 4);
-        gate.icao = aptIcao;
-        gate.layerUniqueId = gateCounter++;
-        nse.gate.push(gate.toJsonObject());
-      }
 
       if (data[0].includes("STAR") || data[0].includes("SID")) {
         const proc = Procedure.init(line, allNavaids);
@@ -660,7 +652,9 @@ class NavdataManager {
   }
 
   private getSharedUUID(type: string, name: string): string {
-    const formatted = `${type}-${name}`.toLowerCase().replace(/[^a-z0-9-]/g, "-");
+    const formatted = `${type}-${name}`
+      .toLowerCase()
+      .replace(/[^a-z0-9-]/g, "-");
     return formatted
       .replace(/-+/g, "-") // Replace multiple dashes with single dash
       .replace(/-$/g, ""); // Remove trailing dash
@@ -680,34 +674,6 @@ class NavdataManager {
     }
   }
 
-  // private generateFeatureMapping(features: any[]): Record<string, any[]> {
-  //   const mapping: Record<string, any[]> = {};
-  //   const seenUUIDs = new Set<string>();
-
-  //   features.forEach((feature) => {
-  //     const type = feature.properties.type;
-  //     if (!mapping[type]) {
-  //       mapping[type] = [];
-  //     }
-
-  //     const uuid = feature.properties.uuid;
-  //     const name = feature.properties._mappedName;
-
-  //     // Only add each UUID once per type
-  //     const key = `${type}-${uuid}`;
-  //     if (!seenUUIDs.has(key)) {
-  //       seenUUIDs.add(key);
-  //       if (name) {
-  //         mapping[type].push({ uuid, name });
-  //       } else {
-  //         mapping[type].push({ uuid });
-  //       }
-  //     }
-  //   });
-
-  //   return mapping;
-  // }
-
   public async generateDataSets(
     packageId: string,
     sctData: SCT,
@@ -721,8 +687,8 @@ class NavdataManager {
 
     // Clear UUID map for new generation
     this.uuidMap.clear();
-    const geoJsonData = toGeoJson(sctData, eseData, null, "WGS84");
-    let features = geoJsonData.features as any[];
+    const geoJsonData = toGeoJson(sctData, eseData, null);
+    let features = geoJsonData.features as GeoJSON.Feature[];
 
     // Add UUIDs to existing features
     features.forEach((feature) => this.addUUIDToFeature(feature));
@@ -736,7 +702,6 @@ class NavdataManager {
       const multiline = multiLineString(lines);
       multiline.properties = {
         type: "lowAirway",
-        name: airway.id,
         uuid: this.getSharedUUID("lowAirway", airway.id),
       };
       multiline.properties._mappedName = airway.id;
@@ -751,7 +716,6 @@ class NavdataManager {
       const multiline = multiLineString(lines);
       multiline.properties = {
         type: "highAirway",
-        name: airway.id,
         uuid: this.getSharedUUID("highAirway", airway.id),
       };
       multiline.properties._mappedName = airway.id;
@@ -760,7 +724,7 @@ class NavdataManager {
 
     const allTypes: string[] = [];
     features.forEach((f) => {
-      if (!allTypes.includes(f.properties.type)) {
+      if (!allTypes.includes(f.properties?.type) && f.properties?.type) {
         allTypes.push(f.properties.type);
       }
     });
@@ -771,7 +735,7 @@ class NavdataManager {
         await this.generateGeoJsonFilesForType(
           path,
           t,
-          features.filter((f) => f.properties.type === t)
+          features.filter((f) => f.properties?.type === t)
         );
       });
     }

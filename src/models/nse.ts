@@ -1,12 +1,8 @@
+import { z } from 'zod';
+
 export interface LatLon {
   lat: number;
   lon: number;
-}
-
-export interface SectorLine {
-  id: number;
-  points: LatLon[];
-  display?: any;
 }
 
 interface SectorLineDisplay {

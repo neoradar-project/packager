@@ -46,7 +46,7 @@ export class PackageAtcPosition {
 
             for(let i = 11; i < data.length; i += 2) {
                 try {
-                    const geo = geoHelper.convertESEGeoCoordinates(data[i], data[i + 1])
+                    const geo = geoHelper.convertESEGeoCoordinatesToCartesian(data[i], data[i + 1])
                     if(geo) allPoints.push([geo?.lat, geo.lon])
                 } catch (error) {
                     console.log(error)
