@@ -9,6 +9,7 @@ import { Navaid, Segment } from "sector-file-tools/dist/src/sct.js";
 import { NseNavaid, Sector } from "../models/nse.js";
 import { EseDataset, SectorLine } from "../models/fromZod.js";
 import { toCartesian } from "./projection.js";
+import { convertColorFeaturePropertyToGeojsonProperties } from "../libs/style-helper.js";
 const log = debug("NavdataManager");
 
 class NavdataManager {
@@ -142,7 +143,10 @@ class NavdataManager {
       }
       if (line.startsWith("COORD:")) {
         const coord = line.split(":");
-        const point = geoHelper.convertESEGeoCoordinatesToCartesian(coord[1], coord[2]);
+        const point = geoHelper.convertESEGeoCoordinatesToCartesian(
+          coord[1],
+          coord[2]
+        );
         if (point) {
           currentSectorLine.points.push(point);
         }
@@ -720,6 +724,13 @@ class NavdataManager {
     features.forEach((f) => {
       if (!allTypes.includes(f.properties?.type) && f.properties?.type) {
         allTypes.push(f.properties.type);
+      }
+
+      if (f.properties?.color) {
+        f.properties = convertColorFeaturePropertyToGeojsonProperties(
+          f,
+          (f.properties?.type ?? "") === "region"
+        ).properties;
       }
     });
 
