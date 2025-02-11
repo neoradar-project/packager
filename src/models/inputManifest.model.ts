@@ -13,6 +13,7 @@ export interface InputManifest {
   outputDir: string;
   asrDirectory: string;
   settingsDirectory: string;
+  useSctLabels?: boolean;
 }
 
 /*

@@ -26,7 +26,7 @@
     "fs-extra": "^11.1.1",
     "maplibre-gl": "^3.2.0",
     "node-fetch": "^2.6.7",
-    "sector-file-tools": "^1.2.1",
+    "sector-file-tools": "git://neoradar-project/sector-file-tools.git",
     "shelljs": "^0.8.5",
     "tippecanoe": "^0.6.0",
     "ts-node": "v10.9.1",

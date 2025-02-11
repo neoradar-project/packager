@@ -154,8 +154,6 @@ class AsrFolderConverter {
   }
 
   public static convertFolder(inputPath: string, outputPath: string): void {
-    console.log(`Starting conversion of ASR files from ${inputPath} to ${outputPath}`);
-
     if (!existsSync(inputPath)) {
       throw new Error(`Input folder does not exist: ${inputPath}`);
     }

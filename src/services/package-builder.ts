@@ -35,14 +35,15 @@ class PackageBuilder {
     icaoAirlinesPath: string,
     recatDefinitionPath: string | undefined,
     aliasPath: string,
-    outputPath: string
+    outputPath: string,
+    useSctLabels: boolean = true
   ): Promise<void> {
     this.outputPath = outputPath;
     await system.createDirectory(this.outputPath).then(() => log("outputPath created"));
     log("build", sctFilePath);
 
     const sctData = parseSct(await system.readFile(sctFilePath));
-    const eseData = parseEse(await system.readFile(eseFilePath));
+    const eseData = parseEse(sctData, await system.readFile(eseFilePath));
 
     log("generatePackage", namespace, name);
     const packagePath = `${this.outputPath}/${id}`;
@@ -88,7 +89,7 @@ class PackageBuilder {
     // }
 
     // Package datasets
-    const datasets = await navdata.generateDataSets(id, sctData, eseData, ["low-airway", "high-airway"], outputPath);
+    const datasets = await navdata.generateDataSets(id, sctData, eseData, ["low-airway", "high-airway"], outputPath, useSctLabels);
 
     log("datasets", datasets);
 
