@@ -1,5 +1,8 @@
 import { readFileSync, writeFileSync, readdirSync, statSync, mkdirSync, existsSync } from "fs";
 import { join, parse, relative } from "path";
+import { fromCartesian, toCartesian } from "./projection";
+import * as turf from "@turf/turf";
+import { NonNullChain } from "typescript";
 
 interface StpItem {
   showLabel: boolean;
@@ -23,7 +26,7 @@ interface StpFile {
 }
 
 class AsrFolderConverter {
-  private static typeMapping: { [key: string]: string } = {
+  private static layerTypeMapping: { [key: string]: string } = {
     "ARTCC high boundary": "artccHigh",
     "ARTCC low boundary": "artccLow",
     "ARTCC boundary": "artcc",
@@ -54,15 +57,55 @@ class AsrFolderConverter {
     return name.trim();
   }
 
-  private static parseAsrLine(line: string): StpItem | null {
-    const parts = line.split(":");
-    if (parts.length < 2) return null;
+  // private static getCenterPoint(bbox: number[]): { x: number; y: number } {
+  //   const center = turf.center(turf.featureCollection([turf.bboxPolygon(bbox)]));
+  //   const [lon, lat] = center.geometry.coordinates;
+  //   console.log(`Center point is: ${lat}, ${lon}`);
+  //   const [x, y] = toCartesian([lat, lon]);
+  //   console.log(`Center point in cartesian is: ${x}, ${y}`);
 
-    const type = parts[0].trim();
-    const mappedType = this.typeMapping[type];
-    if (!mappedType) return null;
+  //   return { x, y };
+  // }
 
-    // Take the second element as the name, ignoring any additional colons
+  private static parseAsrLines(lines: string[]): { items: StpItem[]; centerPoint: { x: number; y: number } | null } {
+    let items: StpItem[] = [];
+    let centerPoint: { x: number; y: number } | null = null;
+
+    for (const line of lines) {
+      const parts = line.split(":");
+      if (parts.length < 2) continue;
+
+      const type = parts[0].trim();
+
+      // If a layer line is found, parse it
+      const mappedType = this.layerTypeMapping[type];
+      if (mappedType) {
+        const item = this.parseLayerLine(mappedType, parts);
+        if (item) items.push(item);
+      }
+
+      // Window area line
+      if (type === "WINDOWAREA" && parts.length >= 5) {
+        const bounds = parts.slice(1, 5).map((x) => parseFloat(x));
+        const [minLat, minLon, maxLat, maxLon] = bounds;
+
+        const point1 = turf.point([minLon, minLat]);
+        const point2 = turf.point([maxLon, maxLat]);
+        const center = turf.center(turf.featureCollection([point1, point2]));
+
+        const [lon, lat] = center.geometry.coordinates;
+        const [x, y] = toCartesian([lon, lat]);
+
+        if (!centerPoint) {
+          centerPoint = { x, y };
+        }
+      }
+    }
+
+    return { items, centerPoint };
+  }
+
+  private static parseLayerLine(type: string, parts: string[]): StpItem | null {
     const name = parts[1].trim();
     if (!name) return null;
 
@@ -70,12 +113,12 @@ class AsrFolderConverter {
 
     const item: StpItem = {
       showLabel: false,
-      uuid: this.createUniqueId(mappedType, cleanedName),
+      uuid: this.createUniqueId(type, cleanedName),
     };
 
-    if (this.pointTypes.has(mappedType)) {
+    if (this.pointTypes.has(type)) {
       item.pointType = "icon+text";
-    } else if (this.textOnlyTypes.has(mappedType)) {
+    } else if (this.textOnlyTypes.has(type)) {
       item.pointType = "text";
     }
 
@@ -84,24 +127,15 @@ class AsrFolderConverter {
 
   private static convertContent(asrContent: string, filename: string): StpFile {
     const lines = asrContent.split("\n");
-    const items: StpItem[] = [];
 
-    for (const line of lines) {
-      const item = this.parseAsrLine(line.trim());
-      if (item) {
-        items.push(item);
-      }
-    }
+    const { items, centerPoint } = this.parseAsrLines(lines);
 
     return {
       name: parse(filename).name,
       type: "profile",
       updatedAt: new Date().toISOString(),
       map: {
-        center: {
-          x: 847183.3480445864,
-          y: -6195983.977450224,
-        },
+        center: centerPoint || { x: 0, y: 0 },
         zoom: 7,
         orientation: 0,
         items,
