@@ -1,13 +1,13 @@
-import { Gate } from "../models/gate";
-import { NseNavaid, Sector, SectorLine } from "../models/nse";
+import { NseNavaid, Sector } from "../models/nse";
+import { EseDataset, SectorLine } from "../models/fromZod.js";
 import { PackageAtcPosition } from "../models/position";
 import { Procedure } from "../models/procedure";
 import { system } from "../services/system";
 import { geoHelper } from "./geo-helper";
 import * as turf from "@turf/turf";
+import { fromCartesian, toCartesian } from "../services/projection";
 
 interface ParsedEseContent {
-  gate: any[];
   position: any[];
   procedure: any[];
   sectors: Sector[];
@@ -51,7 +51,6 @@ export class EseHelper {
     const lines = eseData.toString().split("\n");
 
     const result: ParsedEseContent = {
-      gate: [],
       position: [],
       procedure: [],
       sectors: [],
@@ -59,7 +58,6 @@ export class EseHelper {
     };
 
     const counters = {
-      gate: 5000,
       position: 10000,
       procedure: 30000,
       sector: 99000,
@@ -141,23 +139,9 @@ export class EseHelper {
     const data = line.split(":");
     if (data.length < 3) return;
 
-    if (data[2].includes("Gates")) {
-      this.handleGate(data, result, counters);
-    }
-
     if (this.isProcedure(data[0])) {
       this.handleProcedure(line, result, counters, allNavaids);
     }
-  }
-
-  private static handleGate(data: string[], result: ParsedEseContent, counters: Record<string, number>): void {
-    const gate = Gate.init(data.join(":"));
-    if (!gate) return;
-
-    const aptIcao = data[2].substring(0, 4);
-    gate.icao = aptIcao;
-    gate.layerUniqueId = counters.gate++;
-    result.gate.push(gate.toJsonObject());
   }
 
   private static isProcedure(value: string): boolean {
@@ -202,12 +186,15 @@ export class EseHelper {
       context.numericIDReplacementMatrix[id] = context.baseMatrixInt++;
       // console.log(`Replacement matrix for non numeric sector ID ${id} is ${context.numericIDReplacementMatrix[id]}`);
     }
-
     context.currentSectorLine = {
       id: isnum ? Number(id) : context.numericIDReplacementMatrix[id],
       points: [],
       display: [],
     };
+
+    if (context.currentSectorLine.id === 1052) {
+      console.log("1052", line);
+    }
 
     result.sectorLines.push(context.currentSectorLine);
 
@@ -227,10 +214,14 @@ export class EseHelper {
       if (isNaN(radius) || !geo) return;
 
       const circle = turf.circle(turf.point([geo.lon, geo.lat]), radius, 10, "nauticalmiles");
-      context.currentSectorLine.points = circle.geometry.coordinates[0].map((coord) => ({
-        lat: coord[1],
-        lon: coord[0],
-      }));
+      const circlePoints = circle.geometry.coordinates[0].map((coord: number[]) => {
+        const cartesian = toCartesian([coord[1], coord[0]]);
+        if (!cartesian[0] || !cartesian[1]) {
+          console.log("Invalid circle point:", { line, geo, coord, cartesian });
+        }
+        return cartesian;
+      });
+      context.currentSectorLine.points = circlePoints;
     } catch (error) {
       console.error("Circle creation failed:", { error, geo });
     }
@@ -239,11 +230,22 @@ export class EseHelper {
   private static getCircleCenter(parts: string[], navaids: NseNavaid[]): { lat: number; lon: number } | null {
     if (parts.length === 5) {
       const coords = geoHelper.convertESEGeoCoordinates(parts[2], parts[3]);
+
+      if (coords && (!coords.lat || !coords.lon)) {
+        console.log("Invalid circle center:", coords);
+      }
+
       return coords ? { lat: Number(coords.lat), lon: Number(coords.lon) } : null;
     }
 
     const navaid = navaids.find((n) => n.name === parts[2].trim());
-    return navaid ? { lat: Number(navaid.lat), lon: Number(navaid.lon) } : null;
+
+    if (!navaid || !navaid.lat || !navaid.lon) {
+      return null;
+    }
+
+    const toCartesian = fromCartesian([Number(navaid.lon), Number(navaid.lat)]);
+    return { lat: toCartesian[1], lon: toCartesian[0] };
   }
 
   private static isValidGeoCoord(geo: { lat: number; lon: number } | null): boolean {
@@ -252,11 +254,9 @@ export class EseHelper {
 
   private static handleCoord(line: string, context: SectorHandlerContext): void {
     const coord = line.split(":");
-    const geo = geoHelper.convertESEGeoCoordinates(coord[1], coord[2]);
-    context.currentSectorLine.points.push({
-      lat: geo?.lat ?? 0,
-      lon: geo?.lon ?? 0,
-    });
+    const geo = geoHelper.convertESEGeoCoordinatesToCartesian(coord[1], coord[2]);
+    if (!geo) return;
+    context.currentSectorLine.points.push(geo);
   }
 
   private static handleNewSector(line: string, result: ParsedEseContent, context: SectorHandlerContext): void {

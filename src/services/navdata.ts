@@ -274,7 +274,6 @@ class NavdataManager {
     // await system.deleteFile(`${path}/label.geojson`);
 
     const eseProcessedData = await EseHelper.parseEseContent(eseFilePath, allNavaids);
-    nse.gate = eseProcessedData.gate;
     nse.position = eseProcessedData.position;
     nse.procedure = eseProcessedData.procedure;
     nse.sectors = eseProcessedData.sectors;

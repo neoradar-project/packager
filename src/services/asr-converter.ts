@@ -3,9 +3,7 @@ import { join, parse, relative } from "path";
 
 interface StpItem {
   showLabel: boolean;
-  type: string;
-  uniqueId: string;
-  name: string;
+  uuid: string;
   pointType?: string;
 }
 
@@ -15,8 +13,8 @@ interface StpFile {
   updatedAt: string;
   map: {
     center: {
-      lng: number;
-      lat: number;
+      x: number;
+      y: number;
     };
     zoom: number;
     orientation: number;
@@ -72,9 +70,7 @@ class AsrFolderConverter {
 
     const item: StpItem = {
       showLabel: false,
-      type: mappedType,
-      uniqueId: this.createUniqueId(mappedType, cleanedName),
-      name: cleanedName,
+      uuid: this.createUniqueId(mappedType, cleanedName),
     };
 
     if (this.pointTypes.has(mappedType)) {
@@ -103,8 +99,8 @@ class AsrFolderConverter {
       updatedAt: new Date().toISOString(),
       map: {
         center: {
-          lng: 0,
-          lat: 51.5,
+          x: 847183.3480445864,
+          y: -6195983.977450224,
         },
         zoom: 7,
         orientation: 0,
