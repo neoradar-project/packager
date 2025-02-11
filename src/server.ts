@@ -24,7 +24,8 @@ async function startJobs() {
     data.icaoAirlinesPath,
     data.recatDefinitionPath,
     data.aliasPath,
-    data.outputDir
+    data.outputDir,
+    data.useSctLabels
   );
 
   try {

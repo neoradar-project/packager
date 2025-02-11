@@ -34,16 +34,15 @@ class PackageBuilder {
     icaoAirlinesPath: string,
     recatDefinitionPath: string | undefined,
     aliasPath: string,
-    outputPath: string
+    outputPath: string,
+    useSctLabels: boolean = true
   ): Promise<void> {
     this.outputPath = outputPath;
-    await system
-      .createDirectory(this.outputPath)
-      .then(() => log("outputPath created"));
+    await system.createDirectory(this.outputPath).then(() => log("outputPath created"));
     log("build", sctFilePath);
 
     const sctData = parseSct(await system.readFile(sctFilePath));
-    const eseData = parseEse(await system.readFile(eseFilePath));
+    const eseData = parseEse(sctData, await system.readFile(eseFilePath));
 
     log("generatePackage", namespace, name);
     const packagePath = `${this.outputPath}/${id}`;
@@ -53,13 +52,7 @@ class PackageBuilder {
     await system.createDirectory(packagePath);
 
     // Package datasets
-    const datasets = await navdata.generateDataSets(
-      id,
-      sctData,
-      eseData,
-      ["low-airway", "high-airway"],
-      outputPath
-    );
+    const datasets = await navdata.generateDataSets(id, sctData, eseData, ["low-airway", "high-airway"], outputPath, useSctLabels);
 
     log("datasets", datasets);
 
@@ -67,15 +60,7 @@ class PackageBuilder {
 
     // Package global ATC Data
 
-    await atcData.generateAtcdata(
-      id,
-      loginProfilesPath,
-      icaoAircraftPath,
-      icaoAirlinesPath,
-      recatDefinitionPath,
-      aliasPath,
-      outputPath
-    );
+    await atcData.generateAtcdata(id, loginProfilesPath, icaoAircraftPath, icaoAirlinesPath, recatDefinitionPath, aliasPath, outputPath);
 
     // Generating computable navdata
     await navdata.generateNavdata(id, namespace, eseFilePath, outputPath);
@@ -89,13 +74,10 @@ class PackageBuilder {
       namespace: namespace,
       createdAt: new Date().toISOString(),
       mapLayers: defaultMapLayers,
-      centerPoint: [847183.3480445864, -6195983.977450224]
+      centerPoint: [847183.3480445864, -6195983.977450224],
     } as Package;
 
-    await system.writeFile(
-      `${packagePath}/manifest.json`,
-      JSON.stringify(manifest)
-    );
+    await system.writeFile(`${packagePath}/manifest.json`, JSON.stringify(manifest));
   }
 }
 

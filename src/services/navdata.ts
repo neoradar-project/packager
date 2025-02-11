@@ -10,8 +10,9 @@ import { NseNavaid, Sector } from "../models/nse.js";
 import { EseDataset, SectorLine } from "../models/fromZod.js";
 import { toCartesian } from "./projection.js";
 import { convertColorFeaturePropertyToGeojsonProperties } from "../libs/style-helper.js";
+import { v4 as uuidv4 } from "uuid";
+import { EseHelper } from "../libs/ese-helper.js";
 const log = debug("NavdataManager");
-
 class NavdataManager {
   private uuidMap = new Map<string, string>();
 
@@ -23,234 +24,7 @@ class NavdataManager {
     log("Init");
   }
 
-  private async parseSectorData(
-    eseFile: string,
-    navaids: NseNavaid[]
-  ): Promise<any> {
-    const eseData = await system.readFile(eseFile);
-    const lines = eseData.toString().split("\n");
-
-    const sectorLines: SectorLine[] = [];
-    const sectors: Sector[] = [];
-
-    let baseMatrixInt = 690;
-    const numericIDReplacementMatrix: Record<string, number> = {};
-
-    let inAirspaceSection = false;
-
-    let currentSectorLine: SectorLine = {
-      id: 0,
-      points: [],
-      display: [],
-    };
-    let currentSector: Sector = {
-      layerUniqueId: 0,
-      name: "",
-      actives: [],
-      owners: [],
-      borders: [],
-      depApts: [],
-      arrApts: [],
-      floor: 0,
-      ceiling: 0,
-      displaySectorLines: [],
-    };
-    let sectorCounter = 99000;
-
-    for (let line of lines) {
-      line = line.replaceAll("�", "").replaceAll("\r", "");
-      if (line.startsWith(";")) continue;
-      if (line.startsWith("[AIRSPACE]")) {
-        inAirspaceSection = true;
-        continue;
-      }
-
-      if (!inAirspaceSection) {
-        continue;
-      }
-
-      // Sectorlines
-      if (
-        line.startsWith("SECTORLINE:") ||
-        line.startsWith("CIRCLE_SECTORLINE:")
-      ) {
-        const id = line.split(":")[1];
-        const isnum = /^\d+$/.test(id);
-        if (!isnum) {
-          numericIDReplacementMatrix[id] = baseMatrixInt;
-          baseMatrixInt++;
-          console.log(
-            "Replacement matrix for non numeric sector ID is  for " +
-              id +
-              " is " +
-              numericIDReplacementMatrix[id]
-          );
-        }
-        currentSectorLine = {
-          id: isnum ? Number(id) : numericIDReplacementMatrix[id],
-          points: [],
-          display: [],
-        };
-        sectorLines.push(currentSectorLine);
-        if (line.startsWith("CIRCLE_SECTORLINE:")) {
-          const parts = line.split(":");
-
-          let geo: { lat: number; lon: number } | null = null;
-          if (parts.length < 4) {
-            console.error("Invalid CIRCLE_SECTORLINE format", line);
-            continue;
-          }
-
-          if (parts.length === 5) {
-            // Here we have lat lon defined
-            geo = geoHelper.convertESEGeoCoordinates(parts[2], parts[3]);
-            console.info(
-              "CIRCLE_SECTORLINE with 5 parts with reference to navaid",
-              line
-            );
-          } else {
-            // here we have a ref to navaids
-            const navaid = navaids.find((n) => n.name === parts[2]);
-            console.info(
-              "CIRCLE_SECTORLINE with 4 parts with reference to navaid",
-              line,
-              parts[2]
-            );
-            geo = navaid ? { lat: navaid.lat, lon: navaid.lon } : null;
-          }
-
-          if (!geo) {
-            console.error("Invalid CIRCLE_SECTORLINE geo", line);
-            continue;
-          }
-
-          const point = turf.point([geo[1], geo[0]]);
-          const circle = turf.circle(
-            point,
-            Number(parts[4]),
-            10,
-            "nauticalmiles"
-          );
-
-          const circlePoints = circle.geometry.coordinates[0].map(
-            (coord: number[]) => {
-              return toCartesian([coord[1], coord[0]]);
-            }
-          );
-
-          currentSectorLine.points = circlePoints;
-        }
-      }
-      if (line.startsWith("COORD:")) {
-        const coord = line.split(":");
-        const point = geoHelper.convertESEGeoCoordinatesToCartesian(
-          coord[1],
-          coord[2]
-        );
-        if (point) {
-          currentSectorLine.points.push(point);
-        }
-      }
-      if (line.startsWith("DISPLAY:")) {
-        // const parts = line.split(":");
-        // const dsp = {
-        //   name: parts[1].replace("\r", "").replace("�", ""),
-        // };
-        // currentSectorLine.display.push(dsp);
-        continue; // Display lines are handled automatically based on common borders
-      }
-      // Sectors
-
-      if (line.startsWith("SECTOR:")) {
-        const parts = line.split(":");
-        currentSector = {
-          layerUniqueId: sectorCounter++,
-          name: parts[1],
-          actives: [],
-          owners: [],
-          borders: [],
-          depApts: [],
-          arrApts: [],
-          floor: Number(parts[2]),
-          ceiling: Number(parts[3]),
-          displaySectorLines: [],
-        };
-        sectors.push(currentSector);
-      }
-      if (line.startsWith("OWNER:")) {
-        const parts = line.replace("OWNER:", "").split(":");
-        currentSector.owners = parts.map((item) => item.replace("\r", ""));
-      }
-      if (line.startsWith("BORDER:")) {
-        const parts = line.replace("BORDER:", "").split(":");
-        currentSector.borders = parts
-          .map((item) => {
-            let cleanItem = item.replace("\r", "");
-            if (!cleanItem) return null; // Skip empty entries
-
-            const isnum = /^\d+$/.test(cleanItem);
-            if (isnum) {
-              return Number(cleanItem);
-            } else {
-              if (!numericIDReplacementMatrix[cleanItem]) {
-                console.error(
-                  "No replacement matrix available for " + cleanItem
-                );
-                return null; // Return null for invalid entries
-              }
-              return numericIDReplacementMatrix[cleanItem];
-            }
-          })
-          .filter((item): item is number => item !== null); // Type guard to ensure only numbers remain
-      }
-      if (line.startsWith("DEPAPT:")) {
-        const parts = line.replace("DEPAPT:", "").split(":");
-        currentSector.depApts = parts.map((item) => item.replace("\r", ""));
-      }
-      if (line.startsWith("ARRAPT:")) {
-        const parts = line.replace("ARRAPT:", "").split(":");
-        currentSector.arrApts = parts.map((item) => item.replace("\r", ""));
-      }
-      if (line.startsWith("ACTIVE:")) {
-        const parts = line.replace("ACTIVE:", "").split(":");
-        currentSector.actives.push({
-          icao: parts[0].replace("\r", ""),
-          runway: parts[1].replace("\r", ""),
-        });
-      }
-      if (line.startsWith("DISPLAY_SECTORLINE:")) {
-        const parts = line.replace("DISPLAY_SECTORLINE:", "").split(":");
-        currentSector.displaySectorLines.push({
-          borderId: Number(parts[0].replace("\r", "")),
-          mySector: parts[1].replace("\r", ""),
-          otherSectors: parts
-            .slice(2)
-            .map(
-              (item) =>
-                item
-                  .replace("\r", "")
-                  .replace("�", "")
-                  .replace(parts[1].replace("\r", ""), "") // We ignore our own sector
-            )
-            .filter((item) => item !== ""),
-        });
-      }
-    }
-
-    const data = {
-      sectors: sectors,
-      sectorLines: sectorLines,
-    };
-
-    return data;
-  }
-
-  public async generateNavdata(
-    packageId: string,
-    namespace: string,
-    eseFilePath: string,
-    outputPath: string
-  ): Promise<void> {
+  public async generateNavdata(packageId: string, namespace: string, eseFilePath: string, outputPath: string): Promise<void> {
     log("generateNavdata");
     const path = `${outputPath}/${packageId}/datasets`;
 
@@ -267,9 +41,7 @@ class NavdataManager {
     this.uuidMap.clear();
 
     // regions
-    const regionsData = JSON.parse(
-      await system.readFile(`${path}/region.geojson`)
-    ).features;
+    const regionsData = JSON.parse(await system.readFile(`${path}/region.geojson`)).features;
     const tmpRegions: string[] = [];
     for (const feature of regionsData) {
       if (tmpRegions.indexOf(feature.properties.region) === -1) {
@@ -289,9 +61,7 @@ class NavdataManager {
     });
 
     // geo
-    const geoData = JSON.parse(
-      await system.readFile(`${path}/geo.geojson`)
-    ).features;
+    const geoData = JSON.parse(await system.readFile(`${path}/geo.geojson`)).features;
     const tmpGeo: string[] = [];
     for (const feature of geoData) {
       if (tmpGeo.indexOf(feature.properties.section) === -1) {
@@ -311,9 +81,7 @@ class NavdataManager {
     });
 
     // sids
-    const sidsData = JSON.parse(
-      await system.readFile(`${path}/sid.geojson`)
-    ).features;
+    const sidsData = JSON.parse(await system.readFile(`${path}/sid.geojson`)).features;
     const tmpSids: string[] = [];
     for (const feature of sidsData) {
       const name = this.getFeatureName(feature);
@@ -334,9 +102,7 @@ class NavdataManager {
     });
 
     // stars
-    const starsData = JSON.parse(
-      await system.readFile(`${path}/star.geojson`)
-    ).features;
+    const starsData = JSON.parse(await system.readFile(`${path}/star.geojson`)).features;
     const tmpStars: string[] = [];
     for (const feature of starsData) {
       const name = this.getFeatureName(feature);
@@ -357,9 +123,7 @@ class NavdataManager {
     });
 
     // artcc-low
-    const artccLowData = JSON.parse(
-      await system.readFile(`${path}/artccLow.geojson`)
-    ).features;
+    const artccLowData = JSON.parse(await system.readFile(`${path}/artccLow.geojson`)).features;
     const tmpArtccLow: string[] = [];
     for (const feature of artccLowData) {
       const name = this.getFeatureName(feature);
@@ -380,9 +144,7 @@ class NavdataManager {
     });
 
     // artcc-high
-    const artccHighData = JSON.parse(
-      await system.readFile(`${path}/artccHigh.geojson`)
-    ).features;
+    const artccHighData = JSON.parse(await system.readFile(`${path}/artccHigh.geojson`)).features;
     const tmpArtccHigh: string[] = [];
     for (const feature of artccHighData) {
       const name = this.getFeatureName(feature);
@@ -403,9 +165,7 @@ class NavdataManager {
     });
 
     // artcc
-    const artccData = JSON.parse(
-      await system.readFile(`${path}/artcc.geojson`)
-    ).features;
+    const artccData = JSON.parse(await system.readFile(`${path}/artcc.geojson`)).features;
     const tmpArtcc: string[] = [];
     for (const feature of artccData) {
       const name = this.getFeatureName(feature);
@@ -428,9 +188,7 @@ class NavdataManager {
     // navaids
     const navaidsTypeList = ["vor", "ndb", "fix", "airport"];
     for (const type of navaidsTypeList) {
-      const typeData = JSON.parse(
-        await system.readFile(`${path}/${type}.geojson`)
-      ).features;
+      const typeData = JSON.parse(await system.readFile(`${path}/${type}.geojson`)).features;
       nse[type] = typeData.map((item: any) => {
         if (!item.properties.uuid) {
           console.error(`No UUID found for ${type}: ${item.properties.name}`);
@@ -450,17 +208,11 @@ class NavdataManager {
     }
 
     // runways
-    const runwaysData = JSON.parse(
-      await system.readFile(`${path}/runway.geojson`)
-    ).features;
+    const runwaysData = JSON.parse(await system.readFile(`${path}/runway.geojson`)).features;
     nse.mapItemsIndex["runway"] = runwaysData.map((item: any) => {
       if (!item.properties.uuid) {
-        console.error(
-          `No UUID found for runway: ${item.properties.icao}-${item.properties.name}`
-        );
-        throw new Error(
-          `Missing UUID for runway: ${item.properties.icao}-${item.properties.name}`
-        );
+        console.error(`No UUID found for runway: ${item.properties.icao}-${item.properties.name}`);
+        throw new Error(`Missing UUID for runway: ${item.properties.icao}-${item.properties.name}`);
       }
       return {
         name: this.getFeatureName(item),
@@ -472,9 +224,7 @@ class NavdataManager {
     // Airways
     const awys = ["lowAirway", "highAirway"];
     for (const awy of awys) {
-      const data = JSON.parse(
-        await system.readFile(`${path}/${awy}.geojson`)
-      ).features;
+      const data = JSON.parse(await system.readFile(`${path}/${awy}.geojson`)).features;
       nse.mapItemsIndex[awy] = data.map((item: any) => {
         if (!item.properties.uuid) {
           console.error(`No UUID found for ${awy}: ${item.properties.name}`);
@@ -489,18 +239,14 @@ class NavdataManager {
     }
 
     // labels
-    const labelsData = JSON.parse(
-      await system.readFile(`${path}/label.geojson`)
-    ).features;
+    const labelsData = JSON.parse(await system.readFile(`${path}/label.geojson`)).features;
     const tmpLabels: any[] = [];
     for (const feature of labelsData) {
-      const index = tmpLabels.findIndex(
-        (item) => item.properties.section === feature.properties.section
-      );
+      const index = tmpLabels.findIndex((item) => item.properties.section === feature.properties.section);
       if (index === -1) {
-        if (!feature.properties.section?.includes("Gates")) {
-          tmpLabels.push(feature);
-        }
+        // if (!feature.properties.section?.includes("Gates")) {
+        tmpLabels.push(feature);
+        // }
       }
     }
     nse.mapItemsIndex["label"] = tmpLabels
@@ -510,16 +256,8 @@ class NavdataManager {
           return null;
         }
         if (!item.properties.uuid) {
-          console.error(
-            `No UUID found for label: ${
-              item.properties.value || item.properties.section
-            }`
-          );
-          throw new Error(
-            `Missing UUID for label: ${
-              item.properties.value || item.properties.section
-            }`
-          );
+          console.error(`No UUID found for label: ${item.properties.value || item.properties.section}`);
+          throw new Error(`Missing UUID for label: ${item.properties.value || item.properties.section}`);
         }
         const featureName = this.getFeatureName(item);
         if (!featureName) {
@@ -532,68 +270,24 @@ class NavdataManager {
         };
       })
       .filter((label): label is NonNullable<typeof label> => label !== null);
+
     // await system.deleteFile(`${path}/label.geojson`);
 
-    const eseData = await system.readFile(eseFilePath);
-    const lines = eseData.toString().split("\n");
+    const eseProcessedData = await EseHelper.parseEseContent(eseFilePath, allNavaids);
+    nse.gate = eseProcessedData.gate;
+    nse.position = eseProcessedData.position;
+    nse.procedure = eseProcessedData.procedure;
+    nse.sectors = eseProcessedData.sectors;
+    nse.sectorLines = eseProcessedData.sectorLines;
 
-    nse.position = [];
-    nse.procedure = [];
-
-    let positionCounter = 10000;
-    let procedureCounter = 30000;
-    // TODO : AMSR, TWY?, VFR points
-
-    let inPositionSection = false;
-    for (const line of lines) {
-      if (line.startsWith("[POSITIONS]")) {
-        inPositionSection = true;
-        continue;
-      }
-      if (
-        inPositionSection &&
-        line.startsWith("[") &&
-        !line.startsWith("[POSITIONS]")
-      ) {
-        inPositionSection = false;
-        continue;
-      }
-      if (inPositionSection) {
-        const position = PackageAtcPosition.init(line);
-        if (!position) continue;
-        position.layerUniqueId = positionCounter++;
-        nse.position.push(position.toJsonObject());
-      }
-
-      if (line.startsWith(";=")) continue;
-      const data = line.split(":");
-      if (data.length < 3) continue;
-
-      if (data[0].includes("STAR") || data[0].includes("SID")) {
-        const proc = Procedure.init(line, allNavaids);
-        if (!proc) continue;
-        proc.layerUniqueId = procedureCounter++;
-        nse.procedure.push(proc.toJsonObject());
-      }
-    }
-
-    const sectorData = await this.parseSectorData(eseFilePath, allNavaids);
-    nse.sectors = sectorData.sectors;
-    nse.sectorLines = sectorData.sectorLines;
-
-    await system.writeFile(
-      `${outputPath}/${packageId}/datasets/nse.json`,
-      JSON.stringify(nse)
-    );
+    await system.writeFile(`${outputPath}/${packageId}/datasets/nse.json`, JSON.stringify(nse));
   }
 
   private getFeatureName(feature: any): string | null {
     const type = feature.properties.type;
 
     // Standard name property types
-    if (
-      ["airport", "fix", "highAirway", "lowAirway", "ndb", "vor"].includes(type)
-    ) {
+    if (["airport", "fix", "highAirway", "lowAirway", "ndb", "vor"].includes(type)) {
       if (feature.properties.name) {
         return feature.properties.name;
       }
@@ -606,18 +300,7 @@ class NavdataManager {
     }
 
     // Section property types
-    if (
-      [
-        "artcc-high",
-        "artcc-low",
-        "artcc",
-        "geo",
-        "high-airway",
-        "low-airway",
-        "sid",
-        "star",
-      ].includes(type)
-    ) {
+    if (["artcc-high", "artcc-low", "artcc", "geo", "high-airway", "low-airway", "sid", "star"].includes(type)) {
       if (feature.properties.section) {
         return feature.properties.section;
       }
@@ -626,7 +309,7 @@ class NavdataManager {
     // Label specific
     if (type === "label") {
       if (feature.properties.section) {
-        return feature.properties.value;
+        return feature.properties.section;
       }
 
       if (feature.properties.value) {
@@ -650,15 +333,17 @@ class NavdataManager {
   }
 
   private getSharedUUID(type: string, name: string): string {
-    const formatted = `${type}-${name}`
-      .toLowerCase()
-      .replace(/[^a-z0-9-]/g, "-");
+    const formatted = `${type}-${name}`.toLowerCase().replace(/[^a-z0-9-]/g, "-");
     return formatted
       .replace(/-+/g, "-") // Replace multiple dashes with single dash
       .replace(/-$/g, ""); // Remove trailing dash
   }
 
   private addUUIDToFeature(feature: any): void {
+    if (!feature.properties?.type) {
+      console.warn("Feature without type:", feature);
+      return;
+    }
     const type = feature.properties.type;
     const featureName = this.getFeatureName(feature);
 
@@ -677,7 +362,8 @@ class NavdataManager {
     sctData: SCT,
     eseData: ESE,
     ignoreTypes: string[],
-    outputPath: string
+    outputPath: string,
+    useSctLabels: boolean = true
   ): Promise<string[]> {
     const path = `${outputPath}/${packageId}/datasets`;
     await system.deleteDirectory(path);
@@ -727,10 +413,7 @@ class NavdataManager {
       }
 
       if (f.properties?.color) {
-        f.properties = convertColorFeaturePropertyToGeojsonProperties(
-          f,
-          (f.properties?.type ?? "") === "region"
-        ).properties;
+        f.properties = convertColorFeaturePropertyToGeojsonProperties(f, (f.properties?.type ?? "") === "region").properties;
       }
     });
 
@@ -752,43 +435,25 @@ class NavdataManager {
     let returnSegment: number[][] = [];
     returnSegment.push(
       "position" in segment.start
-        ? [
-            (segment.start as Navaid).position.lonFloat,
-            (segment.start as Navaid).position.latFloat,
-          ]
-        : [
-            (segment.start as Position).lonFloat,
-            (segment.start as Position).latFloat,
-          ]
+        ? [(segment.start as Navaid).position.lonFloat, (segment.start as Navaid).position.latFloat]
+        : [(segment.start as Position).lonFloat, (segment.start as Position).latFloat]
     );
     returnSegment.push(
       "position" in segment.end
-        ? [
-            (segment.end as Navaid).position.lonFloat,
-            (segment.end as Navaid).position.latFloat,
-          ]
-        : [
-            (segment.end as Position).lonFloat,
-            (segment.end as Position).latFloat,
-          ]
+        ? [(segment.end as Navaid).position.lonFloat, (segment.end as Navaid).position.latFloat]
+        : [(segment.end as Position).lonFloat, (segment.end as Position).latFloat]
     );
     return returnSegment;
   }
 
-  private async generateGeoJsonFilesForType(
-    path: string,
-    type: string,
-    allFeatures: any[]
-  ): Promise<void> {
+  private async generateGeoJsonFilesForType(path: string, type: string, allFeatures: any[]): Promise<void> {
     const features = allFeatures;
     const geojson = {
       type: "FeatureCollection",
       features: features,
     };
     const data = JSON.stringify(geojson);
-    const formattedType = type.replace(/-([a-z])/g, (match, letter) =>
-      letter.toUpperCase()
-    );
+    const formattedType = type.replace(/-([a-z])/g, (match, letter) => letter.toUpperCase());
     await system.writeFile(`${path}/${formattedType}.geojson`, data);
     return;
   }
