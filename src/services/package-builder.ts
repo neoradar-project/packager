@@ -45,7 +45,7 @@ class PackageBuilder {
     const eseData = parseEse(sctData, await system.readFile(eseFilePath));
 
     log("generatePackage", namespace, name);
-    const packagePath = `${this.outputPath}/${id}`;
+    const packagePath = `${this.outputPath}/${id}-Package/${id}`;
     // clean
     await system.deleteDirectory(packagePath);
     // create

@@ -44,12 +44,12 @@ async function startJobs() {
   );
 
   try {
-    if (!data.asrDirectory) {
+    if (!data.asrPath) {
       console.log("No ASR directory provided, skipping ASR conversion");
     } else {
-      const path = `${data.outputDir}/${data.id}/ASR`;
+      const path = `${data.outputDir}/${data.id}-Package/profiles`;
       await system.deleteDirectory(path);
-      AsrFolderConverter.convertFolder(data.asrDirectory, path);
+      AsrFolderConverter.convertFolder(data.asrPath, path);
     }
   } catch (error) {
     console.error("Conversion failed:", error);

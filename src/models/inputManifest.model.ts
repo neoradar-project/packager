@@ -11,7 +11,7 @@ export interface InputManifest {
   recatDefinitionPath?: string;
   aliasPath: string;
   outputDir: string;
-  asrDirectory: string;
+  asrPath: string;
   settingsDirectory: string;
   useSctLabels?: boolean;
 }
