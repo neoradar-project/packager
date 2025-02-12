@@ -19,6 +19,12 @@ interface StpFile {
       x: number;
       y: number;
     };
+    windowArea: {
+      minX: number;
+      minY: number;
+      maxX: number;
+      maxY: number;
+    };
     zoom: number;
     orientation: number;
     items: StpItem[];
@@ -67,9 +73,14 @@ class AsrFolderConverter {
   //   return { x, y };
   // }
 
-  private static parseAsrLines(lines: string[]): { items: StpItem[]; centerPoint: { x: number; y: number } | null } {
+  private static parseAsrLines(lines: string[]): {
+    items: StpItem[];
+    centerPoint: { x: number; y: number } | null;
+    windowArea: { minX: number; minY: number; maxX: number; maxY: number };
+  } {
     let items: StpItem[] = [];
     let centerPoint: { x: number; y: number } | null = null;
+    let windowArea = { minX: 0, minY: 0, maxX: 0, maxY: 0 };
 
     for (const line of lines) {
       const parts = line.split(":");
@@ -94,6 +105,12 @@ class AsrFolderConverter {
         const center = turf.center(turf.featureCollection([point1, point2]));
 
         const [lon, lat] = center.geometry.coordinates;
+
+        const [minX, minY] = toCartesian([minLon, minLat]);
+        const [maxX, maxY] = toCartesian([maxLon, maxLat]);
+
+        windowArea = { minX, minY, maxX, maxY };
+
         const [x, y] = toCartesian([lon, lat]);
 
         if (!centerPoint) {
@@ -102,7 +119,7 @@ class AsrFolderConverter {
       }
     }
 
-    return { items, centerPoint };
+    return { items, centerPoint, windowArea };
   }
 
   private static parseLayerLine(type: string, parts: string[]): StpItem | null {
@@ -128,7 +145,7 @@ class AsrFolderConverter {
   private static convertContent(asrContent: string, filename: string): StpFile {
     const lines = asrContent.split("\n");
 
-    const { items, centerPoint } = this.parseAsrLines(lines);
+    const { items, centerPoint, windowArea } = this.parseAsrLines(lines);
 
     return {
       name: parse(filename).name,
@@ -136,6 +153,7 @@ class AsrFolderConverter {
       updatedAt: new Date().toISOString(),
       map: {
         center: centerPoint || { x: 0, y: 0 },
+        windowArea,
         zoom: 7,
         orientation: 0,
         items,
