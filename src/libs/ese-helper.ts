@@ -192,10 +192,6 @@ export class EseHelper {
       display: [],
     };
 
-    if (context.currentSectorLine.id === 1052) {
-      console.log("1052", line);
-    }
-
     result.sectorLines.push(context.currentSectorLine);
 
     if (line.startsWith("CIRCLE_SECTORLINE:")) {
