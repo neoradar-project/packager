@@ -1,0 +1,10062 @@
+[
+    {
+        "icao": "A1",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "A10",
+        "categoryLabel": "E"
+    },
+    {
+        "icao": "A122",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "A124",
+        "categoryLabel": "A"
+    },
+    {
+        "icao": "A140",
+        "categoryLabel": "E"
+    },
+    {
+        "icao": "A148",
+        "categoryLabel": "E"
+    },
+    {
+        "icao": "A158",
+        "categoryLabel": "TBC"
+    },
+    {
+        "icao": "A16",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "A178",
+        "categoryLabel": "E"
+    },
+    {
+        "icao": "A19",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "A19N",
+        "categoryLabel": "D"
+    },
+    {
+        "icao": "A20",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "A20J",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "A20N",
+        "categoryLabel": "D"
+    },
+    {
+        "icao": "A21",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "A210",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "A211",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "A21N",
+        "categoryLabel": "D"
+    },
+    {
+        "icao": "A22",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "A223",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "A225",
+        "categoryLabel": "Special"
+    },
+    {
+        "icao": "A23",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "A27",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "A270",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "A29",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "A3",
+        "categoryLabel": "E"
+    },
+    {
+        "icao": "A306",
+        "categoryLabel": "C"
+    },
+    {
+        "icao": "A30B",
+        "categoryLabel": "C"
+    },
+    {
+        "icao": "A31",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "A310",
+        "categoryLabel": "C"
+    },
+    {
+        "icao": "A318",
+        "categoryLabel": "D"
+    },
+    {
+        "icao": "A319",
+        "categoryLabel": "D"
+    },
+    {
+        "icao": "A320",
+        "categoryLabel": "D"
+    },
+    {
+        "icao": "A321",
+        "categoryLabel": "D"
+    },
+    {
+        "icao": "A33",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "A332",
+        "categoryLabel": "B"
+    },
+    {
+        "icao": "A333",
+        "categoryLabel": "B"
+    },
+    {
+        "icao": "A337",
+        "categoryLabel": "B"
+    },
+    {
+        "icao": "A338",
+        "categoryLabel": "B"
+    },
+    {
+        "icao": "A339",
+        "categoryLabel": "B"
+    },
+    {
+        "icao": "A33E",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "A33P",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "A342",
+        "categoryLabel": "B"
+    },
+    {
+        "icao": "A343",
+        "categoryLabel": "B"
+    },
+    {
+        "icao": "A345",
+        "categoryLabel": "B"
+    },
+    {
+        "icao": "A346",
+        "categoryLabel": "B"
+    },
+    {
+        "icao": "A34E",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "A35",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "A359",
+        "categoryLabel": "B"
+    },
+    {
+        "icao": "A35K",
+        "categoryLabel": "B"
+    },
+    {
+        "icao": "A37",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "A388",
+        "categoryLabel": "A"
+    },
+    {
+        "icao": "A3ST",
+        "categoryLabel": "C"
+    },
+    {
+        "icao": "A4",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "A400",
+        "categoryLabel": "C"
+    },
+    {
+        "icao": "A50",
+        "categoryLabel": "C"
+    },
+    {
+        "icao": "A500",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "A504",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "A6",
+        "categoryLabel": "E"
+    },
+    {
+        "icao": "A660",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "A700",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "A743",
+        "categoryLabel": "E"
+    },
+    {
+        "icao": "A748",
+        "categoryLabel": "E"
+    },
+    {
+        "icao": "A890",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "A9",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "A900",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "A910",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "AA1",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "AA37",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "AA5",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "AAT3",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "AAT4",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "AB11",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "AB15",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "AB18",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "AB95",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "AC11",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "AC4",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "AC50",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "AC52",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "AC56",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "AC5A",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "AC5M",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "AC68",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "AC6L",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "AC72",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "AC80",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "AC90",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "AC95",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "ACAM",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "ACAR",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "ACED",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "ACPL",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "ACR2",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "ACRD",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "ACRO",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "ACSR",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "AD20",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "ADVE",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "AE45",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "AEA1",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "AERK",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "AEST",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "AFOX",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "AG02",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "AG60",
+        "categoryLabel": "D"
+    },
+    {
+        "icao": "AI10",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "AIGT",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "AIRD",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "AIRL",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "AJ27",
+        "categoryLabel": "E"
+    },
+    {
+        "icao": "AJET",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "AK1",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "AKRO",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "ALBU",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "ALC1",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "ALGR",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "ALIG",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "ALIZ",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "ALPI",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "ALSL",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "ALTO",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "AM3",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "AMX",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "AN12",
+        "categoryLabel": "D"
+    },
+    {
+        "icao": "AN2",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "AN22",
+        "categoryLabel": "B"
+    },
+    {
+        "icao": "AN24",
+        "categoryLabel": "E"
+    },
+    {
+        "icao": "AN26",
+        "categoryLabel": "E"
+    },
+    {
+        "icao": "AN28",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "AN3",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "AN30",
+        "categoryLabel": "E"
+    },
+    {
+        "icao": "AN32",
+        "categoryLabel": "E"
+    },
+    {
+        "icao": "AN38",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "AN70",
+        "categoryLabel": "C"
+    },
+    {
+        "icao": "AN72",
+        "categoryLabel": "E"
+    },
+    {
+        "icao": "AN8",
+        "categoryLabel": "D"
+    },
+    {
+        "icao": "ANGL",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "ANKA",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "ANSN",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "AP20",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "AP22",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "AP26",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "AP28",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "AP32",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "AP36",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "APM2",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "APM3",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "APM4",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "APUP",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "AR11",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "AR15",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "AR50",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "AR5T",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "AR65",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "AR6T",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "AR79",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "ARCE",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "ARCP",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "ARES",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "ARKS",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "ARON",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "ARV1",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "ARVA",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "ARWF",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "AS02",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "AS14",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "AS16",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "AS20",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "AS21",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "AS22",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "AS24",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "AS25",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "AS26",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "AS28",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "AS29",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "AS2T",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "AS30",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "AS31",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "AS80",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "ASO4",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "ASTO",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "ASTR",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "AT2P",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "AT3",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "AT3P",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "AT3T",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "AT43",
+        "categoryLabel": "E"
+    },
+    {
+        "icao": "AT44",
+        "categoryLabel": "E"
+    },
+    {
+        "icao": "AT45",
+        "categoryLabel": "E"
+    },
+    {
+        "icao": "AT46",
+        "categoryLabel": "E"
+    },
+    {
+        "icao": "AT5P",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "AT5T",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "AT6T",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "AT72",
+        "categoryLabel": "E"
+    },
+    {
+        "icao": "AT73",
+        "categoryLabel": "E"
+    },
+    {
+        "icao": "AT75",
+        "categoryLabel": "E"
+    },
+    {
+        "icao": "AT76",
+        "categoryLabel": "E"
+    },
+    {
+        "icao": "AT8T",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "ATAC",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "ATG1",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "ATIS",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "ATL",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "ATLA",
+        "categoryLabel": "D"
+    },
+    {
+        "icao": "ATP",
+        "categoryLabel": "E"
+    },
+    {
+        "icao": "ATTL",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "AU11",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "AUJ2",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "AUJ4",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "AUS3",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "AUS4",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "AUS5",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "AUS6",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "AUS7",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "AUS9",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "AV68",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "AVID",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "AVIN",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "AVK4",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "B1",
+        "categoryLabel": "C"
+    },
+    {
+        "icao": "B13",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "B14A",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "B14B",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "B14C",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "B17",
+        "categoryLabel": "E"
+    },
+    {
+        "icao": "B18T",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "B190",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "B2",
+        "categoryLabel": "Special"
+    },
+    {
+        "icao": "B209",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "B23",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "B24",
+        "categoryLabel": "D"
+    },
+    {
+        "icao": "B25",
+        "categoryLabel": "E"
+    },
+    {
+        "icao": "B26",
+        "categoryLabel": "E"
+    },
+    {
+        "icao": "B26M",
+        "categoryLabel": "E"
+    },
+    {
+        "icao": "B29",
+        "categoryLabel": "D"
+    },
+    {
+        "icao": "B350",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "B360",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "B36T",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "B37M",
+        "categoryLabel": "D"
+    },
+    {
+        "icao": "B38M",
+        "categoryLabel": "D"
+    },
+    {
+        "icao": "B39M",
+        "categoryLabel": "D"
+    },
+    {
+        "icao": "B3XM",
+        "categoryLabel": "D"
+    },
+    {
+        "icao": "B461",
+        "categoryLabel": "E"
+    },
+    {
+        "icao": "B462",
+        "categoryLabel": "E"
+    },
+    {
+        "icao": "B463",
+        "categoryLabel": "E"
+    },
+    {
+        "icao": "B52",
+        "categoryLabel": "Special"
+    },
+    {
+        "icao": "B58T",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "B60",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "B60T",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "B701",
+        "categoryLabel": "C"
+    },
+    {
+        "icao": "B703",
+        "categoryLabel": "C"
+    },
+    {
+        "icao": "B712",
+        "categoryLabel": "E"
+    },
+    {
+        "icao": "B720",
+        "categoryLabel": "C"
+    },
+    {
+        "icao": "B721",
+        "categoryLabel": "D"
+    },
+    {
+        "icao": "B722",
+        "categoryLabel": "D"
+    },
+    {
+        "icao": "B732",
+        "categoryLabel": "E"
+    },
+    {
+        "icao": "B733",
+        "categoryLabel": "E"
+    },
+    {
+        "icao": "B734",
+        "categoryLabel": "E"
+    },
+    {
+        "icao": "B735",
+        "categoryLabel": "E"
+    },
+    {
+        "icao": "B736",
+        "categoryLabel": "D"
+    },
+    {
+        "icao": "B737",
+        "categoryLabel": "D"
+    },
+    {
+        "icao": "B738",
+        "categoryLabel": "D"
+    },
+    {
+        "icao": "B739",
+        "categoryLabel": "D"
+    },
+    {
+        "icao": "B741",
+        "categoryLabel": "B"
+    },
+    {
+        "icao": "B742",
+        "categoryLabel": "B"
+    },
+    {
+        "icao": "B743",
+        "categoryLabel": "B"
+    },
+    {
+        "icao": "B744",
+        "categoryLabel": "B"
+    },
+    {
+        "icao": "B748",
+        "categoryLabel": "B"
+    },
+    {
+        "icao": "B74R",
+        "categoryLabel": "B"
+    },
+    {
+        "icao": "B74S",
+        "categoryLabel": "B"
+    },
+    {
+        "icao": "B752",
+        "categoryLabel": "C"
+    },
+    {
+        "icao": "B753",
+        "categoryLabel": "C"
+    },
+    {
+        "icao": "B762",
+        "categoryLabel": "C"
+    },
+    {
+        "icao": "B763",
+        "categoryLabel": "C"
+    },
+    {
+        "icao": "B764",
+        "categoryLabel": "C"
+    },
+    {
+        "icao": "B772",
+        "categoryLabel": "B"
+    },
+    {
+        "icao": "B773",
+        "categoryLabel": "B"
+    },
+    {
+        "icao": "B778",
+        "categoryLabel": "B"
+    },
+    {
+        "icao": "B779",
+        "categoryLabel": "B"
+    },
+    {
+        "icao": "B77L",
+        "categoryLabel": "B"
+    },
+    {
+        "icao": "B77W",
+        "categoryLabel": "B"
+    },
+    {
+        "icao": "B788",
+        "categoryLabel": "B"
+    },
+    {
+        "icao": "B789",
+        "categoryLabel": "B"
+    },
+    {
+        "icao": "B78X",
+        "categoryLabel": "B"
+    },
+    {
+        "icao": "BA11",
+        "categoryLabel": "E"
+    },
+    {
+        "icao": "BAR6",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "BARC",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "BASS",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "BBAT",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "BBIR",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "BCA3",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "BCAT",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "BCS1",
+        "categoryLabel": "D"
+    },
+    {
+        "icao": "BCS3",
+        "categoryLabel": "D"
+    },
+    {
+        "icao": "BD10",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "BD12",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "BD17",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "BD4",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "BD5",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "BD5J",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "BD5T",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "BDOG",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "BE10",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "BE17",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "BE18",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "BE19",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "BE20",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "BE23",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "BE24",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "BE30",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "BE32",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "BE33",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "BE35",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "BE36",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "BE40",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "BE4W",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "BE50",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "BE55",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "BE56",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "BE58",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "BE60",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "BE65",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "BE70",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "BE76",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "BE77",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "BE80",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "BE88",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "BE95",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "BE99",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "BE9L",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "BE9T",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "BEAR",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "BELF",
+        "categoryLabel": "C"
+    },
+    {
+        "icao": "BETA",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "BEVR",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "BF19",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "BFIT",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "BILO",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "BIPL",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "BIRD",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "BISC",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "BKUT",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "BL11",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "BL17",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "BL19",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "BL8",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "BLBU",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "BLCF",
+        "categoryLabel": "B"
+    },
+    {
+        "icao": "BLEN",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "BLKS",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "BM6",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "BMAN",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "BN2P",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "BN2T",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "BO40",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "BOLT",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "BOOM",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "BPAT",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "BPOD",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "BR14",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "BR60",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "BR61",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "BRAV",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "BREZ",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "BROU",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "BS60",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "BSTR",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "BT36",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "BTUB",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "BT7",
+        "categoryLabel": "None"
+    },
+    {
+        "icao": "BU20",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "BU31",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "BU33",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "BU81",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "BUC",
+        "categoryLabel": "E"
+    },
+    {
+        "icao": "BUSH",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "BULT",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "BX2",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "BW60",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "BW6T",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "C02T",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "C04T",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "C06T",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "C07T",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "C08T",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "C1",
+        "categoryLabel": "E"
+    },
+    {
+        "icao": "C101",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "C10T",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "C119",
+        "categoryLabel": "D"
+    },
+    {
+        "icao": "C120",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "C123",
+        "categoryLabel": "D"
+    },
+    {
+        "icao": "C125",
+        "categoryLabel": "E"
+    },
+    {
+        "icao": "C130",
+        "categoryLabel": "D"
+    },
+    {
+        "icao": "C135",
+        "categoryLabel": "C"
+    },
+    {
+        "icao": "C140",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "C141",
+        "categoryLabel": "C"
+    },
+    {
+        "icao": "C14T",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "C15",
+        "categoryLabel": "D"
+    },
+    {
+        "icao": "C150",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "C152",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "C160",
+        "categoryLabel": "D"
+    },
+    {
+        "icao": "C162",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "C17",
+        "categoryLabel": "C"
+    },
+    {
+        "icao": "C170",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "C172",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "C175",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "C177",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "C180",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "C182",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "C185",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "C188",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "C190",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "C195",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "C2",
+        "categoryLabel": "E"
+    },
+    {
+        "icao": "C205",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "C206",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "C207",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "C208",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "C210",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "C212",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "C21T",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "C22J",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "C240",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "C25A",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "C25B",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "C25C",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "C25M",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "C270",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "C27J",
+        "categoryLabel": "E"
+    },
+    {
+        "icao": "C295",
+        "categoryLabel": "E"
+    },
+    {
+        "icao": "C303",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "C309",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "C30J",
+        "categoryLabel": "D"
+    },
+    {
+        "icao": "C310",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "C311",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "C320",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "C335",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "C336",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "C337",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "C340",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "C365",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "C402",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "C404",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "C408",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "C411",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "C414",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "C42",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "C421",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "C425",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "C441",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "C46",
+        "categoryLabel": "D"
+    },
+    {
+        "icao": "C500",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "C501",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "C510",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "C525",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "C526",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "C550",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "C551",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "C55B",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "C560",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "C56X",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "C5M",
+        "categoryLabel": "TBC"
+    },
+    {
+        "icao": "C650",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "C680",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "C68A",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "C700",
+        "categoryLabel": "E"
+    },
+    {
+        "icao": "C72R",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "C750",
+        "categoryLabel": "E"
+    },
+    {
+        "icao": "C77R",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "C82",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "C82R",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "C82S",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "C82T",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "C919",
+        "categoryLabel": "D"
+    },
+    {
+        "icao": "C97",
+        "categoryLabel": "D"
+    },
+    {
+        "icao": "CA12",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "CA19",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "CA1P",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "CA1T",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "CA25",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "CA3",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "CA4",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "CA41",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "CA6",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "CA61",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "CA65",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "CA7P",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "CA7T",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "CA8",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "CA9",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "CABI",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "CABN",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "CAD2",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "CAD4",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "CAJ",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "CAML",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "CAMP",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "CAN4",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "CAPL",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "CAR",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "CARV",
+        "categoryLabel": "D"
+    },
+    {
+        "icao": "CASS",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "CAT1",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "CAT2",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "CAW",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "CB1",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "CC19",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "CDC6",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "CDW1",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "CE43",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "CEGL",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "CELR",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "CENT",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "CG3",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "CH1",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "CH10",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "CH15",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "CH18",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "CH20",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "CH25",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "CH2T",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "CH30",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "CH40",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "CH50",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "CH60",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "CH62",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "CH64",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "CH65",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "CH70",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "CH75",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "CH7A",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "CH7B",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "CH80",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "CHAN",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "CHCS",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "CHGO",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "CHIC",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "CHIN",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "CHIP",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "CHR1",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "CHR4",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "CICA",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "CJ1",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "CJ6",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "CKUO",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "CL30",
+        "categoryLabel": "E"
+    },
+    {
+        "icao": "CL35",
+        "categoryLabel": "E"
+    },
+    {
+        "icao": "CL41",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "CL4G",
+        "categoryLabel": "D"
+    },
+    {
+        "icao": "CL60",
+        "categoryLabel": "E"
+    },
+    {
+        "icao": "CL8",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "CLA",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "CLB1",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "CLBR",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "CLDS",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "CMA3",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "CMAS",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "CN12",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "CN35",
+        "categoryLabel": "E"
+    },
+    {
+        "icao": "CNBR",
+        "categoryLabel": "E"
+    },
+    {
+        "icao": "CNDR",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "CNGP",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "CNUK",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "CO50",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "COAR",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "COBR",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "COL3",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "COL4",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "COLT",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "CONI",
+        "categoryLabel": "D"
+    },
+    {
+        "icao": "CORO",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "CORR",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "CORS",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "CORV",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "COUG",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "COUR",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "COY2",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "COZJ",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "COZY",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "CP10",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "CP13",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "CP20",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "CP21",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "CP22",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "CP23",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "CP30",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "CP32",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "CP60",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "CP65",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "CP75",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "CP80",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "CP90",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "CPNA",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "CPUP",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "CR10",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "CRA1",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "CRAC",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "CRBN",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "CRER",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "CRES",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "CRJ1",
+        "categoryLabel": "E"
+    },
+    {
+        "icao": "CRJ2",
+        "categoryLabel": "E"
+    },
+    {
+        "icao": "CRJ7",
+        "categoryLabel": "E"
+    },
+    {
+        "icao": "CRJ9",
+        "categoryLabel": "E"
+    },
+    {
+        "icao": "CRJX",
+        "categoryLabel": "E"
+    },
+    {
+        "icao": "CRUZ",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "CT4",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "CTAH",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "CUB2",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "CUCA",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "CULP",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "CULV",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "CULX",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "CVLP",
+        "categoryLabel": "E"
+    },
+    {
+        "icao": "CVLT",
+        "categoryLabel": "D"
+    },
+    {
+        "icao": "CX5",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "CYCL",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "CYGT",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "D1",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "D11",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "D139",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "D140",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "D150",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "D18",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "D201",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "D21",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "D228",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "D25",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "D250",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "D253",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "D28D",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "D28T",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "D31",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "D328",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "D39",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "D4",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "D5",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "D5TU",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "D6",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "D6CR",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "D7",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "D8",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "DA2",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "DA36",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "DA40",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "DA42",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "DA5",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "DA50",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "DA62",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "DAHU",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "DAKH",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "DAL1",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "DAL4",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "DAL5",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "DART",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "DC10",
+        "categoryLabel": "C"
+    },
+    {
+        "icao": "DC2",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "DC3",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "DC3S",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "DC3T",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "DC4",
+        "categoryLabel": "D"
+    },
+    {
+        "icao": "DC6",
+        "categoryLabel": "D"
+    },
+    {
+        "icao": "DC7",
+        "categoryLabel": "D"
+    },
+    {
+        "icao": "DC85",
+        "categoryLabel": "C"
+    },
+    {
+        "icao": "DC86",
+        "categoryLabel": "C"
+    },
+    {
+        "icao": "DC87",
+        "categoryLabel": "C"
+    },
+    {
+        "icao": "DC91",
+        "categoryLabel": "E"
+    },
+    {
+        "icao": "DC92",
+        "categoryLabel": "E"
+    },
+    {
+        "icao": "DC93",
+        "categoryLabel": "E"
+    },
+    {
+        "icao": "DC94",
+        "categoryLabel": "E"
+    },
+    {
+        "icao": "DC95",
+        "categoryLabel": "E"
+    },
+    {
+        "icao": "DEFI",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "DELF",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "DFL6",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "DFLY",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "DG15",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "DG1T",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "DG40",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "DG50",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "DG60",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "DG80",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "DH2T",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "DH3T",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "DH4T",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "DH60",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "DH80",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "DH82",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "DH83",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "DH84",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "DH85",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "DH87",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "DH88",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "DH89",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "DH8A",
+        "categoryLabel": "E"
+    },
+    {
+        "icao": "DH8B",
+        "categoryLabel": "E"
+    },
+    {
+        "icao": "DH8C",
+        "categoryLabel": "E"
+    },
+    {
+        "icao": "DH8D",
+        "categoryLabel": "E"
+    },
+    {
+        "icao": "DH90",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "DH94",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "DHA3",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "DHC1",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "DHC2",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "DHC3",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "DHC4",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "DHC5",
+        "categoryLabel": "E"
+    },
+    {
+        "icao": "DHC6",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "DHC7",
+        "categoryLabel": "E"
+    },
+    {
+        "icao": "DIES",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "DIJ3",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "DIMO",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "DINO",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "DISC",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "DJET",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "DLH2",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "DO27",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "DO28",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "DOCX",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "DON",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "DOVE",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "DR1",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "DR10",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "DR22",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "DR30",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "DR40",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "DRIF",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "DRTG",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "DSA1",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "DSK",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "DSLK",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "DTA1",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "DTA2",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "DT45",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "DUB2",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "DUCE",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "DUOD",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "DUR5",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "DV1",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "DV2",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "DV20",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "DW1",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "DWD2",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "E110",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "E120",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "E121",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "E135",
+        "categoryLabel": "E"
+    },
+    {
+        "icao": "E145",
+        "categoryLabel": "E"
+    },
+    {
+        "icao": "E170",
+        "categoryLabel": "E"
+    },
+    {
+        "icao": "E190",
+        "categoryLabel": "E"
+    },
+    {
+        "icao": "E195",
+        "categoryLabel": "E"
+    },
+    {
+        "icao": "E2",
+        "categoryLabel": "E"
+    },
+    {
+        "icao": "E200",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "E230",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "E275",
+        "categoryLabel": "TBC"
+    },
+    {
+        "icao": "E290",
+        "categoryLabel": "D"
+    },
+    {
+        "icao": "E295",
+        "categoryLabel": "D"
+    },
+    {
+        "icao": "E29E",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "E2CB",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "E300",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "E314",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "E350",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "E35L",
+        "categoryLabel": "E"
+    },
+    {
+        "icao": "E390",
+        "categoryLabel": "D"
+    },
+    {
+        "icao": "E3CF",
+        "categoryLabel": "C"
+    },
+    {
+        "icao": "E3TF",
+        "categoryLabel": "C"
+    },
+    {
+        "icao": "E400",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "E45X",
+        "categoryLabel": "E"
+    },
+    {
+        "icao": "E500",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "E50P",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "E530",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "E545",
+        "categoryLabel": "E"
+    },
+    {
+        "icao": "E550",
+        "categoryLabel": "E"
+    },
+    {
+        "icao": "E55P",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "E6",
+        "categoryLabel": "C"
+    },
+    {
+        "icao": "E737",
+        "categoryLabel": "D"
+    },
+    {
+        "icao": "E75L",
+        "categoryLabel": "E"
+    },
+    {
+        "icao": "E75S",
+        "categoryLabel": "E"
+    },
+    {
+        "icao": "E767",
+        "categoryLabel": "C"
+    },
+    {
+        "icao": "E7BH",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "EA40",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "EA50",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "EAEA",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "EAGL",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "EAGT",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "EAGX",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "EB29",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "EBOY",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "EC6",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "ECHO",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "EDGE",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "EDGT",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "EF2",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "EFAN",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "EFOX",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "EFUS",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "EGRT",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "EL20",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "ELF",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "ELIT",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "ELPS",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "ELSP",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "ELST",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "ELTR",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "EM10",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "EM11",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "EP9",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "EPER",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "EPIC",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "EPX1",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "ERAC",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "ERCO",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "ES13",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "ESCA",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "ESCP",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "ESQL",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "ETA",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "ETAR",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "EUFI",
+        "categoryLabel": "E"
+    },
+    {
+        "icao": "EUPA",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "EURT",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "EV55",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "EV97",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "EVAN",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "EVIC",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "EVOP",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "EVOT",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "EVSS",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "EX5T",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "EXNG",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "EXPR",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "EZFL",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "EZFT",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "EZHV",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "EZIK",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "EZKC",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "F1",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "F100",
+        "categoryLabel": "E"
+    },
+    {
+        "icao": "F104",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "F106",
+        "categoryLabel": "E"
+    },
+    {
+        "icao": "F111",
+        "categoryLabel": "E"
+    },
+    {
+        "icao": "F117",
+        "categoryLabel": "E"
+    },
+    {
+        "icao": "F13",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "F14",
+        "categoryLabel": "E"
+    },
+    {
+        "icao": "F15",
+        "categoryLabel": "E"
+    },
+    {
+        "icao": "F156",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "F16",
+        "categoryLabel": "E"
+    },
+    {
+        "icao": "F16X",
+        "categoryLabel": "E"
+    },
+    {
+        "icao": "F18H",
+        "categoryLabel": "E"
+    },
+    {
+        "icao": "F18S",
+        "categoryLabel": "E"
+    },
+    {
+        "icao": "F1FV",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "F2",
+        "categoryLabel": "E"
+    },
+    {
+        "icao": "F22",
+        "categoryLabel": "E"
+    },
+    {
+        "icao": "F260",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "F26T",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "F27",
+        "categoryLabel": "E"
+    },
+    {
+        "icao": "F28",
+        "categoryLabel": "E"
+    },
+    {
+        "icao": "F2TH",
+        "categoryLabel": "E"
+    },
+    {
+        "icao": "F30",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "F35",
+        "categoryLabel": "E"
+    },
+    {
+        "icao": "F3F",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "F4",
+        "categoryLabel": "E"
+    },
+    {
+        "icao": "F406",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "F41E",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "FINC",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "FJ10",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "FJR3",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "FK12",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "FK14",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "FK9",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "FL3",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "FL53",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "FL54",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "FL55",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "FLAM",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "FLCO",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "FLE2",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "FLE7",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "FLIZ",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "FLSH",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "FLSS",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "FM25",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "FNKB",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "FOOF",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "FORT",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "FOUG",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "FOX",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "FOXT",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "FREE",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "FRNT",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "FRON",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "FS51",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "FT30",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "FU24",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "FURY",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "FUSI",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "FW19",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "FW21",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "FW44",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "FW90",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "FX1",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "G1",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "G103",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "G109",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "G115",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "G120",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "G12T",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "G140",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "G150",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "G159",
+        "categoryLabel": "E"
+    },
+    {
+        "icao": "G15T",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "G160",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "G164",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "G180",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "G200",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "G202",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "G222",
+        "categoryLabel": "E"
+    },
+    {
+        "icao": "G250",
+        "categoryLabel": "E"
+    },
+    {
+        "icao": "G280",
+        "categoryLabel": "E"
+    },
+    {
+        "icao": "G2GL",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "G2T1",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "G3",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "G300",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "G46",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "G4SG",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "G59",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "G64T",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "G70",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "G800",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "G850",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "G96",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "G97",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "GA10",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "GA20",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "GA5C",
+        "categoryLabel": "E"
+    },
+    {
+        "icao": "GA6C",
+        "categoryLabel": "E"
+    },
+    {
+        "icao": "GA7",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "GA7C",
+        "categoryLabel": "E"
+    },
+    {
+        "icao": "GA8",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "GABR",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "GALX",
+        "categoryLabel": "E"
+    },
+    {
+        "icao": "GANT",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "GAUN",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "GAVI",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "GB1",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "GBSP",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "GC1",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "GEMI",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "GENI",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "GEPE",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "GF20",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "GFLY",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "GL5T",
+        "categoryLabel": "E"
+    },
+    {
+        "icao": "GL6T",
+        "categoryLabel": "E"
+    },
+    {
+        "icao": "GL7T",
+        "categoryLabel": "E"
+    },
+    {
+        "icao": "GLAD",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "GLAS",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "GLEX",
+        "categoryLabel": "E"
+    },
+    {
+        "icao": "GLF2",
+        "categoryLabel": "E"
+    },
+    {
+        "icao": "GLF3",
+        "categoryLabel": "E"
+    },
+    {
+        "icao": "GLF4",
+        "categoryLabel": "E"
+    },
+    {
+        "icao": "GLF5",
+        "categoryLabel": "E"
+    },
+    {
+        "icao": "GLF6",
+        "categoryLabel": "E"
+    },
+    {
+        "icao": "GLSP",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "GLST",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "GLTU",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "GM01",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "GM17",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "GMGC",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "GNAT",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "GOLF",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "GOTR",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "GP1",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "GP4",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "GR51",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "GRAF",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "GRFN",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "GRIF",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "GRIZ",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "GSIS",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "GSPN",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "GUEP",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "GURI",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "GX",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "GY10",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "GY20",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "GY30",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "GY80",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "H111",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "H202",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "H204",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "H207",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "H25A",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "H25B",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "H25C",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "H40",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "HA31",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "HA4T",
+        "categoryLabel": "E"
+    },
+    {
+        "icao": "HAHU",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "HAR",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "HAWK",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "HB21",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "HB23",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "HB3",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "HCAT",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "HD34",
+        "categoryLabel": "D"
+    },
+    {
+        "icao": "HDJT",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "HEAD",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "HERN",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "HF20",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "HI27",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "HIGH",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "HIND",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "HL2",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "HLD4",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "HM38",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "HN70",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "HORN",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "HORZ",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "HPZL",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "HR10",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "HR20",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "HRNT",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "HROC",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "HRON",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "HRYA",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "HT16",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "HT2",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "HT32",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "HT34",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "HT36",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "HT40",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "HU1",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "HU2",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "HUML",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "HUMM",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "HUNT",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "HURI",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "HURK",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "HUSK",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "HYPR",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "I103",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "I114",
+        "categoryLabel": "E"
+    },
+    {
+        "icao": "I115",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "I11B",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "I153",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "I15B",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "I16",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "I22",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "I23",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "I3",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "I66",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "I828",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "IA46",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "IA50",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "IA51",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "IA58",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "IA63",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "IFUR",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "IL14",
+        "categoryLabel": "E"
+    },
+    {
+        "icao": "IL18",
+        "categoryLabel": "D"
+    },
+    {
+        "icao": "IL28",
+        "categoryLabel": "E"
+    },
+    {
+        "icao": "IL38",
+        "categoryLabel": "D"
+    },
+    {
+        "icao": "IL62",
+        "categoryLabel": "C"
+    },
+    {
+        "icao": "IL76",
+        "categoryLabel": "C"
+    },
+    {
+        "icao": "IL86",
+        "categoryLabel": "C"
+    },
+    {
+        "icao": "IL96",
+        "categoryLabel": "B"
+    },
+    {
+        "icao": "IMPU",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "INCQ",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "INEC",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "INEX",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "ION",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "IP06",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "IP10",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "IP26",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "IP6A",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "IPAN",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "IR21",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "IR22",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "IR23",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "IR24",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "IR25",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "IR27",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "IR28",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "IR31",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "IR46",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "IR99",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "IS28",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "ISAT",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "ISPT",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "J1",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "J10",
+        "categoryLabel": "E"
+    },
+    {
+        "icao": "J177",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "J2",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "J20",
+        "categoryLabel": "E"
+    },
+    {
+        "icao": "J3",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "J300",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "J328",
+        "categoryLabel": "E"
+    },
+    {
+        "icao": "J4",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "J5",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "J8A",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "J8B",
+        "categoryLabel": "E"
+    },
+    {
+        "icao": "JAB2",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "JAB4",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "JABI",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "JACE",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "JAGR",
+        "categoryLabel": "E"
+    },
+    {
+        "icao": "JAJ5",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "JAJ6",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "JANU",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "JARO",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "JAST",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "JB15",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "JC01",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "JC02",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "JCOM",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "JCRU",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "JD2",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "JDOE",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "JFOX",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "JH7",
+        "categoryLabel": "E"
+    },
+    {
+        "icao": "JK05",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "JL9",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "JN76",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "JPM1",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "JPRO",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "JRC1",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "JS1",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "JS20",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "JS3",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "JS31",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "JS32",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "JS41",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "JSQA",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "JSX",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "JT2",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "JU52",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "JUN1",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "JUN2",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "JUNR",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "JUPI",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "K250",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "K35E",
+        "categoryLabel": "C"
+    },
+    {
+        "icao": "K35R",
+        "categoryLabel": "C"
+    },
+    {
+        "icao": "K50",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "K51",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "K8",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "KAFI",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "KAK1",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "KAK3",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "KAT3",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "KATB",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "KATR",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "KC2",
+        "categoryLabel": "C"
+    },
+    {
+        "icao": "KE3",
+        "categoryLabel": "C"
+    },
+    {
+        "icao": "KEHA",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "KELA",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "KELD",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "KERO",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "KEST",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "KFAB",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "KFAS",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "KFIR",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "KIS2",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "KIS4",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "KITI",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "KIWI",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "KK60",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "KL07",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "KL10",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "KL25",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "KL35",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "KLBR",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "KM2",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "KNTW",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "KODI",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "KOLL",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "KP2",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "KP5",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "KR1",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "KR2",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "KR21",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "KR30",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "KR31",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "KR34",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "KRAG",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "KRAH",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "KRIC",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "KSTK",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "KT1",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "KTOO",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "KZ2",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "KZ3",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "KZ4",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "KZ7",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "KZ8",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "L10",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "L101",
+        "categoryLabel": "C"
+    },
+    {
+        "icao": "L11",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "L11E",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "L12",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "L13",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "L13M",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "L13S",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "L14",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "L15",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "L159",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "L18",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "L181",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "L188",
+        "categoryLabel": "E"
+    },
+    {
+        "icao": "L200",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "L29",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "L29A",
+        "categoryLabel": "E"
+    },
+    {
+        "icao": "L29B",
+        "categoryLabel": "E"
+    },
+    {
+        "icao": "L37",
+        "categoryLabel": "E"
+    },
+    {
+        "icao": "L380",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "L39",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "L40",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "L410",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "L5",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "L59",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "L60",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "L610",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "L70",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "L8",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "L90",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "LA60",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "LA6T",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "LACO",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "LAE1",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "LAKR",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "LAKX",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "LANC",
+        "categoryLabel": "E"
+    },
+    {
+        "icao": "LARK",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "LAST",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "LBUG",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "LCA",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "LCB",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "LCR",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "LEG2",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "LEGD",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "LEOP",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "LESP",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "LEVI",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "LGEZ",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "LH10",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "LIBE",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "LION",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "LJ23",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "LJ24",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "LJ25",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "LJ28",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "LJ31",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "LJ35",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "LJ40",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "LJ45",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "LJ55",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "LJ60",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "LJ70",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "LJ75",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "LJ85",
+        "categoryLabel": "E"
+    },
+    {
+        "icao": "LK17",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "LK19",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "LK20",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "LM5",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "LM5X",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "LM7",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "LMK1",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "LN27",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "LNC2",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "LNC4",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "LNCE",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "LNP4",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "LNT4",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "LOCA",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "LOVE",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "LP1",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "LS10",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "LS2",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "LS8",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "LS9",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "LSTR",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "LTNG",
+        "categoryLabel": "E"
+    },
+    {
+        "icao": "LUL5",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "LUL6",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "LUL7",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "LUL8",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "LV51",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "LW20",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "LW40",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "LWIN",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "LX32",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "LX34",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "LXR",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "LYSA",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "M10",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "M10F",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "M10R",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "M101",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "M106",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "M108",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "M110",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "M15",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "M17",
+        "categoryLabel": "D"
+    },
+    {
+        "icao": "M18",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "M18T",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "M2",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "M200",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "M203",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "M20P",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "M20T",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "M21",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "M212",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "M22",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "M24",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "M26",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "M28",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "M2HK",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "M308",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "M326",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "M339",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "M345",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "M346",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "M360",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "M4",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "M404",
+        "categoryLabel": "E"
+    },
+    {
+        "icao": "M5",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "M55",
+        "categoryLabel": "D"
+    },
+    {
+        "icao": "M6",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "M600",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "M7",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "M7T",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "M8",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "M9",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "MA1",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "MA5",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "MA60",
+        "categoryLabel": "E"
+    },
+    {
+        "icao": "MA6H",
+        "categoryLabel": "E"
+    },
+    {
+        "icao": "MAGC",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "MAGI",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "MAGN",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "MAJR",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "MAKO",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "MAMB",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "MAME",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "MAVR",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "MC01",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "MC10",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "MC23",
+        "categoryLabel": "D"
+    },
+    {
+        "icao": "MC45",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "MC90",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "MCOU",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "MCOY",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "MCR1",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "MCR4",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "MCRR",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "MCUL",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "MD11",
+        "categoryLabel": "C"
+    },
+    {
+        "icao": "MD3",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "MD3R",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "MD81",
+        "categoryLabel": "D"
+    },
+    {
+        "icao": "MD82",
+        "categoryLabel": "D"
+    },
+    {
+        "icao": "MD83",
+        "categoryLabel": "D"
+    },
+    {
+        "icao": "MD87",
+        "categoryLabel": "D"
+    },
+    {
+        "icao": "MD88",
+        "categoryLabel": "D"
+    },
+    {
+        "icao": "MD90",
+        "categoryLabel": "D"
+    },
+    {
+        "icao": "ME08",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "ME09",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "ME62",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "MEAD",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "MEL2",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "MERK",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "MESS",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "METR",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "MEXP",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "MF10",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "MF17",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "MG15",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "MG17",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "MG19",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "MG21",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "MG23",
+        "categoryLabel": "E"
+    },
+    {
+        "icao": "MG25",
+        "categoryLabel": "E"
+    },
+    {
+        "icao": "MG29",
+        "categoryLabel": "E"
+    },
+    {
+        "icao": "MG31",
+        "categoryLabel": "E"
+    },
+    {
+        "icao": "MG44",
+        "categoryLabel": "E"
+    },
+    {
+        "icao": "MGAT",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "MGIC",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "MGNM",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "MH02",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "MH46",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "MICO",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "MIDR",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "MIMP",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "MIMU",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "MIR2",
+        "categoryLabel": "E"
+    },
+    {
+        "icao": "MIRA",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "MITE",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "MJ10",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "MJ12",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "MJ1H",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "MJ2",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "MJ3",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "MJ4",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "MJ5",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "MJ53",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "MJ55",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "MJ7",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "MJ77",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "MJ8",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "MJ80",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "MJ9",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "MJ90",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "MLER",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "MMAC",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "MMUT",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "MNEX",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "MOCU",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "MOGO",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "MOL1",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "MONA",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "MONI",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "MOR2",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "MOSP",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "MOSQ",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "MOTO",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "MP02",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "MP20",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "MR25",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "MR35",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "MR3T",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "MRAI",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "MRAM",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "MRF1",
+        "categoryLabel": "E"
+    },
+    {
+        "icao": "MRJ7",
+        "categoryLabel": "E"
+    },
+    {
+        "icao": "MRJ9",
+        "categoryLabel": "E"
+    },
+    {
+        "icao": "MRTN",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "MS1",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "MS18",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "MS23",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "MS25",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "MS30",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "MS31",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "MS73",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "MS76",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "MSAI",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "MSQ2",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "MT2",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "MU2",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "MU23",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "MU30",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "MUS2",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "MVN1",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "MVRK",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "MX10",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "MX1T",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "MX2",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "MX58",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "MX65",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "MX80",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "MXS",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "MY12",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "MY13",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "MYA4",
+        "categoryLabel": "C"
+    },
+    {
+        "icao": "MYS4",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "N110",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "N120",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "N250",
+        "categoryLabel": "E"
+    },
+    {
+        "icao": "N260",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "N262",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "N3",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "N320",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "N340",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "N3N",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "N5",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "NAL2",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "NAVI",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "NC85",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "ND1T",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "NDAC",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "NDAT",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "NDIC",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "NG4",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "NG5",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "NHCO",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "NI28",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "NIBB",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "NIMB",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "NIPR",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "NM5",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "NMCU",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "NNJA",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "NOMA",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "NORA",
+        "categoryLabel": "D"
+    },
+    {
+        "icao": "NORS",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "NPOR",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "NSTR",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "NT10",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "NXT",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "O1",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "O3",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "OM1",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "OMAG",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "OMGA",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "OMLA",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "ONE",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "ONEX",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "OPCA",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "OSCR",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "OUDE",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "OVOD",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "OZZI",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "P06T",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "P1",
+        "categoryLabel": "D"
+    },
+    {
+        "icao": "P1HH",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "P100",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "P130",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "P148",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "P149",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "P180",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "P18T",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "P19",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "P2",
+        "categoryLabel": "E"
+    },
+    {
+        "icao": "P208",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "P210",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "P212",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "P220",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "P230",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "P27",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "P270",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "P28A",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "P28B",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "P28R",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "P28S",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "P28T",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "P28U",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "P3",
+        "categoryLabel": "E"
+    },
+    {
+        "icao": "P32R",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "P32T",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "P337",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "P38",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "P39",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "P40",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "P46T",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "P47",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "P4Y",
+        "categoryLabel": "D"
+    },
+    {
+        "icao": "P50",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "P51",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "P57",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "P60",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "P61",
+        "categoryLabel": "E"
+    },
+    {
+        "icao": "P63",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "P66P",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "P66T",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "P68",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "P68T",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "P70",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "P750",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "P8",
+        "categoryLabel": "D"
+    },
+    {
+        "icao": "P80",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "P82",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "PA11",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "PA12",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "PA14",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "PA15",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "PA16",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "PA17",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "PA18",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "PA20",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "PA22",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "PA23",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "PA24",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "PA25",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "PA27",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "PA30",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "PA31",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "PA32",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "PA34",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "PA36",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "PA38",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "PA44",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "PA46",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "PA47",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "PACE",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "PAGO",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "PANT",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "PAR1",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "PAR4",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "PARL",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "PAT2",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "PAT4",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "PAUL",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "PAY1",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "PAY2",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "PAY3",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "PAY4",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "PC12",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "PC21",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "PC24",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "PC6P",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "PC6T",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "PC7",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "PC9",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "PDIG",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "PECR",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "PEGA",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "PEGZ",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "PELI",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "PEMB",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "PETL",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "PGEE",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "PGK1",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "PHNX",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "PIAE",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "PIAT",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "PICO",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "PILL",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "PINO",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "PIPA",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "PISI",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "PIT4",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "PITA",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "PITE",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "PIVE",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "PIVI",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "PK11",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "PK15",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "PK18",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "PK19",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "PK20",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "PK21",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "PK23",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "PK25",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "PKAN",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "PL1",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "PL12",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "PL2",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "PL4",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "PL9",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "PLUS",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "PNR2",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "PNR3",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "PNR4",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "PO2",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "PO60",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "POLI",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "PP2",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "PP3",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "PPRO",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "PRBP",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "PRBR",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "PRCE",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "PREN",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "PRET",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "PREX",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "PRIM",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "PRM1",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "PROC",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "PROT",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "PROW",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "PRPR",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "PRTS",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "PRXT",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "PSTM",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "PT21",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "PT22",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "PT70",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "PT80",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "PTMS",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "PTRL",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "PTS1",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "PTS2",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "PTSS",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "PUL6",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "PULS",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "PUP",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "PURS",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "PUSH",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "PW4",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "PZ01",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "PZ02",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "PZ04",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "PZ05",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "PZ06",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "PZ12",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "PZ26",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "PZ3T",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "PZ4M",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "PZ6T",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "Q01",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "Q1",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "Q4",
+        "categoryLabel": "None"
+    },
+    {
+        "icao": "Q5",
+        "categoryLabel": "E"
+    },
+    {
+        "icao": "Q9",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "Q25",
+        "categoryLabel": "None"
+    },
+    {
+        "icao": "QAIL",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "QALT",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "QEST",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "QIC2",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "QR01",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "QUAS",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "QUIC",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "R100",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "R109",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "R11",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "R135",
+        "categoryLabel": "C"
+    },
+    {
+        "icao": "R185",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "R200",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "R300",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "R721",
+        "categoryLabel": "D"
+    },
+    {
+        "icao": "R722",
+        "categoryLabel": "D"
+    },
+    {
+        "icao": "R90F",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "R90R",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "R90T",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "RA14",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "RA17",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "RAID",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "RAIL",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "RALL",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "RANG",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "RARO",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "RAV3",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "RAV5",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "RAZM",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "RBEL",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "RC70",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "RCAL",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "RD03",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "RD20",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "RDH2",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "RELI",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "RENE",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "RF10",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "RF3",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "RF4",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "RF47",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "RF5",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "RF6",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "RF9",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "RFAL",
+        "categoryLabel": "E"
+    },
+    {
+        "icao": "RGNT",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "RJ03",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "RJ1H",
+        "categoryLabel": "E"
+    },
+    {
+        "icao": "RJ70",
+        "categoryLabel": "E"
+    },
+    {
+        "icao": "RJ85",
+        "categoryLabel": "E"
+    },
+    {
+        "icao": "RK5",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "RLU1",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "RNGR",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "ROAR",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "RODS",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "ROND",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "ROSE",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "RS12",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "RS18",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "RS20",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "RS21",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "RTA4",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "RUBI",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "RV10",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "RV12",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "RV14",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "RV3",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "RV4",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "RV4T",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "RV6",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "RV7",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "RV8",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "RV9",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "RW19",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "RW20",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "RW22",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "RW26",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "RW3",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "RYSA",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "RYST",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "S05F",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "S05R",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "S1",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "S10",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "S108",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "S10S",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "S11",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "S122",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "S12S",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "S15S",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "S15U",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "S200",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "S208",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "S21",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "S211",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "S223",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "S22T",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "S2P",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "S2T",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "S3",
+        "categoryLabel": "E"
+    },
+    {
+        "icao": "S37",
+        "categoryLabel": "E"
+    },
+    {
+        "icao": "S4",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "S45",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "S450",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "S51D",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "S6",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "S601",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "S900",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "SA02",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "SA03",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "SA04",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "SA05",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "SA10",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "SA11",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "SA2",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "SA3",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "SA30",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "SA37",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "SA38",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "SA50",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "SA6",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "SA6E",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "SA7",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "SA70",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "SA75",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "SA8T",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "SAB2",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "SABA",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "SACE",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "SACR",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "SAFF",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "SAH1",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "SAKO",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "SALB",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "SAM",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "SAPH",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "SASH",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "SASP",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "SASY",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "SATA",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "SAVA",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "SAVG",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "SB05",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "SB20",
+        "categoryLabel": "E"
+    },
+    {
+        "icao": "SB29",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "SB32",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "SB35",
+        "categoryLabel": "E"
+    },
+    {
+        "icao": "SB37",
+        "categoryLabel": "E"
+    },
+    {
+        "icao": "SB39",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "SB7",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "SB91",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "SBD",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "SBLS",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "SBM3",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "SBOY",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "SBR1",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "SBR2",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "SC01",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "SC7",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "SCAM",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "SCEP",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "SCOM",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "SCRO",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "SCTR",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "SCUB",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "SCW1",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "SD26",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "SD4",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "SDUS",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "SE5A",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "SE5R",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "SERA",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "SF2",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "SF23",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "SF24",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "SF25",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "SF27",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "SF28",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "SF31",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "SF32",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "SF34",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "SF35",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "SF36",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "SF50",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "SG37",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "SG70",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "SG92",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "SGRA",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "SGUP",
+        "categoryLabel": "D"
+    },
+    {
+        "icao": "SH33",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "SH36",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "SHAC",
+        "categoryLabel": "D"
+    },
+    {
+        "icao": "SHAW",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "SHEK",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "SHER",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "SHOE",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "SHOP",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "SHOR",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "SHRK",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "SHRT",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "SIDE",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "SIGM",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "SILH",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "SIR2",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "SIRA",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "SJ30",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "SK10",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "SK70",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "SKAR",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "SKRA",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "SKYC",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "SKYO",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "SKYR",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "SL1",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "SL39",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "SL90",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "SLCH",
+        "categoryLabel": "Special"
+    },
+    {
+        "icao": "SLG2",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "SLG4",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "SLK3",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "SLK5",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "SM01",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "SM19",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "SM20",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "SM60",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "SM92",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "SMB2",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "SNAP",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "SNGY",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "SNOS",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "SNS2",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "SNS7",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "SNS9",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "SNTA",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "SOK2",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "SOKL",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "SOL1",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "SOL2",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "SOLI",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "SONX",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "SORA",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "SP20",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "SP33",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "SP55",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "SP6E",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "SP7",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "SP91",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "SP95",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "SPA2",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "SPAR",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "SPC2",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "SPDR",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "SPEL",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "SPIR",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "SPIT",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "SPOR",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "SPR2",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "SPRT",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "SPST",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "SPUP",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "SQ2T",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "SQES",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "SR01",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "SR20",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "SR22",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "SRAC",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "SRAI",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "SRAS",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "SS2P",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "SS2T",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "SSAB",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "ST1",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "ST3",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "ST4",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "ST6",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "ST10",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "ST30",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "ST60",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "ST75",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "ST87",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "STAL",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "STAR",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "STAT",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "STCH",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "STFF",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "STIL",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "STLN",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "STOR",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "STR2",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "STRA",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "STRE",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "STRI",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "STRK",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "STRM",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "STST",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "SU17",
+        "categoryLabel": "E"
+    },
+    {
+        "icao": "SU24",
+        "categoryLabel": "E"
+    },
+    {
+        "icao": "SU25",
+        "categoryLabel": "E"
+    },
+    {
+        "icao": "SU26",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "SU27",
+        "categoryLabel": "E"
+    },
+    {
+        "icao": "SU29",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "SU31",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "SU38",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "SU57",
+        "categoryLabel": "E"
+    },
+    {
+        "icao": "SU7",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "SU80",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "SU95",
+        "categoryLabel": "E"
+    },
+    {
+        "icao": "SUBA",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "SUNB",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "SUNV",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "SURU",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "SUSO",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "SV4",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "SVNH",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "SW18",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "SW2",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "SW3",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "SW4",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "SWAK",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "SWAT",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "SWIF",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "SWIN",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "SWOR",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "SX30",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "SYMP",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "SYNC",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "SZ45",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "SZ9M",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "T1",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "T10",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "T101",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "T134",
+        "categoryLabel": "E"
+    },
+    {
+        "icao": "T154",
+        "categoryLabel": "D"
+    },
+    {
+        "icao": "T160",
+        "categoryLabel": "Special"
+    },
+    {
+        "icao": "T18",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "T19",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "T2",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "T204",
+        "categoryLabel": "C"
+    },
+    {
+        "icao": "T206",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "T210",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "T211",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "T22M",
+        "categoryLabel": "C"
+    },
+    {
+        "icao": "T250",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "T28",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "T30",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "T33",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "T334",
+        "categoryLabel": "E"
+    },
+    {
+        "icao": "T34P",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "T34T",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "T35",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "T37",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "T38",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "T4",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "T40",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "T411",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "T415",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "T419",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "T5",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "T50",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "T51",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "T6",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "T7",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "TA15",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "TA20",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "TAA1",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "TAGO",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "TAIL",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "TAMP",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "TARO",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "TARR",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "TAYA",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "TAYB",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "TAYD",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "TB05",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "TB20",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "TB21",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "TB30",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "TB31",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "TBM",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "TBM7",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "TBM8",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "TBM9",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "TBR3",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "TC2",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "TCAT",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "TCOU",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "TD1",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "TD2",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "TD3",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "TIAD",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "TERM",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "TERR",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "TEX2",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "TEXA",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "TF19",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "TF21",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "TF22",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "TFK2",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "TFOC",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "TFUN",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "TGRS",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "TIJU",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "TIPB",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "TJET",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "TL20",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "TL30",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "TLEG",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "TM5",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "TMOT",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "TMUS",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "TNAV",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "TNDR",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "TOBA",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "TOOT",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "TOR",
+        "categoryLabel": "E"
+    },
+    {
+        "icao": "TOUR",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "TOXO",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "TP40",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "TPIL",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "TPIN",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "TR20",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "TR26",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "TR55",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "TRAL",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "TRAP",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "TRBA",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "TRDO",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "TRF1",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "TRIM",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "TRIS",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "TRMA",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "TRWN",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "TS11",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "TS14",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "TS1J",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "TS8",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "TSPT",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "TSTN",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "TTRS",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "TTWO",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "TU16",
+        "categoryLabel": "D"
+    },
+    {
+        "icao": "TU22",
+        "categoryLabel": "C"
+    },
+    {
+        "icao": "TU95",
+        "categoryLabel": "C"
+    },
+    {
+        "icao": "TUCA",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "TUL3",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "TUTR",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "TVL4",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "TVLB",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "TWEN",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "TWIR",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "TWSP",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "TZRV",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "U15",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "U2",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "U21",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "U22",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "UBAT",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "UF10",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "UF13",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "UL10",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "UL20",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "UL2F",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "UL45",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "ULPA",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "UNIV",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "URRA",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "UT60",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "UT65",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "UT66",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "UT75",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "UU12",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "V1",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "V10",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "V221",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "V252",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "V322",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "V351",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "V452",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "V8SP",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "VAH1",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "VALI",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "VAMP",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "VANT",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "VAUT",
+        "categoryLabel": "E"
+    },
+    {
+        "icao": "VELO",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "VELT",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "VENT",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "VEZE",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "VF2",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "VF35",
+        "categoryLabel": "E"
+    },
+    {
+        "icao": "VF60",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "VG3T",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "VGUL",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "VIMA",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "VIPJ",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "VIPR",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "VISI",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "VIVA",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "VIX",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "VIXN",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "VK3P",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "VK3T",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "VL3",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "VM1",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "VNOM",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "VNTR",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "VO10",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "VOL2",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "VP2",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "VR7",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "VR20",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "VSON",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "VTOR",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "VTRA",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "VTUR",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "VUT1",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "VVIG",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "VW10",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "VWIT",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "W11",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "W201",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "W62T",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "WA40",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "WA41",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "WA42",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "WA50",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "WA80",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "WAC9",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "WACA",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "WACC",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "WACD",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "WACE",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "WACF",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "WACG",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "WACM",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "WACN",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "WACO",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "WACT",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "WAIX",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "WB57",
+        "categoryLabel": "E"
+    },
+    {
+        "icao": "WBOO",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "WCAT",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "WDEX",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "WF4U",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "WFOC",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "WFUR",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "WH1",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "WHAT",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "WHIL",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "WHIS",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "WHIT",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "WHK2",
+        "categoryLabel": "TBC"
+    },
+    {
+        "icao": "WHKN",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "WICH",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "WILT",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "WIND",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "WINE",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "WIRR",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "WISP",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "WM2",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "WOPU",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "WP40",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "WP47",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "WS22",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "WSP",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "WT9",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "WW1",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "WW23",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "WW24",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "WZER",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "X4",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "X47B",
+        "categoryLabel": "None"
+    },
+    {
+        "icao": "XA41",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "XA42",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "XA85",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "XAIR",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "XL2",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "XNOS",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "Y11",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "Y112",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "Y12",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "Y12F",
+        "categoryLabel": "TBC"
+    },
+    {
+        "icao": "Y130",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "Y18T",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "Y20",
+        "categoryLabel": "TBC"
+    },
+    {
+        "icao": "YAK3",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "YAK9",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "YALE",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "YARR",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "YAST",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "YC12",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "YK11",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "YK12",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "YK18",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "YK28",
+        "categoryLabel": "E"
+    },
+    {
+        "icao": "YK30",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "YK38",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "YK40",
+        "categoryLabel": "E"
+    },
+    {
+        "icao": "YK42",
+        "categoryLabel": "D"
+    },
+    {
+        "icao": "YK50",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "YK52",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "YK53",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "YK54",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "YK55",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "YK58",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "YL15",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "YS11",
+        "categoryLabel": "E"
+    },
+    {
+        "icao": "YUKN",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "YUNO",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "YURO",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "Z22",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "Z26",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "Z37P",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "Z37T",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "Z42",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "Z43",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "Z50",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "ZEP2",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "ZEPH",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "ZERO",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "ZIA",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "ZIU",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "ZULU",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "WH4",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "B609",
+        "categoryLabel": "TBC"
+    },
+    {
+        "icao": "BE12",
+        "categoryLabel": "E"
+    },
+    {
+        "icao": "BER2",
+        "categoryLabel": "D"
+    },
+    {
+        "icao": "BER4",
+        "categoryLabel": "D"
+    },
+    {
+        "icao": "CAT",
+        "categoryLabel": "E"
+    },
+    {
+        "icao": "CL2P",
+        "categoryLabel": "E"
+    },
+    {
+        "icao": "CL2T",
+        "categoryLabel": "E"
+    },
+    {
+        "icao": "MARS",
+        "categoryLabel": "D"
+    },
+    {
+        "icao": "SAND",
+        "categoryLabel": "D"
+    },
+    {
+        "icao": "SH5",
+        "categoryLabel": "D"
+    },
+    {
+        "icao": "U16",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "US1",
+        "categoryLabel": "D"
+    },
+    {
+        "icao": "US2",
+        "categoryLabel": "D"
+    },
+    {
+        "icao": "V22",
+        "categoryLabel": "E"
+    },
+    {
+        "icao": "V280",
+        "categoryLabel": "TBC"
+    },
+    {
+        "icao": "EL10",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "M36J",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "NXTE",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "B23E",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "BR23",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "BR8",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "A32E",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "A32P",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "A109",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "A119",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "A129",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "A139",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "A149",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "A169",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "A189",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "A2RT",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "A600",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "AC31",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "AC33",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "ALH",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "ALO2",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "ALO3",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "ANST",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "AS32",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "AS3B",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "AS50",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "AS55",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "AS65",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "B06",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "B06T",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "B105",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "B150",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "B212",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "B214",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "B222",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "B230",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "B305",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "B407",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "B412",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "B427",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "B429",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "B430",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "B47G",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "B47J",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "B47T",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "B505",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "B525",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "BABY",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "BK17",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "BRB2",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "BSTP",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "CH12",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "CH14",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "CH7",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "CHIF",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "COMU",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "DJIN",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "DRAG",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "DYH2",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "EC20",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "EC25",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "EC30",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "EC35",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "EC45",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "EC55",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "EC75",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "EGL3",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "EH10",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "ELTO",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "EN28",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "EN48",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "ES11",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "EXEC",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "EXEJ",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "EXPL",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "FH11",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "FREL",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "G2CA",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "GAZL",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "H12T",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "H160",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "H2",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "H21",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "H269",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "H43A",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "H43B",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "H46",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "H47",
+        "categoryLabel": "E"
+    },
+    {
+        "icao": "H500",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "H53",
+        "categoryLabel": "E"
+    },
+    {
+        "icao": "H53S",
+        "categoryLabel": "E"
+    },
+    {
+        "icao": "H60",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "H64",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "HSMT",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "HUCO",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "HX2",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "IS2",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "JAG2",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "K126",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "K209",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "K226",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "KA25",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "KA26",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "KA27",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "KA50",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "KA52",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "KA62",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "KH4",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "KMAX",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "LAMA",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "LCH",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "LR2T",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "LYNX",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "M74",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "MD52",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "MD60",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "MH20",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "MI10",
+        "categoryLabel": "D"
+    },
+    {
+        "icao": "MI14",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "MI2",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "MI24",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "MI26",
+        "categoryLabel": "D"
+    },
+    {
+        "icao": "MI28",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "MI34",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "MI38",
+        "categoryLabel": "E"
+    },
+    {
+        "icao": "MI4",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "MI6",
+        "categoryLabel": "D"
+    },
+    {
+        "icao": "MI8",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "NA40",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "NH90",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "OH1",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "PHIL",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "PSW4",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "PUMA",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "R22",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "R4",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "R44",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "R66",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "RMOU",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "RP1",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "RVAL",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "S274",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "S278",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "S285",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "S330",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "S360",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "S434",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "S51",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "S52",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "S55P",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "S55T",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "S58P",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "S58T",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "S61",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "S61R",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "S62",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "S64",
+        "categoryLabel": "E"
+    },
+    {
+        "icao": "S65C",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "S76",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "S92",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "S97",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "SCOR",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "SCOU",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "SH4",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "SH09",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "SUCO",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "SYCA",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "TIGR",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "UH1",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "UH12",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "UH1Y",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "ULTS",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "V500",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "W3",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "WASP",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "WESX",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "WG30",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "WZ10",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "X2",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "X3",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "X49",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "YNHL",
+        "categoryLabel": "F"
+    },
+    {
+        "icao": "ZA6",
+        "categoryLabel": "F"
+    }
+]
