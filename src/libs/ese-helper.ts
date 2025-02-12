@@ -5,7 +5,7 @@ import { Procedure } from "../models/procedure";
 import { system } from "../services/system";
 import { geoHelper } from "./geo-helper";
 import * as turf from "@turf/turf";
-import { fromCartesian, toCartesian } from "../services/projection";
+import { toMercator, toWgs84 } from "@turf/projection";
 
 interface ParsedEseContent {
   position: any[];
@@ -211,7 +211,7 @@ export class EseHelper {
 
       const circle = turf.circle(turf.point([geo.lon, geo.lat]), radius, 10, "nauticalmiles");
       const circlePoints = circle.geometry.coordinates[0].map((coord: number[]) => {
-        const cartesian = toCartesian([coord[1], coord[0]]);
+        const cartesian = toMercator([coord[1], coord[0]]);
         if (!cartesian[0] || !cartesian[1]) {
           console.log("Invalid circle point:", { line, geo, coord, cartesian });
         }
@@ -240,7 +240,7 @@ export class EseHelper {
       return null;
     }
 
-    const toCartesian = fromCartesian([Number(navaid.lon), Number(navaid.lat)]);
+    const toCartesian = toWgs84([Number(navaid.lon), Number(navaid.lat)]);
     return { lat: toCartesian[1], lon: toCartesian[0] };
   }
 

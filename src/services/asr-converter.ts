@@ -1,7 +1,7 @@
 import { readFileSync, writeFileSync, readdirSync, statSync, mkdirSync, existsSync } from "fs";
 import { join, parse, relative } from "path";
-import { fromCartesian, toCartesian } from "./projection";
 import * as turf from "@turf/turf";
+import { toMercator } from "@turf/projection";
 import { NonNullChain } from "typescript";
 
 interface StpItem {
@@ -106,12 +106,12 @@ class AsrFolderConverter {
 
         const [lon, lat] = center.geometry.coordinates;
 
-        const [minX, minY] = toCartesian([minLon, minLat]);
-        const [maxX, maxY] = toCartesian([maxLon, maxLat]);
+        const [minX, minY] = toMercator([minLon, minLat]);
+        const [maxX, maxY] = toMercator([maxLon, maxLat]);
 
         windowArea = { minX, minY, maxX, maxY };
 
-        const [x, y] = toCartesian([lon, lat]);
+        const [x, y] = toMercator([lon, lat]);
 
         if (!centerPoint) {
           centerPoint = { x, y };
