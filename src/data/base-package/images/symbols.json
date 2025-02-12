@@ -1,0 +1,32 @@
+{
+    "ground_modec.png": {
+        "x": 0,
+        "y": 0,
+        "width": 24,
+        "height": 24
+    },
+    "airborne_modec_assumed.png": {
+        "x": 0,
+        "y": 24,
+        "width": 16,
+        "height": 16
+    },
+    "airborne_modec_not_concerned.png": {
+        "x": 16,
+        "y": 24,
+        "width": 16,
+        "height": 16
+    },
+    "ground_standby.png": {
+        "x": 24,
+        "y": 0,
+        "width": 16,
+        "height": 16
+    },
+    "ground_trail.png": {
+        "x": 32,
+        "y": 16,
+        "width": 16,
+        "height": 16
+    }
+  }

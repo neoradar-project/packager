@@ -7,7 +7,7 @@ class DistributionManager {
   private readonly basePackagePath = "src/data/base-package";
 
   async buildPackage(neoRadarPath: string, data: InputManifest): Promise<void> {
-    const outputPath = path.join(data.outputDir, `${data.id}-Package`);
+    const outputPath = path.join(data.outputDir, `${data.id}-package`);
     const profilesPath = path.join(outputPath, "profiles");
     const packagePath = path.join(outputPath, data.id);
 

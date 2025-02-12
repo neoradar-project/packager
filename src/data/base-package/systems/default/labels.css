@@ -1,0 +1,19 @@
+.label-on-ground.label-departure .label-row  {
+  background-color: blue;
+}
+
+.label-on-ground.label-arrival .label-row  {
+  background-color: red;
+}
+
+.label-on-ground.label-departure.label-state-assumed .label-row  {
+  background-color: green;
+}
+
+.label-on-ground.label-arrival.label-state-assumed .label-row  {
+  background-color: darkgoldenrod;
+}
+
+.label-on-ground:not(.label-arrival):not(.label-departure) .label-row  {
+  background-color: grey;
+}

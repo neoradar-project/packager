@@ -47,7 +47,7 @@ async function startJobs() {
     if (!data.asrPath) {
       console.log("No ASR directory provided, skipping ASR conversion");
     } else {
-      const path = `${data.outputDir}/${data.id}-Package/profiles`;
+      const path = `${data.outputDir}/${data.id}-package/profiles`;
       await system.deleteDirectory(path);
       AsrFolderConverter.convertFolder(data.asrPath, path);
     }

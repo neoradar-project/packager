@@ -1,0 +1,114 @@
+{
+  "$schema": "https://raw.githubusercontent.com/neoradar-project/schemas/main/systems/labels.schema.json",
+  "ground": {
+    "default": [
+      [
+        {
+          "itemName": "callsign",
+          "fontSize": 14,
+          "fontWeight": "bold"
+        },
+        {
+          "itemName": "type",
+          "placeholder": "ATYPE"
+        }
+      ],
+      [
+        {
+          "itemName": "altitude",
+          "padWithZeroLeft": 4,
+          "truncate": [0, 3]
+        },
+        {
+          "itemName": "groundSpeed",
+          "padWithZeroLeft": 3
+        },
+        {
+          "itemName": "trackHeading",
+          "padWithZeroLeft": 3,
+          "showOnlyInDetailed": true
+        }
+      ],
+      [
+        {
+          "itemName": "modeA",
+          "padWithZeroLeft": 4,
+          "showOnlyInDetailed": true
+        }
+      ]
+    ],
+    "arrival": [
+      [
+        {
+          "itemName": "callsign"
+        },
+        {
+          "itemName": "type",
+          "placeholder": "ATYPE"
+        }
+      ],
+      [
+        {
+          "itemName": "altitude",
+          "padWithZeroLeft": 4,
+          "truncate": [0, 3]
+        },
+        {
+          "itemName": "groundSpeed",
+          "padWithZeroLeft": 3
+        },
+        {
+          "itemName": "trackHeading",
+          "padWithZeroLeft": 3,
+          "showOnlyInDetailed": true
+        }
+      ],
+      [
+        {
+          "itemName": "modeA",
+          "padWithZeroLeft": 4,
+          "showOnlyInDetailed": true
+        }
+      ]
+    ],
+    "departure": [
+      [
+        {
+          "itemName": "callsign"
+        },
+        {
+          "itemName": "type",
+          "placeholder": "ATYPE"
+        }
+      ],
+      [
+        {
+          "itemName": "altitude",
+          "padWithZeroLeft": 4,
+          "truncate": [0, 3]
+        },
+        {
+          "itemName": "groundSpeed",
+          "padWithZeroLeft": 3
+        },
+        {
+          "itemName": "trackHeading",
+          "padWithZeroLeft": 3,
+          "showOnlyInDetailed": true
+        }
+      ],
+      [
+        {
+          "itemName": "modeA",
+          "padWithZeroLeft": 4,
+          "showOnlyInDetailed": true
+        }
+      ]
+    ]
+  },
+  "airborne": {
+    "unconcerned": [],
+    "concerned": [],
+    "assumed": []
+  }
+}

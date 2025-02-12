@@ -1,0 +1,113 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/neoradar-project/schemas/main/systems/labels.schema.json
+ground:
+  default:
+    - - itemName: callsign
+        fontSize: 14
+        fontWeight: bold
+        leftClick: 'callsignMenu'
+      - itemName: acShortType
+        placeholder: ATYPE
+        leftClick: 'fpDialog'
+    - - itemName: altitude
+        padWithZeroLeft: 4
+        truncate:
+          - 0
+          - 3
+        leftClick: 'cfl'
+      - itemName: groundSpeed
+        padWithZeroLeft: 3
+      - itemName: trackHeading
+        padWithZeroLeft: 3
+        showOnlyInDetailed: true
+    - - itemName: squawk
+        padWithZeroLeft: 4
+        showOnlyInDetailed: true
+
+  arrival:
+    - - itemName: callsign
+        fontSize: 14
+        fontWeight: bold
+        leftClick: 'callsignMenu'
+    - - itemName: acShortType
+        placeholder: ATYPE
+      - itemName: squawk
+        padWithZeroLeft: 4
+        showOnlyInDetailed: true
+
+  departure:
+    - - itemName: callsign
+        fontSize: 14
+        fontWeight: bold
+        leftClick: 'callsignMenu'
+      - itemName: acShortType
+        placeholder: ATYPE
+    - - itemName: altitude
+        padWithZeroLeft: 4
+        truncate:
+          - 0
+          - 3
+        leftClick: 'cfl'
+      - itemName: groundSpeed
+        padWithZeroLeft: 3
+      - itemName: trackHeading
+        padWithZeroLeft: 3
+        showOnlyInDetailed: true
+    - - itemName: squawk
+        padWithZeroLeft: 4
+        showOnlyInDetailed: true
+
+airborne:
+  unconcerned:
+    - - itemName: callsign
+        fontSize: 14
+        fontWeight: bold
+        leftClick: 'callsignMenu'
+      - itemName: acShortType
+        placeholder: ATYPE
+        leftClick: 'fpDialog'
+    - - itemName: altitude
+        padWithZeroLeft: 4
+        truncate:
+          - 0
+          - 3
+        leftClick: 'cfl'
+      - itemName: groundSpeed
+        padWithZeroLeft: 3
+      - itemName: squawk
+        padWithZeroLeft: 4
+  assumed:
+    - - itemName: callsign
+        fontSize: 14
+        fontWeight: bold
+        leftClick: 'callsignMenu'
+      - itemName: acShortType
+        placeholder: ATYPE
+        leftClick: 'fpDialog'
+    - - itemName: altitude
+        padWithZeroLeft: 4
+        truncate:
+          - 0
+          - 3
+        leftClick: 'cfl'
+      - itemName: groundSpeed
+        padWithZeroLeft: 3
+      - itemName: squawk
+        padWithZeroLeft: 4
+  concerned:
+    - - itemName: callsign
+        fontSize: 14
+        fontWeight: bold
+        leftClick: 'callsignMenu'
+      - itemName: acShortType
+        placeholder: ATYPE
+        leftClick: 'fpDialog'
+    - - itemName: altitude
+        padWithZeroLeft: 4
+        truncate:
+          - 0
+          - 3
+        leftClick: 'cfl'
+      - itemName: groundSpeed
+        padWithZeroLeft: 3
+      - itemName: squawk
+        padWithZeroLeft: 4

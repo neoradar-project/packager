@@ -1,0 +1,114 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/neoradar-project/schemas/main/systems/lists.schema.json
+---
+- name: DEPARTURE LIST
+  filterExpressions: "$isDep"
+  columns:
+    - name: c/s
+      width: 80
+      tagItem:
+        itemName: callsign
+        color: |
+          =colourAssumed
+          =colourUnconcerned
+          =colourConcerned
+          =colourInboundTransfer
+        leftClick: callsignMenu
+    - name: v
+      width: 15
+      tagItem:
+        itemName: voiceType
+        leftClick: voiceTypeMenu
+        mapping:
+          0: "v"
+          1: "r"
+          2: "t"
+    - name: adep
+      width: 30
+      tagItem:
+        itemName: origin
+        leftClick: fpDialog
+    - name: ades
+      width: 30
+      tagItem:
+        itemName: destination
+        leftClick: fpDialog
+    - name: atyp
+      width: 30
+      tagItem:
+        itemName: acShortType
+        leftClick: fpDialog
+    - name: eobt
+      width: 30
+      tagItem:
+        itemName: eobt
+        padWithZeroLeft: 4
+        leftClick: fpDialog
+    - name: rwy
+      width: 30
+      tagItem:
+        itemName: text
+        value:
+          - =suggestedDepRunwayIfNoAssigned
+          - |
+            &depRunway
+        color:
+          - =suggestedDepRunwayColor
+          - "#1D76E2"
+        leftClick: depRunwayMenu
+    - name: sid
+      width: 80
+      tagItem:
+        itemName: text
+        value:
+          - =suggestedSidIfNoAssigned
+          - |
+            &sid
+        color:
+          - =suggestedSidColor
+          - "#1D76E2"
+        leftClick: sidMenu
+    - name: cfl
+      width: 30
+      tagItem:
+        itemName: clearedFlightLevel
+        placeholder: "--"
+        padWithZeroLeft: 5
+        truncate: [0, 3]
+        leftClick: cfl
+    - name: assr
+      width: 30
+      tagItem:
+        itemName: assignedSquawk
+        placeholder: "----"
+        color: "=incorrectSquawkColor"
+    - name: e
+      width: 10
+      tagItem:
+        itemName: clearanceIssued
+        mapping:
+          0: ":isquare"
+          1: ":isquare-fill"
+        color: "#ffae17"
+        leftClick: toggleClearanceFlag
+    - name: pfl
+      width: 30
+      tagItem:
+        itemName: plannedFlightLevel
+        padWithZeroLeft: 5
+        truncate: [0, 3]
+        leftClick: pfl
+    - name: r
+      width: 10
+      tagItem:
+        itemName: flightRule
+    - name: sts
+      width: 30
+      tagItem:
+        itemName: groundStatus
+        mapping:
+          0: "NOST"
+          1: "STUP"
+          2: "PUSH"
+          3: "TAXI"
+          4: "DEPA"
+        leftClick: groundStatusMenu

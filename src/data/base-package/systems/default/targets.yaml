@@ -1,0 +1,14 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/neoradar-project/schemas/main/systems/targets.schema.json
+targetImageExpression:
+  - "=is_standby_target"
+  - "=is_modec_target"
+targetHistoryTrailImageExpression: "ground_trail.png"
+
+groundHistoryTrailQuantity: 4
+airborneHistoryTrailQuantity: 6
+
+rotateAirborneTargetWithCourse: false
+rotateGroundTargetWithCourse: true
+
+rotateAirborneHistoryTrailWithCourse: false
+rotateGroundHistoryTrailWithCourse: false

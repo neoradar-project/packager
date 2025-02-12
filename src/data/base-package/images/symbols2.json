@@ -1,0 +1,52 @@
+{"frames": [
+
+{
+	"filename": "airborne_modec_assumed.png",
+	"frame": {"x":0,"y":0,"w":16,"h":16},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":16,"h":16},
+	"sourceSize": {"w":16,"h":16}
+},
+{
+	"filename": "airborne_modec_not_concerned.png",
+	"frame": {"x":16,"y":0,"w":16,"h":16},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":16,"h":16},
+	"sourceSize": {"w":16,"h":16}
+},
+{
+	"filename": "ground_modec.png",
+	"frame": {"x":0,"y":16,"w":24,"h":24},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":24,"h":24},
+	"sourceSize": {"w":24,"h":24}
+},
+{
+	"filename": "ground_standby.png",
+	"frame": {"x":0,"y":40,"w":16,"h":16},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":16,"h":16},
+	"sourceSize": {"w":16,"h":16}
+},
+{
+	"filename": "ground_trail.png",
+	"frame": {"x":16,"y":40,"w":16,"h":16},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":16,"h":16},
+	"sourceSize": {"w":16,"h":16}
+}],
+"meta": {
+	"app": "https://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "symbols2.png",
+	"format": "RGBA8888",
+	"size": {"w":32,"h":56},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:5de0ba348e34fefda95945d37b712534:4750e591f9e68b088afc2cb6501e0d61:b46966b53c883816075f4108c8a085eb$"
+}
+}

@@ -26,7 +26,7 @@ class NavdataManager {
 
   public async generateNavdata(packageId: string, namespace: string, eseFilePath: string, outputPath: string): Promise<void> {
     log("generateNavdata");
-    const path = `${outputPath}/${packageId}-Package/${packageId}/datasets`;
+    const path = `${outputPath}/${packageId}-package/${packageId}/datasets`;
 
     const nse: EseDataset = {
       sectorLines: [],
@@ -279,7 +279,7 @@ class NavdataManager {
     nse.sectors = eseProcessedData.sectors;
     nse.sectorLines = eseProcessedData.sectorLines;
 
-    await system.writeFile(`${outputPath}/${packageId}/datasets/nse.json`, JSON.stringify(nse));
+    await system.writeFile(`${outputPath}/${packageId}-package/${packageId}/datasets/nse.json`, JSON.stringify(nse));
   }
 
   private getFeatureName(feature: any): string | null {
@@ -364,7 +364,7 @@ class NavdataManager {
     outputPath: string,
     useSctLabels: boolean = true
   ): Promise<string[]> {
-    const path = `${outputPath}/${packageId}-Package/${packageId}/datasets`;
+    const path = `${outputPath}/${packageId}-package/${packageId}/datasets`;
     await system.deleteDirectory(path);
     let datasets: string[] = [];
 

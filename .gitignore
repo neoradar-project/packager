@@ -20,6 +20,7 @@ report.[0-9]*.[0-9]*.[0-9]*.[0-9]*.json
 src/data/*
 !src/data/common/
 !src/data/example/
+!src/data/base-package/
 
 # Runtime data
 pids
