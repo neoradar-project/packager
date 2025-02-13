@@ -203,6 +203,18 @@ class NavdataManager {
           uuid: item.properties.uuid,
         };
       });
+
+      nse.mapItemsIndex[type] = typeData.map((item: any) => {
+        if (!item.properties.uuid) {
+          console.error(`No UUID found for ${type}: ${item.properties.name}`);
+          throw new Error(`Missing UUID for ${type}: ${item.properties.name}`);
+        }
+        return {
+          name: this.getFeatureName(item),
+          type: item.properties.type,
+          uuid: item.properties.uuid,
+        };
+      });
       allNavaids.push(...nse[type]);
     }
 
