@@ -97,6 +97,27 @@ export class SystemManager {
       });
     });
   }
+
+  // New function to check if a path is a directory
+  async isDirectory(path: string): Promise<boolean> {
+    try {
+      const stats = await fs.stat(path);
+      return stats.isDirectory();
+    } catch (error) {
+      return false;
+    }
+  }
+
+  // New function to read directory contents
+  async readDirectory(path: string): Promise<string[]> {
+    try {
+      const entries = await fs.readdir(path);
+      return entries;
+    } catch (error) {
+      console.error(`Error reading directory ${path}:`, error);
+      return [];
+    }
+  }
 }
 
 export const system = new SystemManager();

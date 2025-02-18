@@ -4,16 +4,16 @@ ground:
     - - itemName: callsign
         fontSize: 14
         fontWeight: bold
-        leftClick: 'callsignMenu'
+        leftClick: "callsignMenu"
       - itemName: acShortType
         placeholder: ATYPE
-        leftClick: 'fpDialog'
+        leftClick: "fpDialog"
     - - itemName: altitude
         padWithZeroLeft: 4
         truncate:
           - 0
           - 3
-        leftClick: 'cfl'
+        leftClick: "cfl"
       - itemName: groundSpeed
         padWithZeroLeft: 3
       - itemName: trackHeading
@@ -27,7 +27,7 @@ ground:
     - - itemName: callsign
         fontSize: 14
         fontWeight: bold
-        leftClick: 'callsignMenu'
+        leftClick: "callsignMenu"
     - - itemName: acShortType
         placeholder: ATYPE
       - itemName: squawk
@@ -38,7 +38,7 @@ ground:
     - - itemName: callsign
         fontSize: 14
         fontWeight: bold
-        leftClick: 'callsignMenu'
+        leftClick: "callsignMenu"
       - itemName: acShortType
         placeholder: ATYPE
     - - itemName: altitude
@@ -46,7 +46,7 @@ ground:
         truncate:
           - 0
           - 3
-        leftClick: 'cfl'
+        leftClick: "cfl"
       - itemName: groundSpeed
         padWithZeroLeft: 3
       - itemName: trackHeading
@@ -58,56 +58,86 @@ ground:
 
 airborne:
   unconcerned:
-    - - itemName: callsign
-        fontSize: 14
+    - - itemName: groundSpeed
         fontWeight: bold
-        leftClick: 'callsignMenu'
+        padWithZeroLeft: 3
+        truncate:
+          - 0
+          - 2
+      - itemName: verticalRate
+        padWithZeroLeft: 4
+        truncate:
+          - 0
+          - 3
+        showOnlyInDetailed: true
+        placeholder: '00'
       - itemName: acShortType
         placeholder: ATYPE
-        leftClick: 'fpDialog'
+        showOnlyInDetailed: true
+    - - itemName: callsign
+        fontWeight: bold
+        fontSize: 12
+        leftClick: "callsignMenu"
+      - itemName: squawk
+        padWithZeroLeft: 4
+        prefix: "@"
     - - itemName: altitude
         padWithZeroLeft: 4
         truncate:
           - 0
           - 3
-        leftClick: 'cfl'
-      - itemName: groundSpeed
-        padWithZeroLeft: 3
-      - itemName: squawk
-        padWithZeroLeft: 4
+
   assumed:
-    - - itemName: callsign
-        fontSize: 14
+    - - itemName: groundSpeed
         fontWeight: bold
-        leftClick: 'callsignMenu'
+        padWithZeroLeft: 3
+        truncate:
+          - 0
+          - 2
+      - itemName: verticalRate
+        padWithZeroLeft: 4
+        truncate:
+          - 0
+          - 3
+        showOnlyInDetailed: true
       - itemName: acShortType
         placeholder: ATYPE
-        leftClick: 'fpDialog'
+        showOnlyInDetailed: true
+    - - itemName: callsign
+        fontWeight: bold
+        leftClick: "callsignMenu"
+      - itemName: squawk
+        padWithZeroLeft: 4
+        prefix: "@"
     - - itemName: altitude
         padWithZeroLeft: 4
         truncate:
           - 0
           - 3
-        leftClick: 'cfl'
-      - itemName: groundSpeed
-        padWithZeroLeft: 3
-      - itemName: squawk
-        padWithZeroLeft: 4
   concerned:
-    - - itemName: callsign
-        fontSize: 14
+    - - itemName: groundSpeed
         fontWeight: bold
-        leftClick: 'callsignMenu'
+        padWithZeroLeft: 3
+        truncate:
+          - 0
+          - 2
+      - itemName: verticalRate
+        padWithZeroLeft: 4
+        truncate:
+          - 0
+          - 3
+        showOnlyInDetailed: true
       - itemName: acShortType
         placeholder: ATYPE
-        leftClick: 'fpDialog'
+        showOnlyInDetailed: true
+    - - itemName: callsign
+        fontWeight: bold
+        leftClick: "callsignMenu"
+      - itemName: squawk
+        padWithZeroLeft: 4
+        prefix: "@"
     - - itemName: altitude
         padWithZeroLeft: 4
         truncate:
           - 0
           - 3
-        leftClick: 'cfl'
-      - itemName: groundSpeed
-        padWithZeroLeft: 3
-      - itemName: squawk
-        padWithZeroLeft: 4

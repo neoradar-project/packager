@@ -18,6 +18,11 @@ class DistributionManager {
       if (shouldPreparePackage) {
         await this.mergeBasePackage(packagePath);
 
+        // Handle package override after base package is merged
+        if (data.packageOverride) {
+          await this.handlePackageOverride(data.packageOverride, packagePath);
+        }
+
         const shouldInstallPackage = await this.confirmAction("Do you want to install the package into the NeoRadar client?");
 
         if (shouldInstallPackage) {
@@ -35,6 +40,63 @@ class DistributionManager {
       overwrite: false,
     });
     console.log("Merged base package with output package.");
+  }
+
+  private async handlePackageOverride(overridePath: string, outputPath: string): Promise<void> {
+    console.log("Applying package overrides...");
+
+    // Check if systems directory exists in the override
+    const systemsOverridePath = path.join(overridePath, "systems");
+    const hasSystemsOverride = await system.directoryExists(systemsOverridePath);
+
+    if (hasSystemsOverride) {
+      await this.handleSystemsOverride(systemsOverridePath, outputPath);
+    }
+
+    // Handle other overrides (excluding systems directory if it exists)
+    const entries = await system.readDirectory(overridePath);
+    for (const entry of entries) {
+      if (entry !== "systems") {
+        const sourcePath = path.join(overridePath, entry);
+        const targetPath = path.join(outputPath, entry);
+
+        if (await system.isDirectory(sourcePath)) {
+          await system.copyDirectory(sourcePath, targetPath, { overwrite: true });
+        } else {
+          await system.copyFile(sourcePath, targetPath);
+        }
+      }
+    }
+  }
+
+  private async handleSystemsOverride(systemsOverridePath: string, outputPath: string): Promise<void> {
+    const outputSystemsPath = path.join(outputPath, "systems");
+    const baseSystemsDefaultPath = path.join(this.basePackagePath, "systems", "default");
+
+    // Get all subdirectories in the systems override
+    const systemDirs = await system.readDirectory(systemsOverridePath);
+
+    for (const systemDir of systemDirs) {
+      const systemOverridePath = path.join(systemsOverridePath, systemDir);
+
+      // Only process if it's a directory
+      if (await system.isDirectory(systemOverridePath)) {
+        const outputSystemPath = path.join(outputSystemsPath, systemDir);
+
+        // First, create the system directory and copy base default files
+        await system.createDirectory(outputSystemPath, { recursive: true });
+        await system.copyDirectory(baseSystemsDefaultPath, outputSystemPath, {
+          overwrite: false,
+        });
+
+        // Then apply the overrides for this system
+        await system.copyDirectory(systemOverridePath, outputSystemPath, {
+          overwrite: true,
+        });
+
+        console.log(`Applied system overrides for: ${systemDir}`);
+      }
+    }
   }
 
   private async installPackage(neoRadarPath: string, data: InputManifest, profilesPath: string, packagePath: string): Promise<void> {
