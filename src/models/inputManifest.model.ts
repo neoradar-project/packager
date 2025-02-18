@@ -13,6 +13,6 @@ export interface InputManifest {
   outputDir: string;
   asrPath: string;
   settingsDirectory: string;
-  packageOverride: string;
+  packageOverride?: string;
   useSctLabels?: boolean;
 }

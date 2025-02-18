@@ -53,7 +53,7 @@
             &depRunway
         color:
           - =suggestedDepRunwayColor
-          - "#1D76E2"
+          - =blueColorTrueAlways
         leftClick: depRunwayMenu
     - name: sid
       width: 80
@@ -65,7 +65,7 @@
             &sid
         color:
           - =suggestedSidColor
-          - "#1D76E2"
+          - =blueColorTrueAlways
         leftClick: sidMenu
     - name: cfl
       width: 30
@@ -76,7 +76,7 @@
         truncate: [0, 3]
         leftClick: cfl
     - name: assr
-      width: 30
+      width: 50
       tagItem:
         itemName: assignedSquawk
         placeholder: "----"
@@ -88,7 +88,7 @@
         mapping:
           0: ":isquare"
           1: ":isquare-fill"
-        color: "#ffae17"
+        color: [255, 174, 23]
         leftClick: toggleClearanceFlag
     - name: pfl
       width: 30

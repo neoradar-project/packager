@@ -1,0 +1,379 @@
+{
+  "$schema": "https://raw.githubusercontent.com/neoradar-project/schemas/main/systems/labels.schema.json",
+  "ground": {
+    "default": {
+      "items": [
+        [
+          {
+            "itemName": "callsign",
+            "fontSize": 14,
+            "fontWeight": "bold",
+            "leftClick": "callsignMenu"
+          },
+          {
+            "itemName": "squawk",
+            "prefix": "@"
+          }
+        ]
+      ],
+      "styleVariants": [
+        {
+          "backgroundColor": [
+            48,
+            48,
+            48
+          ],
+          "backgroundColorOpacity": 1,
+          "textColor": [
+            255,
+            255,
+            255
+          ]
+        }
+      ]
+    },
+    "departure": {
+      "items": [
+        [
+          {
+            "itemName": "callsign",
+            "fontSize": 14,
+            "fontWeight": "bold",
+            "leftClick": "callsignMenu"
+          },
+          {
+            "itemName": "acShortType",
+            "placeholder": "ACTYP"
+          }
+        ],
+        [
+          {
+            "itemName": "text",
+            "placeholder": "RWY",
+            "value": [
+              "=suggestedDepRunwayIfNoAssigned",
+              "&depRunway"
+            ]
+          },
+          {
+            "itemName": "text",
+            "placeholder": "SID",
+            "value": [
+              "=suggestedSidIfNoAssigned"
+            ]
+          }
+        ]
+      ],
+      "styleVariants": [
+        {
+          "backgroundColor": [
+            40,
+            50,
+            200
+          ],
+          "backgroundColorOpacity": 1,
+          "textColor": [
+            255,
+            255,
+            255
+          ]
+        }
+      ]
+    },
+    "arrival": {
+      "items": [
+        [
+          {
+            "itemName": "callsign",
+            "fontSize": 14,
+            "fontWeight": "bold",
+            "leftClick": "callsignMenu"
+          },
+          {
+            "itemName": "acShortType",
+            "placeholder": "ACTYP"
+          }
+        ],
+        [
+          {
+            "itemName": "arrRunway",
+            "placeholder": "RWY"
+          },
+          {
+            "itemName": "scratchpad"
+          }
+        ]
+      ],
+      "styleVariants": [
+        {
+          "backgroundColor": [
+            170,
+            50,
+            50
+          ],
+          "textColor": [
+            255,
+            255,
+            255
+          ]
+        }
+      ]
+    },
+    "detailed": {
+      "items": [
+        [
+          {
+            "itemName": "callsign",
+            "fontSize": 14,
+            "fontWeight": "bold",
+            "leftClick": "callsignMenu"
+          },
+          {
+            "itemName": "acShortType",
+            "placeholder": "ACTYP"
+          }
+        ],
+        [
+          {
+            "itemName": "text",
+            "placeholder": "RWY",
+            "value": [
+              "=suggestedDepRunwayIfNoAssigned",
+              "&depRunway"
+            ]
+          },
+          {
+            "itemName": "text",
+            "value": [
+              "=suggestedSidIfNoAssigned"
+            ]
+          },
+          {
+            "itemName": "arrRunway",
+            "placeholder": "RWY"
+          }
+        ],
+        [
+          {
+            "itemName": "scratchpad"
+          }
+        ]
+      ],
+      "styleVariants": []
+    }
+  },
+  "airborne": {
+    "unconcerned": {
+      "items": [
+        [
+          {
+            "itemName": "groundSpeed",
+            "padWithZeroLeft": 3,
+            "truncate": [
+              0,
+              2
+            ]
+          }
+        ],
+        [
+          {
+            "itemName": "callsign"
+          },
+          {
+            "itemName": "squawk",
+            "prefix": "@"
+          }
+        ],
+        [
+          {
+            "itemName": "altitude",
+            "padWithZeroLeft": 5,
+            "truncate": [
+              0,
+              3
+            ]
+          },
+          {
+            "itemName": "verticalTrend",
+            "placeholder": "-",
+            "mapping": {
+              "1": "^",
+              "0": "-",
+              "-1": "v"
+            }
+          }
+        ]
+      ],
+      "styleVariants": [
+        {
+          "textColor": [
+            109,
+            109,
+            109
+          ]
+        }
+      ]
+    },
+    "concerned": {
+      "items": [
+        [
+          {
+            "itemName": "groundSpeed",
+            "padWithZeroLeft": 3,
+            "truncate": [
+              0,
+              2
+            ]
+          }
+        ],
+        [
+          {
+            "itemName": "callsign"
+          },
+          {
+            "itemName": "squawk",
+            "prefix": "@"
+          }
+        ],
+        [
+          {
+            "itemName": "altitude",
+            "padWithZeroLeft": 5,
+            "truncate": [
+              0,
+              3
+            ]
+          },
+          {
+            "itemName": "verticalTrend",
+            "mapping": {
+              "1": "^",
+              "0": "-",
+              "-1": "v"
+            }
+          }
+        ]
+      ],
+      "styleVariants": [
+        {
+          "textColor": [
+            255,
+            255,
+            255
+          ]
+        }
+      ]
+    },
+    "detailed": {
+      "items": [
+        [
+          {
+            "itemName": "groundSpeed",
+            "padWithZeroLeft": 3,
+            "truncate": [
+              0,
+              2
+            ]
+          },
+          {
+            "itemName": "scratchpad",
+            "placeholder": "SP"
+          },
+          {
+            "itemName": "verticalRate",
+            "padWithZeroLeft": 4,
+            "truncate": [
+              0,
+              2
+            ]
+          },
+          {
+            "itemName": "acShortType"
+          }
+        ],
+        [
+          {
+            "itemName": "callsign"
+          },
+          {
+            "itemName": "squawk",
+            "prefix": "@"
+          },
+          {
+            "itemName": "plannedFlightLevel",
+            "padWithZeroLeft": 5,
+            "truncate": [
+              0,
+              3
+            ],
+            "placeholder": "TaFL"
+          }
+        ],
+        [
+          {
+            "itemName": "altitude",
+            "padWithZeroLeft": 5,
+            "truncate": [
+              0,
+              3
+            ]
+          },
+          {
+            "itemName": "verticalTrend",
+            "placeholder": "-",
+            "mapping": {
+              "1": "^",
+              "0": "-",
+              "-1": "v"
+            }
+          },
+          {
+            "itemName": "clearedFlightLevel",
+            "padWithZeroLeft": 3,
+            "truncate": [
+              0,
+              3
+            ],
+            "placeholder": "CFL"
+          },
+          {
+            "itemName": "heading",
+            "padWithZeroLeft": 3,
+            "truncate": [
+              0,
+              3
+            ],
+            "placeholder": "HDG",
+            "prefix": "H"
+          }
+        ],
+        [
+          {
+            "itemName": "origin",
+            "placeholder": "ORIG"
+          },
+          {
+            "itemName": "destination",
+            "placeholder": "DEST"
+          }
+        ]
+      ],
+      "styleVariants": [
+        {
+          "backgroundColor": [
+            0,
+            0,
+            0
+          ],
+          "roundedCorners": 5,
+          "backgroundColorOpacity": 0.7,
+          "textColor": [
+            250,
+            250,
+            250
+          ]
+        }
+      ]
+    }
+  }
+}

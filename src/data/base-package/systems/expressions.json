@@ -1,22 +1,21 @@
 {
   "$schema": "https://raw.githubusercontent.com/neoradar-project/schemas/main/systems/expressions.schema.json",
   "rules": {
-    "is_standby_target": { "value": "ground_standby.png", "expression": ["$is_standby"] },
-    "is_modec_target": { "value": "ground_modec.png", "expression": ["$is_modec"] },
     "incorrectSquawkColor": { "value": "yellow", "expression": ["$incorrectSquawk"] },
 
     "suggestedSidIfNoAssigned": { "value": "&suggestedSid", "expression": ["$isAssignedSidEmpty"] },
     "suggestedDepRunwayIfNoAssigned": { "value": "&suggestedDepRunway", "expression": ["$isAssignedDepRunwayEmpty"] },
+    "suggestedSidColor": { "value": "142,142,142", "expression": ["$isAssignedSidEmpty"] },
+    "blueColorTrueAlways": { "value": "29,118,226", "expression": ["$isAssignedSidEmpty"] },
+    "suggestedDepRunwayColor": { "value": "142,142,142", "expression": ["$isAssignedDepRunwayEmpty"] },
 
-    "suggestedSidColor": { "value": "#8e8e8e", "expression": ["$isAssignedSidEmpty"] },
-    "suggestedDepRunwayColor": { "value": "#8e8e8e", "expression": ["$isAssignedDepRunwayEmpty"] },
-
-    "colourAssumed": { "value": "#d1d1d1", "expression": ["$isDep", "$airfrance"] },
-    "colourUnconcerned": { "value": "#8e8e8e", "expression": ["$isArr", "$airfrance"] },
-    "colourConcerned": { "value": "#54b36c", "expression": ["$isDep", "$airfrance"] },
-    "colourInboundTransfer": { "value": "#a9ca77", "expression": ["$isArr", "$airfrance"] }
+    "colourAssumed": { "value": "209,209,209", "expression": ["$isDep", "$airfrance"] },
+    "colourUnconcerned": { "value": "142,142,142", "expression": ["$isArr", "$airfrance"] },
+    "colourConcerned": { "value": "84,179,108", "expression": ["$isDep", "$airfrance"] },
+    "colourInboundTransfer": { "value": "169,202,119", "expression": ["$isArr", "$airfrance"] }
   },
   "expressions": {
+    "trueAlways": ["OR", [["==", "voiceType", "1"], ["==", "voiceType", "2"], ["==", "voiceType", "0"]]],
     "is_standby": ["==", "latestTransponderStatus", "0"],
     "is_modec": ["==", "latestTransponderStatus", "1"],
     "airfrance": ["beginsWith", "callsign", "AFR"],
@@ -30,6 +29,11 @@
     "isInboundTransfer": ["AND", [["!=", "ownedByMe", "1"], ["==", "futureOwnerCallsign", "&myCallsign"]]],
     "isOutboundTransfer": ["AND", [["==", "ownedByMe", "1"], ["!=", "futureOwnerCallsign", "&myCallsign"]]],
     "isUnconcerned": ["!=", "ownedByMe", "1"],
-    "isAssumed": ["==", "ownedByMe", "1"]
+    "isAssumed": ["==", "ownedByMe", "1"],
+
+    "isParisGroupArrival": ["beginsWith", "destination", "LFP"],
+    "isParisGroupDeparture": ["beginsWith", "origin", "LFP"],
+    "isLFPGNorthArrival": ["AND", [["==", "destination", "LFPG"], ["OR", [["beginsWith", "suggestedArrRunway", "09"], ["beginsWith", "suggestedArrRunway", "27"]]]]],
+    "isLFPGSouthArrival": ["AND", [["==", "destination", "LFPG"], ["OR", [["beginsWith", "suggestedArrRunway", "08"], ["beginsWith", "suggestedArrRunway", "26"]]]]]
   }
 }
