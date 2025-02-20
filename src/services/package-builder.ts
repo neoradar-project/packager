@@ -67,6 +67,7 @@ class PackageBuilder {
 
     // generate manifest
     const manifest = {
+      $schema: "https://raw.githubusercontent.com/neoradar-project/schemas/refs/heads/main/package/manifest.schema.json",
       id: id,
       name: name,
       version: "1.0.0",

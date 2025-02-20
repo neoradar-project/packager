@@ -1,4 +1,4 @@
-import { z } from 'zod';
+import { z } from "zod";
 
 export const GeoJsonPropertiesExtensionSchema = z.object({
   uuid: z.string(),
@@ -10,36 +10,36 @@ export const GeoJsonPropertiesExtensionSchema = z.object({
       color: z.array(z.number()),
       width: z.number().optional().default(1),
       opacity: z.number().optional().default(1),
-      dashArray: z.array(z.number()).optional()
+      dashArray: z.array(z.number()).optional(),
     })
     .optional(),
   fillStyle: z
     .object({
       color: z.array(z.number()),
-      opacity: z.number().optional().default(1)
+      opacity: z.number().optional().default(1),
     })
     .optional(),
   symbolStyle: z
     .object({
       symbol: z.string(),
-      size: z.number().optional().default(10)
+      size: z.number().optional().default(10),
     })
     .optional(),
   labelStyle: z
     .object({
       color: z.array(z.number()),
       size: z.number().optional().default(10),
-      offset: z.array(z.number()).optional().default([0, 0])
+      offset: z.array(z.number()).optional().default([0, 0]),
     })
-    .optional()
+    .optional(),
 });
 
 export type GeoJsonPropertiesExtension = z.infer<typeof GeoJsonPropertiesExtensionSchema>;
 
 export const MapLayerSchema = z.object({
   name: z.string(),
-  type: z.enum(['geojson']),
-  source: z.string().default('auto'),
+  type: z.enum(["geojson"]),
+  source: z.string().default("auto"),
   defaultStyle: GeoJsonPropertiesExtensionSchema.optional(),
   hasLabels: z.boolean().optional(),
   isLabelLayer: z.boolean().optional(),
@@ -55,13 +55,10 @@ export const PackageSchema = z.object({
   namespace: z.string(),
   createdAt: z.string(),
   centerPoint: z.array(z.number()),
-  mapLayers: z.array(MapLayerSchema).optional()
+  mapLayers: z.array(MapLayerSchema).optional(),
 });
 
 export type Package = z.infer<typeof PackageSchema>;
-
-
-
 
 export const cartesianPointSchema = z.array(z.number());
 
@@ -77,27 +74,57 @@ export const EseDatasetPositionSchema = z.object({
   squawkEnd: z.string(),
   layerUniqueId: z.number(),
   displaySectorLines: z.array(z.number()).optional(),
-  visibilityPoints: z.array(z.tuple([z.number(), z.number()])).optional()
+  visibilityPoints: z.array(z.tuple([z.number(), z.number()])).optional(),
 });
 
 export type EseDatasetPosition = z.infer<typeof EseDatasetPositionSchema>;
 
+export const EseDatasetProcedurePointSchema = z.object({
+  name: z.string(),
+  type: z.enum(["vor", "fix", "ndb", "airport"]),
+  lat: z.number(),
+  lon: z.number(),
+  uuid: z.string(),
+});
+
 export const EseDatasetProcedureSchema = z.object({
-  type: z.enum(['SID', 'STAR']),
+  type: z.enum(["SID", "STAR"]),
   icao: z.string(),
   name: z.string(),
   runway: z.string().optional(),
-  points: z.array(cartesianPointSchema),
-  layerUniqueId: z.number()
+  points: z.array(EseDatasetProcedurePointSchema),
+  layerUniqueId: z.number(),
 });
 export type EseDatasetProcedure = z.infer<typeof EseDatasetProcedureSchema>;
+
+export const EseDatasetNavaidsSchema = z.object({
+  name: z.string(),
+  freq: z.string().optional(),
+  type: z.enum(["vor", "ndb", "fix", "airport"]),
+  lat: z.number(),
+  lon: z.number(),
+  uuid: z.string(),
+});
+
+export type EseDatasetNavaids = z.infer<typeof EseDatasetNavaidsSchema>;
+
+export const EseDatasetRunwaySchema = z.object({
+  id: z.string(),
+  name: z.string(),
+  icao: z.string(),
+  type: z.string(),
+  uuid: z.string(),
+  oppositeId: z.string(),
+});
+
+export type EseDatasetRunway = z.infer<typeof EseDatasetRunwaySchema>;
 
 export const EseDefaultActiveRunways = z.array(z.object({ icao: z.string(), runway: z.string() }));
 
 const _sectorDisplaySectorSchema = z.object({
   borderId: z.number(),
   mySector: z.string(),
-  otherSectors: z.array(z.string())
+  otherSectors: z.array(z.string()),
 });
 
 export const EseDatasetSectorSchema = z.object({
@@ -110,12 +137,13 @@ export const EseDatasetSectorSchema = z.object({
   owners: z.array(z.string()).optional(),
   borders: z.array(z.number()).optional(),
   depApts: z.array(z.string()).optional(),
-  arrApts: z.array(z.string()).optional()
+  arrApts: z.array(z.string()).optional(),
 });
 export type EseDatasetSector = z.infer<typeof EseDatasetSectorSchema>;
 
+/* eslint-disable @typescript-eslint/no-unused-vars */
 const _sectorDisplaySchema = z.object({
-  name: z.string()
+  name: z.string(),
 });
 export type SectorDisplay = z.infer<typeof _sectorDisplaySchema>;
 
@@ -127,25 +155,20 @@ const SectorLineSchema = z.object({
       fir: z.string(),
       name: z.string(),
       floor: z.number().optional(),
-      ceiling: z.number().optional()
+      ceiling: z.number().optional(),
     })
-  )
+  ),
 });
 export type SectorLine = z.infer<typeof SectorLineSchema>;
 
 export const MapIndexItemSchema = z.object({
   name: z.string(),
-  uuid: z.string()
+  uuid: z.string(),
 });
 
 export type MapIndexItem = z.infer<typeof MapIndexItemSchema>;
 
-export const EseDatasetMapIndexSchema = z.record(
-  z.string(),
-  z.array(
-    MapIndexItemSchema
-  )
-);
+export const EseDatasetMapIndexSchema = z.record(z.string(), z.array(MapIndexItemSchema));
 
 export type EseDatasetMapIndex = z.infer<typeof EseDatasetMapIndexSchema>;
 
@@ -154,7 +177,12 @@ export const EseDatasetSchema = z.object({
   sectors: z.array(EseDatasetSectorSchema).optional(),
   position: z.array(EseDatasetPositionSchema).optional(),
   procedure: z.array(EseDatasetProcedureSchema).optional(),
-  mapItemsIndex: EseDatasetMapIndexSchema
+  runways: z.array(EseDatasetRunwaySchema).optional(),
+  vor: z.array(EseDatasetNavaidsSchema).optional(),
+  ndb: z.array(EseDatasetNavaidsSchema).optional(),
+  fix: z.array(EseDatasetNavaidsSchema).optional(),
+  airport: z.array(EseDatasetNavaidsSchema).optional(),
+  mapItemsIndex: EseDatasetMapIndexSchema,
 });
 
 export type EseDataset = z.infer<typeof EseDatasetSchema>;

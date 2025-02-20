@@ -38,46 +38,43 @@
       }
     ]
   },
-  "airborneSymbology": {
-    "unconcerned": [
-      {
-        "id": "4f_unconcerned",
-        "description": "Unconcerned air",
-        "applyWhen": ["==", "ownedByMe", "0"],
-        "plotImage": "4f_unconcerned_aircraft",
-        "rotatePlotWithHeading": false,
-        "historyTrailImages": [
-          "4f_unconcerned_t1",
-          "4f_unconcerned_t2",
-          "4f_unconcerned_t3",
-          "4f_unconcerned_t4",
-          "4f_unconcerned_t5",
-          "4f_unconcerned_t6",
-          "4f_unconcerned_t7",
-          "4f_unconcerned_t8"
-        ],
-        "rotateHistoryTrailWithHeading": true
-      }
-    ],
-    "concerned": [
-      {
-        "id": "4f_assumed",
-        "description": "assumed air",
-        "applyWhen": ["==", "ownedByMe", "1"],
-        "plotImage": "4f_assumed_aircraft",
-        "rotatePlotWithHeading": false,
-        "historyTrailImages": [
-          "4f_assumed_t1",
-          "4f_assumed_t2",
-          "4f_assumed_t3",
-          "4f_assumed_t4",
-          "4f_assumed_t5",
-          "4f_assumed_t6",
-          "4f_assumed_t7",
-          "4f_assumed_t8"
-        ],
-        "rotateHistoryTrailWithHeading": true
-      }
-    ]
-  }
+  "airborneSymbology": [
+    {
+      "id": "4f_assumed",
+      "description": "assumed air",
+      "applyWhen": "",
+      "applyToAttentionStates": [
+        "kAssumed"
+      ],
+      "plotImage": "4f_assumed_aircraft",
+      "historyTrailImages": [
+        "4f_assumed_t1",
+        "4f_assumed_t2",
+        "4f_assumed_t3",
+        "4f_assumed_t4",
+        "4f_assumed_t5",
+        "4f_assumed_t6",
+        "4f_assumed_t7",
+        "4f_assumed_t8"
+      ],
+      "rotateHistoryTrailWithHeading": true
+    },
+    {
+      "id": "4f_unconcerned",
+      "description": "Unconcerned air",
+      "applyWhen": "",
+      "plotImage": "4f_unconcerned_aircraft",
+      "historyTrailImages": [
+        "4f_unconcerned_t1",
+        "4f_unconcerned_t2",
+        "4f_unconcerned_t3",
+        "4f_unconcerned_t4",
+        "4f_unconcerned_t5",
+        "4f_unconcerned_t6",
+        "4f_unconcerned_t7",
+        "4f_unconcerned_t8"
+      ],
+      "rotateHistoryTrailWithHeading": true
+    }
+  ]
 }

@@ -12,27 +12,38 @@
     "colourAssumed": { "value": "209,209,209", "expression": ["$isDep", "$airfrance"] },
     "colourUnconcerned": { "value": "142,142,142", "expression": ["$isArr", "$airfrance"] },
     "colourConcerned": { "value": "84,179,108", "expression": ["$isDep", "$airfrance"] },
-    "colourInboundTransfer": { "value": "169,202,119", "expression": ["$isArr", "$airfrance"] }
+    "colourInboundTransfer": { "value": "169,202,119", "expression": ["$isArr", "$airfrance"] },
+
+
+    "cdgBlack": { "value": "209,209,209", "expression": ["$isDep", "$airfrance"] },
+    "cdgDefaultBlueOne": { "value": "128,165,165", "expression": ["$isCDGOrPBDeparture"] },
+    "cdgDefaultBlueTwo": { "value": "91,139,116065", "expression": ["$isParisGroupDeparture"] }
   },
   "expressions": {
-    "trueAlways": ["OR", [["==", "voiceType", "1"], ["==", "voiceType", "2"], ["==", "voiceType", "0"]]],
+    "alwaysTrue": ["OR", [["==", "isDeparture", "1"], ["!=", "isDeparture", "1"]]],
+    "alwaysFalse": ["AND", [["==", "isDeparture", "1"], ["==", "isDeparture", "1"]]],
+
     "is_standby": ["==", "latestTransponderStatus", "0"],
     "is_modec": ["==", "latestTransponderStatus", "1"],
-    "airfrance": ["beginsWith", "callsign", "AFR"],
+
     "isDep": ["==", "isDeparture", "1"],
     "isArr": ["==", "isArrival", "1"],
+
     "incorrectSquawk": ["!=", "squawk", "assignedSquawk"],
     "isAssignedSidEmpty": ["isEmpty", "sid"],
     "isAssignedDepRunwayEmpty": ["isEmpty", "depRunway"],
 
+    "isUnconcerned": ["==", "attentionState", "0"],
     "isConcerned": ["==", "ownedByMe", "1"],
-    "isInboundTransfer": ["AND", [["!=", "ownedByMe", "1"], ["==", "futureOwnerCallsign", "&myCallsign"]]],
-    "isOutboundTransfer": ["AND", [["==", "ownedByMe", "1"], ["!=", "futureOwnerCallsign", "&myCallsign"]]],
-    "isUnconcerned": ["!=", "ownedByMe", "1"],
-    "isAssumed": ["==", "ownedByMe", "1"],
+    "isInboundTransfer": ["==", "attentionState", "2"],
+    "isOutboundTransfer": ["==", "attentionState", "4"],
+    "isAssumed": ["==", "attentionState", "3"],
+    "notAssumed": ["!=", "attentionState", "3"],
 
     "isParisGroupArrival": ["beginsWith", "destination", "LFP"],
     "isParisGroupDeparture": ["beginsWith", "origin", "LFP"],
+    "isOrlyGroupArrival": ["OR", [["==", "destination", "LFPO"], ["==", "destination", "LFPV"], ["==", "destination", "LFPN"]]],
+    "isCDGOrPBDeparture": ["OR", [["==", "origin", "LFPG"], ["==", "origin", "LFPB"]]],
     "isLFPGNorthArrival": ["AND", [["==", "destination", "LFPG"], ["OR", [["beginsWith", "suggestedArrRunway", "09"], ["beginsWith", "suggestedArrRunway", "27"]]]]],
     "isLFPGSouthArrival": ["AND", [["==", "destination", "LFPG"], ["OR", [["beginsWith", "suggestedArrRunway", "08"], ["beginsWith", "suggestedArrRunway", "26"]]]]]
   }

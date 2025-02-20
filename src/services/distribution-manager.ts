@@ -103,7 +103,10 @@ class DistributionManager {
     const neoRadarProfilesPath = path.join(neoRadarPath, "profiles", data.namespace);
     const neoRadarPackagePath = path.join(neoRadarPath, "packages", data.id);
 
-    console.log("Installing package into NeoRadar client...");
+    // Delete existing package directory if it exists
+    if (await system.directoryExists(neoRadarPackagePath)) {
+      await system.deleteDirectory(neoRadarPackagePath);
+    }
 
     // Create profiles directory if it doesn't exist
     await system.createDirectory(neoRadarProfilesPath, { recursive: true });

@@ -280,7 +280,7 @@
             "placeholder": "SP"
           },
           {
-            "itemName": "verticalRate",
+            "itemName": "verticalSpeed",
             "padWithZeroLeft": 4,
             "truncate": [
               0,
@@ -337,7 +337,7 @@
             "placeholder": "CFL"
           },
           {
-            "itemName": "heading",
+            "itemName": "assignedHeading",
             "padWithZeroLeft": 3,
             "truncate": [
               0,

@@ -232,6 +232,21 @@ class NavdataManager {
       };
     });
 
+    nse.runways = runwaysData.map((item: any) => {
+      if (!item.properties.uuid) {
+        console.error(`No UUID found for runway: ${item.properties.icao}-${item.properties.name}`);
+        throw new Error(`Missing UUID for runway: ${item.properties.icao}-${item.properties.name}`);
+      }
+      return {
+        id: item.id,
+        name: this.getFeatureName(item),
+        oppositeId: item.properties.oppositeId,
+        type: item.properties.type,
+        icao: item.properties.icao,
+        uuid: item.properties.uuid,
+      };
+    });
+
     // Airways
     const awys = ["lowAirway", "highAirway"];
     for (const awy of awys) {

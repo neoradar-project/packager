@@ -1,44 +1,18 @@
-# yaml-language-server: $schema=https://raw.githubusercontent.com/neoradar-project/schemas/refs/heads/deck-gl/systems/mapstyle.schema.json
-inactiveSectorBackgroundColor: [23, 23, 23] # #171717
-gateLabelColor: '#FFFFFF'
-sidStyle:
-  lineColor: [216, 126, 0] # #D87E00
-  lineWidth: 1
-  lineDashArray: [2, 1]
-starStyle:
-  lineColor: [14, 0, 216] # #0E00D8
-  lineWidth: 1
-  lineDashArray: [3, 2]
-sectorLineStyle:
-  lineColor: [64, 64, 64] # #404040
-  lineWidth: 1
-  lineDashArray: [1, 3]
-activeSectorFillStyle:
-  fillColor: [34, 34, 34] # #222222
-  fillOpacity: 1
-activeSectorLineStyle:
-  lineColor: [0, 0, 0] # #000000
-  lineWidth: 2
-  lineDashArray: [1]
-otherSectorLineStyle:
-  lineColor: [35, 35, 35] # #232323
-  lineWidth: 2
-  lineDashArray: [1]
-gateInactiveStyle:
-  outlineColor: '#555555'
-  outlineWidth: 1
-  outlineOpacity: 0.7
-  fillColor: '#6B6B6B'
-  fillOpacity: 0.5
-gateOccupiedStyle:
-  outlineColor: '#EDC218'
-  outlineWidth: 1
-  outlineOpacity: 0.7
-  fillColor: '#EDC218'
-  fillOpacity: 0.5
-gateBookedStyle:
-  outlineColor: '#1462FF'
-  outlineWidth: 1
-  outlineOpacity: 0.7
-  fillColor: '#1462FF'
-  fillOpacity: 0.5
+# yaml-language-server: $schema=https://raw.githubusercontent.com/neoradar-project/schemas/main/systems/mapstyle.schema.json
+inactiveSectorBackgroundColor: [57, 61, 63]
+activeSectorBackgroundColor: [34, 34, 34]
+
+neighborSectorBorderLineColor: [145, 82, 15]
+neighborSectorBorderLineWidth: 2
+
+layerStyles:
+  star:
+    lineStyle:
+      color: [83, 94, 78]
+      width: 1
+      opacity: 1
+  sid:
+    lineStyle:
+      color: [83, 94, 78]
+      width: 1
+      opacity: 1
