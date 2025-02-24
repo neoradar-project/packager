@@ -345,7 +345,7 @@ class NavdataManager {
     // Runway specific (combine ICAO and name)
     if (type === "runway") {
       if (feature.properties.icao && feature.properties.name) {
-        return `${feature.properties.icao}-${feature.properties.name}`;
+        return `${feature.properties.icao}-${feature.properties.name}-${feature.properties.oppositeId}`;
       }
     }
 
@@ -375,7 +375,6 @@ class NavdataManager {
     if (featureName) {
       // All named features get a consistent ID based on type and name
       feature.properties.uuid = this.getSharedUUID(type, featureName);
-      feature.properties._mappedName = featureName;
     } else {
       // Features without names get a fallback ID
       feature.properties.uuid = `${type}-unnamed-${Date.now()}`;
@@ -413,7 +412,6 @@ class NavdataManager {
         type: "lowAirway",
         uuid: this.getSharedUUID("lowAirway", airway.id),
       };
-      multiline.properties._mappedName = airway.id;
       features.push(multiline);
     });
 
@@ -427,7 +425,6 @@ class NavdataManager {
         type: "highAirway",
         uuid: this.getSharedUUID("highAirway", airway.id),
       };
-      multiline.properties._mappedName = airway.id;
       features.push(multiline);
     });
 

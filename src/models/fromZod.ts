@@ -4,7 +4,6 @@ export const GeoJsonPropertiesExtensionSchema = z.object({
   uuid: z.string(),
   type: z.string().optional(),
   label: z.string().optional(),
-  _mappedName: z.string().optional(),
   lineStyle: z
     .object({
       color: z.array(z.number()),

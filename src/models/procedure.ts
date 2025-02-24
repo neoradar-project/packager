@@ -5,8 +5,7 @@ export class Procedure {
   icao!: string;
   name!: string;
   runway!: string;
-  points!: any[];
-  layerUniqueId: number = 0;
+  points!: string[];
 
   constructor(data: any) {
     Object.assign(this, data);
@@ -19,7 +18,6 @@ export class Procedure {
       name: this.name,
       runway: this.runway,
       points: this.points,
-      layerUniqueId: this.layerUniqueId,
     };
   }
 
@@ -36,49 +34,9 @@ export class Procedure {
         .split(" ")
         .filter((item) => item !== "")
         .map((item) => item.replace("\r", ""));
-      proc.buildPointsString(pts, navaids);
+      proc.points = pts;
       return proc;
     }
     return null;
-  }
-
-  private buildPointsString(pointNames: string[], allNavaids: any) {
-    const points: any[] = [];
-
-    for (const pointName of pointNames) {
-      const navaids = this.findNavaids(pointName, allNavaids);
-      if (navaids.length === 1) {
-        points.push(navaids[0]);
-      } else if (navaids.length > 1) {
-        let lastPoint: any;
-        if (points.length === 0) {
-          const airports = this.findNavaids(this.icao, allNavaids);
-          if (airports.length === 1) {
-            lastPoint = airports[0];
-          } else {
-            continue;
-          }
-        } else {
-          lastPoint = points[points.length - 1];
-        }
-        let nearestNavaid = navaids[0];
-        let nearestDistance = distance(point([lastPoint.lon, lastPoint.lat]), point([navaids[0].lon, navaids[0].lat]));
-        for (const navaid of navaids) {
-          const dist = distance(point([lastPoint.lon, lastPoint.lat]), point([navaid.lon, navaid.lat]));
-          if (dist < nearestDistance) {
-            nearestNavaid = navaid;
-            nearestDistance = dist;
-          }
-        }
-        points.push(nearestNavaid);
-      } else {
-        continue;
-      }
-    }
-    this.points = points;
-  }
-
-  private findNavaids(name: string, allNavaids: any): any[] {
-    return allNavaids.filter((navaid: any) => navaid.name === name);
   }
 }

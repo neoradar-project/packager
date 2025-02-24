@@ -152,7 +152,6 @@ export class EseHelper {
     const proc = Procedure.init(line, allNavaids);
     if (!proc) return;
 
-    proc.layerUniqueId = counters.procedure++;
     result.procedure.push(proc.toJsonObject());
   }
 
