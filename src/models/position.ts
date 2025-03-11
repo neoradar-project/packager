@@ -38,7 +38,7 @@ export class PackageAtcPosition {
     };
   }
 
-  static init(line: string): PackageAtcPosition | null {
+  static init(line: string, isGNG: boolean = false): PackageAtcPosition | null {
     const data = line.split(":");
     if (data.length >= 4) {
       const allPoints: [number, number][] = [];
@@ -51,17 +51,19 @@ export class PackageAtcPosition {
           console.log(error);
         }
       }
-
+      let callsign = data[0].replace("\r", "");
       let sector = data[5].replace("\r", "");
       let subSector = data[4].replace("\r", "").replace("-", ""); // Remove - which should be null per RFC
       let identifier = data[3].replace("\r", "");
       let facility = data[6].replace("\r", "");
 
-      let callsign = sector + "_";
-      if (subSector.length !== 0) {
-        callsign += subSector + "_";
+      if (isGNG) {
+        callsign = sector + "_";
+        if (subSector.length !== 0) {
+          callsign += subSector + "_";
+        }
+        callsign += facility;
       }
-      callsign += facility;
 
       const out = new PackageAtcPosition({
         callsign: callsign,

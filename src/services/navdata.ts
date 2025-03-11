@@ -11,6 +11,7 @@ import { EseDataset, SectorLine } from "../models/fromZod.js";
 import { convertColorFeaturePropertyToGeojsonProperties } from "../libs/style-helper.js";
 import { v4 as uuidv4 } from "uuid";
 import { EseHelper } from "../libs/ese-helper.js";
+import { toWgs84 } from "@turf/projection";
 const log = debug("NavdataManager");
 class NavdataManager {
   private uuidMap = new Map<string, string>();
@@ -23,7 +24,7 @@ class NavdataManager {
     log("Init");
   }
 
-  public async generateNavdata(packageId: string, namespace: string, eseFilePath: string, outputPath: string): Promise<void> {
+  public async generateNavdata(packageId: string, namespace: string, eseFilePath: string, outputPath: string, isGNG: boolean = false): Promise<void> {
     log("generateNavdata");
     const path = `${outputPath}/${packageId}-package/${packageId}/datasets`;
 
@@ -193,12 +194,15 @@ class NavdataManager {
           console.error(`No UUID found for ${type}: ${item.properties.name}`);
           throw new Error(`Missing UUID for ${type}: ${item.properties.name}`);
         }
+        const latLon = toWgs84([item.geometry.coordinates[0], item.geometry.coordinates[1]]);
         return {
           name: this.getFeatureName(item),
           freq: item.properties.freq,
           type: item.properties.type,
-          lat: item.geometry.coordinates[1],
-          lon: item.geometry.coordinates[0],
+          x: item.geometry.coordinates[1],
+          y: item.geometry.coordinates[0],
+          lat: latLon[1],
+          lon: latLon[0],
           layerUniqueId: item.properties.id,
           uuid: item.properties.uuid,
         };
@@ -299,7 +303,7 @@ class NavdataManager {
 
     // await system.deleteFile(`${path}/label.geojson`);
 
-    const eseProcessedData = await EseHelper.parseEseContent(eseFilePath, allNavaids);
+    const eseProcessedData = await EseHelper.parseEseContent(eseFilePath, allNavaids, isGNG);
     nse.position = eseProcessedData.position;
     nse.procedure = eseProcessedData.procedure;
     nse.sectors = eseProcessedData.sectors;

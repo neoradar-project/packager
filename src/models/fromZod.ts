@@ -100,6 +100,8 @@ export const EseDatasetNavaidsSchema = z.object({
   name: z.string(),
   freq: z.string().optional(),
   type: z.enum(["vor", "ndb", "fix", "airport"]),
+  x: z.number(),
+  y: z.number(),
   lat: z.number(),
   lon: z.number(),
   uuid: z.string(),

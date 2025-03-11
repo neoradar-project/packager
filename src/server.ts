@@ -40,7 +40,8 @@ async function startJobs() {
     data.recatDefinitionPath,
     data.aliasPath,
     data.outputDir,
-    data.useSctLabels
+    data.useSctLabels,
+    data.isGNG
   );
 
   try {

@@ -23,6 +23,7 @@ interface SectorHandlerContext {
 }
 
 export class EseHelper {
+  private static isGNG: boolean = false;
   private static createEmptySector(): Sector {
     return {
       layerUniqueId: 0,
@@ -46,10 +47,10 @@ export class EseHelper {
     };
   }
 
-  static async parseEseContent(eseFilePath: string, allNavaids: NseNavaid[]): Promise<ParsedEseContent> {
+  static async parseEseContent(eseFilePath: string, allNavaids: NseNavaid[], isGNG: boolean = false): Promise<ParsedEseContent> {
     const eseData = await system.readFile(eseFilePath);
     const lines = eseData.toString().split("\n");
-
+    this.isGNG = isGNG;
     const result: ParsedEseContent = {
       position: [],
       procedure: [],
@@ -128,7 +129,7 @@ export class EseHelper {
   private static handlePosition(line: string, result: ParsedEseContent, counters: Record<string, number>): void {
     if (line.startsWith(";") || !line.trim()) return;
 
-    const position = PackageAtcPosition.init(line);
+    const position = PackageAtcPosition.init(line, this.isGNG);
     if (!position) return;
 
     position.layerUniqueId = counters.position++;

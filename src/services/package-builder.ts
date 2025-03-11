@@ -35,7 +35,8 @@ class PackageBuilder {
     recatDefinitionPath: string | undefined,
     aliasPath: string,
     outputPath: string,
-    useSctLabels: boolean = true
+    useSctLabels: boolean = true,
+    isGNG: boolean = false
   ): Promise<void> {
     this.outputPath = outputPath;
     await system.createDirectory(this.outputPath).then(() => log("outputPath created"));
@@ -63,7 +64,7 @@ class PackageBuilder {
     await atcData.generateAtcdata(id, loginProfilesPath, icaoAircraftPath, icaoAirlinesPath, recatDefinitionPath, aliasPath, outputPath);
 
     // Generating computable navdata
-    await navdata.generateNavdata(id, namespace, eseFilePath, outputPath);
+    await navdata.generateNavdata(id, namespace, eseFilePath, outputPath, isGNG);
 
     // generate manifest
     const manifest = {

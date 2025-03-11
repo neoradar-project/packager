@@ -15,4 +15,5 @@ export interface InputManifest {
   settingsDirectory: string;
   packageOverride?: string;
   useSctLabels?: boolean;
+  isGNG?: boolean;
 }
