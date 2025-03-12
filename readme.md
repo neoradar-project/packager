@@ -1,22 +1,36 @@
-# NeoRadar Packager
-## Description
-Utility for packaging GNG ATC bundle into a NeoRadar ATC package.
-This is a prelimanary version of the packager. It is not yet ready for production use.
-Aims to be converted later into a node.js module/dependency and refractored depending on the needs.
+# Packager
 
-## Requirements
-Install tippenacoe globally
-> npm install tippecanoe
+## Overview
 
-## Usage
+Packager is a utility for processing and preparing radar data packages. This is a preliminary version not yet ready for production use. The project will eventually be converted into a Node.js module/dependency and refactored based on evolving requirements.
 
-WARNING : not tested on Windows yet.
+## Quick Start
 
-Duplicate input json file in src/data/example and edit fields with absolute paths to your data.
-Please pay attention to define a writable outputDir.
+1. `git clone https://github.com/neoradar-project/packager.git`
+2. `npm install`
+3. `npm run start -- 'PATH_TO_YOUR_JSON_FILE'`
 
-execute the app using :
-> npm run start -- 'PATH_TO_YOUR_JSON_FILE'
+## Example Configuration
 
-You can use this command for live coding if needed :
-> npm run build:live -- 'PATH_TO_YOUR_JSON_FILE'
+- An example `input_example.json` can be found in `src/data/example` alongside the `base-package`
+
+```json
+{
+  "id": "LFXX_AIRAC_2307_1",
+  "name": "LFXX - AIRAC 2307 Rev 1",
+  "description": "Sample package description",
+  "namespace": "lfxx",
+  "sctPath": "/path/to/sector-file.sct",
+  "esePath": "/path/to/ese-file.ese",
+  "loginProfilesPath": "/absolute/path/to/profiles.txt",
+  "icaoAircraftPath": "/absolute/path/to/aircraft.txt",
+  "icaoAirlinesPath": "/absolute/path/to/airlines.txt",
+  "recatDefinitionPath": "/absolute/path/to/recat.json",
+  "aliasPath": "/absolute/path/to/alias.txt",
+  "outputDir": "/absolute/path/to/output/directory/",
+  "asrPath": "/absolute/path/to/asr/file.asr",
+  "packageOverride": "",
+  "useSctLabels": false,
+  "isGNG": true
+}
+```
