@@ -1,7 +1,7 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/neoradar-project/schemas/main/systems/lists.schema.json
 ---
 - name: DEPARTURE LIST
-  filterExpressions: "$isDep"
+  filterExpressions: ["AND", [["==", "isMyDeparture", "1"], ["==", "onGround", "1"]]]
   columns:
     - name: c/s
       width: 80
@@ -53,7 +53,7 @@
             &depRunway
         color:
           - =suggestedDepRunwayColor
-          - =blueColorTrueAlways
+          - =blueAssignedRunway
         leftClick: depRunwayMenu
     - name: sid
       width: 80
@@ -65,13 +65,13 @@
             &sid
         color:
           - =suggestedSidColor
-          - =blueColorTrueAlways
+          - =blueAssignedSid
         leftClick: sidMenu
     - name: cfl
-      width: 30
+      width: 40
       tagItem:
         itemName: clearedFlightLevel
-        placeholder: "--"
+        placeholder: "---"
         padWithZeroLeft: 5
         truncate: [0, 3]
         leftClick: cfl
@@ -85,6 +85,7 @@
       width: 10
       tagItem:
         itemName: clearanceIssued
+        placeholder: ":isquare"
         mapping:
           0: ":isquare"
           1: ":isquare-fill"
