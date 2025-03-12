@@ -28,7 +28,7 @@ Packager is a utility for processing and preparing radar data packages from Euro
   "recatDefinitionPath": "/absolute/path/to/recat.json",
   "aliasPath": "/absolute/path/to/alias.txt",
   "outputDir": "/absolute/path/to/output/directory/",
-  "asrPath": "/absolute/path/to/asr/file.asr",
+  "asrPath": "/absolute/path/to/asr-directory",
   "packageOverride": "",
   "useSctLabels": false,
   "isGNG": true
