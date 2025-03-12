@@ -2,7 +2,7 @@
 
 ## Overview
 
-Packager is a utility for processing and preparing radar data packages. This is a preliminary version not yet ready for production use. The project will eventually be converted into a Node.js module/dependency and refactored based on evolving requirements.
+Packager is a utility for processing and preparing radar data packages from EuroScope, with primary support for GNG formatted sector files. This is a preliminary version that is not yet ready for production use.
 
 ## Quick Start
 
