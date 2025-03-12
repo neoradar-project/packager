@@ -176,7 +176,7 @@
         },
         {
           "itemName": "text",
-          "color": [29, 118, 226],
+          "color": [29,118,226],
           "value": "=penWhenScratchpadNotEmpty"
         }
       ],
