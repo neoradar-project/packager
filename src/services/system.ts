@@ -27,6 +27,10 @@ export class SystemManager {
     return data;
   }
 
+  fileExistsSync(path: string): boolean {
+    return fs.existsSync(path);
+  }
+
   async listFiles(directory: string): Promise<string[]> {
     const dirs = await fs.readdir(directory, { withFileTypes: true });
     return dirs.filter((file) => !file.name.startsWith(".")).map((d) => d.name);

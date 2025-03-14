@@ -6,7 +6,7 @@ import { navdata } from "./navdata.js";
 import { system } from "./system.js";
 import { Package } from "../models/fromZod.js";
 import { defaultMapLayers } from "../models/defaults.js";
-const log = debug("PackageBuilder");
+import { InputManifest } from "../models/inputManifest.model.js";
 
 interface UUIDMapping {
   [type: string]: Array<{
@@ -22,64 +22,113 @@ class PackageBuilder {
     this.commonPath = "./src/data/common";
   }
 
-  public async build(
-    id: string,
-    name: string,
-    description: string,
-    namespace: string,
-    sctFilePath: string,
-    eseFilePath: string,
-    loginProfilesPath: string,
-    icaoAircraftPath: string,
-    icaoAirlinesPath: string,
-    recatDefinitionPath: string | undefined,
-    aliasPath: string,
-    outputPath: string,
-    useSctLabels: boolean = true,
-    isGNG: boolean = false
-  ): Promise<void> {
-    this.outputPath = outputPath;
-    await system.createDirectory(this.outputPath).then(() => log("outputPath created"));
-    log("build", sctFilePath);
+  private _vertifyMandatoryFilesExist(data: InputManifest) {
+    if (!data.sctPath || !system.fileExistsSync(data.sctPath)) {
+      throw new Error("Missing SCT path or file does not exist");
+    }
+    if (!data.esePath || !system.fileExistsSync(data.esePath)) {
+      throw new Error("Missing ESE path or file does not exist");
+    }
+    if (
+      !data.loginProfilesPath ||
+      !system.fileExistsSync(data.loginProfilesPath)
+    ) {
+      throw new Error("Missing login profiles path");
+    }
+    if (
+      !data.icaoAircraftPath ||
+      !system.fileExistsSync(data.icaoAircraftPath)
+    ) {
+      throw new Error("Missing ICAO aircraft file path");
+    }
+    if (
+      !data.icaoAirlinesPath ||
+      !system.fileExistsSync(data.icaoAirlinesPath)
+    ) {
+      throw new Error("Missing ICAO airlines file path");
+    }
+  }
 
-    const sctData = parseSct(await system.readFile(sctFilePath));
-    const eseData = parseEse(sctData, await system.readFile(eseFilePath));
+  public async build(inputManifest: InputManifest): Promise<void> {
+    this.outputPath = inputManifest.outputDir;
 
-    log("generatePackage", namespace, name);
-    const packagePath = `${this.outputPath}/${id}-package/${id}`;
+    // First check if all mandatory files are present
+    this._vertifyMandatoryFilesExist(inputManifest);
+
+    await system
+      .createDirectory(this.outputPath)
+      .then(() => console.log("outputPath created"));
+
+    const sctData = parseSct(await system.readFile(inputManifest.sctPath));
+    const eseData = parseEse(
+      sctData,
+      await system.readFile(inputManifest.esePath)
+    );
+
+    console.log(
+      "Generating package: ",
+      inputManifest.namespace,
+      inputManifest.name
+    );
+    const packagePath = `${this.outputPath}/${inputManifest.id}-package/${inputManifest.id}`;
     // clean
     await system.deleteDirectory(packagePath);
     // create
     await system.createDirectory(packagePath);
 
     // Package datasets
-    const datasets = await navdata.generateDataSets(id, sctData, eseData, ["low-airway", "high-airway"], outputPath, useSctLabels);
+    const datasets = await navdata.generateDataSets(
+      inputManifest.id,
+      sctData,
+      eseData,
+      ["low-airway", "high-airway"],
+      this.outputPath,
+      inputManifest.useSctLabels
+    );
 
-    log("datasets", datasets);
+    console.log("datasets", datasets);
 
     await sleep(1000);
 
     // Package global ATC Data
 
-    await atcData.generateAtcdata(id, loginProfilesPath, icaoAircraftPath, icaoAirlinesPath, recatDefinitionPath, aliasPath, outputPath);
+    await atcData.generateAtcdata(
+      inputManifest.id,
+      inputManifest.loginProfilesPath,
+      inputManifest.icaoAircraftPath,
+      inputManifest.icaoAirlinesPath,
+      inputManifest.recatDefinitionPath,
+      inputManifest.aliasPath,
+      this.outputPath
+    );
 
     // Generating computable navdata
-    await navdata.generateNavdata(id, namespace, eseFilePath, outputPath, isGNG);
+    await navdata.generateNavdata(
+      inputManifest.id,
+      inputManifest.namespace,
+      inputManifest.esePath,
+      this.outputPath,
+      inputManifest.isGNG
+    );
 
     // generate manifest
     const manifest = {
-      $schema: "https://raw.githubusercontent.com/neoradar-project/schemas/refs/heads/main/package/manifest.schema.json",
-      id: id,
-      name: name,
+      $schema:
+        "https://raw.githubusercontent.com/neoradar-project/schemas/refs/heads/main/package/manifest.schema.json",
+      id: inputManifest.id,
+      name: inputManifest.name,
       version: "1.0.0",
-      description: description,
-      namespace: namespace,
+      description: inputManifest.description,
+      namespace: inputManifest.namespace,
       createdAt: new Date().toISOString(),
       mapLayers: defaultMapLayers,
       centerPoint: [847183.3480445864, -6195983.977450224],
     } as Package;
 
-    await system.writeFile(`${packagePath}/manifest.json`, JSON.stringify(manifest));
+    await system.writeFile(
+      `${packagePath}/manifest.json`,
+      JSON.stringify(manifest, null, 2)
+    );
   }
 }
 

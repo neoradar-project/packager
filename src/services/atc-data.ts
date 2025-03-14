@@ -1,7 +1,12 @@
 import debug from "debug";
 import { system } from "./system.js";
 import { recatDefinition } from "../models/recatDef.model.js";
-import { ATCData, IcaoAircraft, IcaoAirline, LoginProfiles } from "../models/atcData.js";
+import {
+  ATCData,
+  IcaoAircraft,
+  IcaoAirline,
+  LoginProfiles,
+} from "../models/atcData.js";
 const log = debug("AtcDataManager");
 
 class AtcDataManager {
@@ -25,14 +30,26 @@ class AtcDataManager {
     };
 
     actData.loginProfiles = await this.parseLoginProfiles(loginProfilesFile);
-    actData.icaoAircraft = await this.parseIcaoAircraft(icaoAircraftPath, recatDefinitionPath);
+    actData.icaoAircraft = await this.parseIcaoAircraft(
+      icaoAircraftPath,
+      recatDefinitionPath
+    );
     actData.icaoAirlines = await this.parseIcaoAirline(icaoAirlinesPath);
-    actData.alias = await this.parseAlias(aliasPath);
+    if (aliasPath) {
+      actData.alias = await this.parseAlias(aliasPath);
+    } else {
+      actData.alias = {};
+    }
 
-    await system.writeFile(`${outputPath}/${packageId}-package/${packageId}/datasets/atc-data.json`, JSON.stringify(actData));
+    await system.writeFile(
+      `${outputPath}/${packageId}-package/${packageId}/datasets/atc-data.json`,
+      JSON.stringify(actData)
+    );
   }
 
-  private async parseLoginProfiles(loginProfilesFile: string): Promise<Record<string, LoginProfiles>> {
+  private async parseLoginProfiles(
+    loginProfilesFile: string
+  ): Promise<Record<string, LoginProfiles>> {
     const profiles = await system.readFile(loginProfilesFile);
     const lines = profiles.toString().split("\n");
 
@@ -63,7 +80,9 @@ class AtcDataManager {
     return data;
   }
 
-  private async parseIcaoAirline(icaoAirlinesPath: string): Promise<Record<string, IcaoAirline>> {
+  private async parseIcaoAirline(
+    icaoAirlinesPath: string
+  ): Promise<Record<string, IcaoAirline>> {
     const profiles = await system.readFile(icaoAirlinesPath);
     const lines = profiles.toString().split("\n");
     const data: Record<string, IcaoAirline> = {};
@@ -87,7 +106,10 @@ class AtcDataManager {
     return data;
   }
 
-  private async parseIcaoAircraft(icaoAircraftPath: string, recatDefinitionPath: string | undefined): Promise<Record<string, IcaoAircraft>> {
+  private async parseIcaoAircraft(
+    icaoAircraftPath: string,
+    recatDefinitionPath: string | undefined
+  ): Promise<Record<string, IcaoAircraft>> {
     const profiles = await system.readFile(icaoAircraftPath);
     let recatDef: recatDefinition[] | undefined = undefined;
     if (recatDefinitionPath) {

@@ -24,7 +24,13 @@ class NavdataManager {
     log("Init");
   }
 
-  public async generateNavdata(packageId: string, namespace: string, eseFilePath: string, outputPath: string, isGNG: boolean = false): Promise<void> {
+  public async generateNavdata(
+    packageId: string,
+    namespace: string,
+    eseFilePath: string,
+    outputPath: string,
+    isGNG: boolean = false
+  ): Promise<void> {
     log("generateNavdata");
     const path = `${outputPath}/${packageId}-package/${packageId}/datasets`;
 
@@ -41,7 +47,9 @@ class NavdataManager {
     this.uuidMap.clear();
 
     // regions
-    const regionsData = JSON.parse(await system.readFile(`${path}/region.geojson`)).features;
+    const regionsData = JSON.parse(
+      await system.readFile(`${path}/region.geojson`)
+    ).features;
     const tmpRegions: string[] = [];
     for (const feature of regionsData) {
       if (tmpRegions.indexOf(feature.properties.region) === -1) {
@@ -61,140 +69,176 @@ class NavdataManager {
     });
 
     // geo
-    const geoData = JSON.parse(await system.readFile(`${path}/geo.geojson`)).features;
-    const tmpGeo: string[] = [];
-    for (const feature of geoData) {
-      if (tmpGeo.indexOf(feature.properties.section) === -1) {
-        tmpGeo.push(feature.properties.section);
+    if (system.fileExistsSync(`${path}/geo.geojson`)) {
+      const geoData = JSON.parse(
+        await system.readFile(`${path}/geo.geojson`)
+      ).features;
+      const tmpGeo: string[] = [];
+      for (const feature of geoData) {
+        if (tmpGeo.indexOf(feature.properties.section) === -1) {
+          tmpGeo.push(feature.properties.section);
+        }
       }
+      nse.mapItemsIndex["geo"] = tmpGeo.map((key) => {
+        const feature = geoData.find((f) => f.properties.section === key);
+        if (!feature?.properties.uuid) {
+          console.error(`No UUID found for geo section: ${key}`);
+          throw new Error(`Missing UUID for geo section: ${key}`);
+        }
+        return {
+          name: key,
+          uuid: feature.properties.uuid,
+        };
+      });
     }
-    nse.mapItemsIndex["geo"] = tmpGeo.map((key) => {
-      const feature = geoData.find((f) => f.properties.section === key);
-      if (!feature?.properties.uuid) {
-        console.error(`No UUID found for geo section: ${key}`);
-        throw new Error(`Missing UUID for geo section: ${key}`);
-      }
-      return {
-        name: key,
-        uuid: feature.properties.uuid,
-      };
-    });
 
     // sids
-    const sidsData = JSON.parse(await system.readFile(`${path}/sid.geojson`)).features;
-    const tmpSids: string[] = [];
-    for (const feature of sidsData) {
-      const name = this.getFeatureName(feature);
-      if (name && tmpSids.indexOf(name) === -1) {
-        tmpSids.push(name);
+    if (system.fileExistsSync(`${path}/sid.geojson`)) {
+      const sidsData = JSON.parse(
+        await system.readFile(`${path}/sid.geojson`)
+      ).features;
+      const tmpSids: string[] = [];
+      for (const feature of sidsData) {
+        const name = this.getFeatureName(feature);
+        if (name && tmpSids.indexOf(name) === -1) {
+          tmpSids.push(name);
+        }
       }
+      nse.mapItemsIndex["sid"] = tmpSids.map((key) => {
+        const feature = sidsData.find((f) => this.getFeatureName(f) === key);
+        if (!feature?.properties.uuid) {
+          console.error(`No UUID found for SID: ${key}`);
+          throw new Error(`Missing UUID for SID: ${key}`);
+        }
+        return {
+          name: key,
+          uuid: feature.properties.uuid,
+        };
+      });
     }
-    nse.mapItemsIndex["sid"] = tmpSids.map((key) => {
-      const feature = sidsData.find((f) => this.getFeatureName(f) === key);
-      if (!feature?.properties.uuid) {
-        console.error(`No UUID found for SID: ${key}`);
-        throw new Error(`Missing UUID for SID: ${key}`);
-      }
-      return {
-        name: key,
-        uuid: feature.properties.uuid,
-      };
-    });
 
     // stars
-    const starsData = JSON.parse(await system.readFile(`${path}/star.geojson`)).features;
-    const tmpStars: string[] = [];
-    for (const feature of starsData) {
-      const name = this.getFeatureName(feature);
-      if (name && tmpStars.indexOf(name) === -1) {
-        tmpStars.push(name);
+    if (system.fileExistsSync(`${path}/star.geojson`)) {
+      const starsData = JSON.parse(
+        await system.readFile(`${path}/star.geojson`)
+      ).features;
+      const tmpStars: string[] = [];
+      for (const feature of starsData) {
+        const name = this.getFeatureName(feature);
+        if (name && tmpStars.indexOf(name) === -1) {
+          tmpStars.push(name);
+        }
       }
+      nse.mapItemsIndex["star"] = tmpStars.map((key) => {
+        const feature = starsData.find((f) => this.getFeatureName(f) === key);
+        if (!feature?.properties.uuid) {
+          console.error(`No UUID found for STAR: ${key}`);
+          throw new Error(`Missing UUID for STAR: ${key}`);
+        }
+        return {
+          name: key,
+          uuid: feature.properties.uuid,
+        };
+      });
     }
-    nse.mapItemsIndex["star"] = tmpStars.map((key) => {
-      const feature = starsData.find((f) => this.getFeatureName(f) === key);
-      if (!feature?.properties.uuid) {
-        console.error(`No UUID found for STAR: ${key}`);
-        throw new Error(`Missing UUID for STAR: ${key}`);
-      }
-      return {
-        name: key,
-        uuid: feature.properties.uuid,
-      };
-    });
 
     // artcc-low
-    const artccLowData = JSON.parse(await system.readFile(`${path}/artccLow.geojson`)).features;
-    const tmpArtccLow: string[] = [];
-    for (const feature of artccLowData) {
-      const name = this.getFeatureName(feature);
-      if (name && tmpArtccLow.indexOf(name) === -1) {
-        tmpArtccLow.push(name);
+    if (system.fileExistsSync(`${path}/artccLow.geojson`)) {
+      const artccLowData = JSON.parse(
+        await system.readFile(`${path}/artccLow.geojson`)
+      ).features;
+      const tmpArtccLow: string[] = [];
+      for (const feature of artccLowData) {
+        const name = this.getFeatureName(feature);
+        if (name && tmpArtccLow.indexOf(name) === -1) {
+          tmpArtccLow.push(name);
+        }
       }
+      nse.mapItemsIndex["artccLow"] = tmpArtccLow.map((key) => {
+        const feature = artccLowData.find(
+          (f) => this.getFeatureName(f) === key
+        );
+        if (!feature?.properties.uuid) {
+          console.error(`No UUID found for ARTCC Low: ${key}`);
+          throw new Error(`Missing UUID for ARTCC Low: ${key}`);
+        }
+        return {
+          name: key,
+          uuid: feature.properties.uuid,
+        };
+      });
     }
-    nse.mapItemsIndex["artccLow"] = tmpArtccLow.map((key) => {
-      const feature = artccLowData.find((f) => this.getFeatureName(f) === key);
-      if (!feature?.properties.uuid) {
-        console.error(`No UUID found for ARTCC Low: ${key}`);
-        throw new Error(`Missing UUID for ARTCC Low: ${key}`);
-      }
-      return {
-        name: key,
-        uuid: feature.properties.uuid,
-      };
-    });
 
     // artcc-high
-    const artccHighData = JSON.parse(await system.readFile(`${path}/artccHigh.geojson`)).features;
-    const tmpArtccHigh: string[] = [];
-    for (const feature of artccHighData) {
-      const name = this.getFeatureName(feature);
-      if (name && tmpArtccHigh.indexOf(name) === -1) {
-        tmpArtccHigh.push(name);
+    if (system.fileExistsSync(`${path}/artccHigh.geojson`)) {
+      const artccHighData = JSON.parse(
+        await system.readFile(`${path}/artccHigh.geojson`)
+      ).features;
+      const tmpArtccHigh: string[] = [];
+      for (const feature of artccHighData) {
+        const name = this.getFeatureName(feature);
+        if (name && tmpArtccHigh.indexOf(name) === -1) {
+          tmpArtccHigh.push(name);
+        }
       }
+      nse.mapItemsIndex["artccHigh"] = tmpArtccHigh.map((key) => {
+        const feature = artccHighData.find(
+          (f) => this.getFeatureName(f) === key
+        );
+        if (!feature?.properties.uuid) {
+          console.error(`No UUID found for ARTCC High: ${key}`);
+          throw new Error(`Missing UUID for ARTCC High: ${key}`);
+        }
+        return {
+          name: key,
+          uuid: feature.properties.uuid,
+        };
+      });
     }
-    nse.mapItemsIndex["artccHigh"] = tmpArtccHigh.map((key) => {
-      const feature = artccHighData.find((f) => this.getFeatureName(f) === key);
-      if (!feature?.properties.uuid) {
-        console.error(`No UUID found for ARTCC High: ${key}`);
-        throw new Error(`Missing UUID for ARTCC High: ${key}`);
-      }
-      return {
-        name: key,
-        uuid: feature.properties.uuid,
-      };
-    });
 
     // artcc
-    const artccData = JSON.parse(await system.readFile(`${path}/artcc.geojson`)).features;
-    const tmpArtcc: string[] = [];
-    for (const feature of artccData) {
-      const name = this.getFeatureName(feature);
-      if (name && tmpArtcc.indexOf(name) === -1) {
-        tmpArtcc.push(name);
+    if (system.fileExistsSync(`${path}/artcc.geojson`)) {
+      const artccData = JSON.parse(
+        await system.readFile(`${path}/artcc.geojson`)
+      ).features;
+      const tmpArtcc: string[] = [];
+      for (const feature of artccData) {
+        const name = this.getFeatureName(feature);
+        if (name && tmpArtcc.indexOf(name) === -1) {
+          tmpArtcc.push(name);
+        }
       }
+      nse.mapItemsIndex["artcc"] = tmpArtcc.map((key) => {
+        const feature = artccData.find((f) => this.getFeatureName(f) === key);
+        if (!feature?.properties.uuid) {
+          console.error(`No UUID found for ARTCC: ${key}`);
+          throw new Error(`Missing UUID for ARTCC: ${key}`);
+        }
+        return {
+          name: key,
+          uuid: feature.properties.uuid,
+        };
+      });
     }
-    nse.mapItemsIndex["artcc"] = tmpArtcc.map((key) => {
-      const feature = artccData.find((f) => this.getFeatureName(f) === key);
-      if (!feature?.properties.uuid) {
-        console.error(`No UUID found for ARTCC: ${key}`);
-        throw new Error(`Missing UUID for ARTCC: ${key}`);
-      }
-      return {
-        name: key,
-        uuid: feature.properties.uuid,
-      };
-    });
 
     // navaids
     const navaidsTypeList = ["vor", "ndb", "fix", "airport"];
     for (const type of navaidsTypeList) {
-      const typeData = JSON.parse(await system.readFile(`${path}/${type}.geojson`)).features;
+      if (!system.fileExistsSync(`${path}/${type}.geojson`)) {
+        continue;
+      }
+      const typeData = JSON.parse(
+        await system.readFile(`${path}/${type}.geojson`)
+      ).features;
       nse[type] = typeData.map((item: any) => {
         if (!item.properties.uuid) {
           console.error(`No UUID found for ${type}: ${item.properties.name}`);
           throw new Error(`Missing UUID for ${type}: ${item.properties.name}`);
         }
-        const latLon = toWgs84([item.geometry.coordinates[0], item.geometry.coordinates[1]]);
+        const latLon = toWgs84([
+          item.geometry.coordinates[0],
+          item.geometry.coordinates[1],
+        ]);
         return {
           name: this.getFeatureName(item),
           freq: item.properties.freq,
@@ -223,38 +267,55 @@ class NavdataManager {
     }
 
     // runways
-    const runwaysData = JSON.parse(await system.readFile(`${path}/runway.geojson`)).features;
-    nse.mapItemsIndex["runway"] = runwaysData.map((item: any) => {
-      if (!item.properties.uuid) {
-        console.error(`No UUID found for runway: ${item.properties.icao}-${item.properties.name}`);
-        throw new Error(`Missing UUID for runway: ${item.properties.icao}-${item.properties.name}`);
-      }
-      return {
-        name: this.getFeatureName(item),
-        type: item.properties.type,
-        uuid: item.properties.uuid,
-      };
-    });
+    if (system.fileExistsSync(`${path}/runway.geojson`)) {
+      const runwaysData = JSON.parse(
+        await system.readFile(`${path}/runway.geojson`)
+      ).features;
+      nse.mapItemsIndex["runway"] = runwaysData.map((item: any) => {
+        if (!item.properties.uuid) {
+          console.error(
+            `No UUID found for runway: ${item.properties.icao}-${item.properties.name}`
+          );
+          throw new Error(
+            `Missing UUID for runway: ${item.properties.icao}-${item.properties.name}`
+          );
+        }
+        return {
+          name: this.getFeatureName(item),
+          type: item.properties.type,
+          uuid: item.properties.uuid,
+        };
+      });
 
-    nse.runways = runwaysData.map((item: any) => {
-      if (!item.properties.uuid) {
-        console.error(`No UUID found for runway: ${item.properties.icao}-${item.properties.name}`);
-        throw new Error(`Missing UUID for runway: ${item.properties.icao}-${item.properties.name}`);
-      }
-      return {
-        id: item.id,
-        name: this.getFeatureName(item),
-        oppositeId: item.properties.oppositeId,
-        type: item.properties.type,
-        icao: item.properties.icao,
-        uuid: item.properties.uuid,
-      };
-    });
+      nse.runways = runwaysData.map((item: any) => {
+        if (!item.properties.uuid) {
+          console.error(
+            `No UUID found for runway: ${item.properties.icao}-${item.properties.name}`
+          );
+          throw new Error(
+            `Missing UUID for runway: ${item.properties.icao}-${item.properties.name}`
+          );
+        }
+        return {
+          id: item.id,
+          name: this.getFeatureName(item),
+          oppositeId: item.properties.oppositeId,
+          type: item.properties.type,
+          icao: item.properties.icao,
+          uuid: item.properties.uuid,
+        };
+      });
+    }
 
     // Airways
     const awys = ["lowAirway", "highAirway"];
     for (const awy of awys) {
-      const data = JSON.parse(await system.readFile(`${path}/${awy}.geojson`)).features;
+      if (!system.fileExistsSync(`${path}/${awy}.geojson`)) {
+        continue;
+      }
+      const data = JSON.parse(
+        await system.readFile(`${path}/${awy}.geojson`)
+      ).features;
       nse.mapItemsIndex[awy] = data.map((item: any) => {
         if (!item.properties.uuid) {
           console.error(`No UUID found for ${awy}: ${item.properties.name}`);
@@ -269,54 +330,76 @@ class NavdataManager {
     }
 
     // labels
-    const labelsData = JSON.parse(await system.readFile(`${path}/label.geojson`)).features;
-    const tmpLabels: any[] = [];
-    for (const feature of labelsData) {
-      const index = tmpLabels.findIndex((item) => item.properties.section === feature.properties.section);
-      if (index === -1) {
-        // if (!feature.properties.section?.includes("Gates")) {
-        tmpLabels.push(feature);
-        // }
+    if (system.fileExistsSync(`${path}/label.geojson`)) {
+      const labelsData = JSON.parse(
+        await system.readFile(`${path}/label.geojson`)
+      ).features;
+      const tmpLabels: any[] = [];
+      for (const feature of labelsData) {
+        const index = tmpLabels.findIndex(
+          (item) => item.properties.section === feature.properties.section
+        );
+        if (index === -1) {
+          // if (!feature.properties.section?.includes("Gates")) {
+          tmpLabels.push(feature);
+          // }
+        }
       }
+      nse.mapItemsIndex["label"] = tmpLabels
+        .map((item: any) => {
+          if (!item.properties?.section) {
+            console.warn("Skipping label with missing section:", item);
+            return null;
+          }
+          if (!item.properties.uuid) {
+            console.error(
+              `No UUID found for label: ${
+                item.properties.value || item.properties.section
+              }`
+            );
+            throw new Error(
+              `Missing UUID for label: ${
+                item.properties.value || item.properties.section
+              }`
+            );
+          }
+          const featureName = this.getFeatureName(item);
+          if (!featureName) {
+            return;
+          }
+
+          return {
+            name: featureName,
+            uuid: item.properties.uuid,
+          };
+        })
+        .filter((label): label is NonNullable<typeof label> => label !== null);
     }
-    nse.mapItemsIndex["label"] = tmpLabels
-      .map((item: any) => {
-        if (!item.properties?.section) {
-          console.warn("Skipping label with missing section:", item);
-          return null;
-        }
-        if (!item.properties.uuid) {
-          console.error(`No UUID found for label: ${item.properties.value || item.properties.section}`);
-          throw new Error(`Missing UUID for label: ${item.properties.value || item.properties.section}`);
-        }
-        const featureName = this.getFeatureName(item);
-        if (!featureName) {
-          return;
-        }
-
-        return {
-          name: featureName,
-          uuid: item.properties.uuid,
-        };
-      })
-      .filter((label): label is NonNullable<typeof label> => label !== null);
-
     // await system.deleteFile(`${path}/label.geojson`);
 
-    const eseProcessedData = await EseHelper.parseEseContent(eseFilePath, allNavaids, isGNG);
+    const eseProcessedData = await EseHelper.parseEseContent(
+      eseFilePath,
+      allNavaids,
+      isGNG
+    );
     nse.position = eseProcessedData.position;
     nse.procedure = eseProcessedData.procedure;
     nse.sectors = eseProcessedData.sectors;
     nse.sectorLines = eseProcessedData.sectorLines;
 
-    await system.writeFile(`${outputPath}/${packageId}-package/${packageId}/datasets/nse.json`, JSON.stringify(nse));
+    await system.writeFile(
+      `${outputPath}/${packageId}-package/${packageId}/datasets/nse.json`,
+      JSON.stringify(nse)
+    );
   }
 
   private getFeatureName(feature: any): string | null {
     const type = feature.properties.type;
 
     // Standard name property types
-    if (["airport", "fix", "highAirway", "lowAirway", "ndb", "vor"].includes(type)) {
+    if (
+      ["airport", "fix", "highAirway", "lowAirway", "ndb", "vor"].includes(type)
+    ) {
       if (feature.properties.name) {
         return feature.properties.name;
       }
@@ -329,7 +412,18 @@ class NavdataManager {
     }
 
     // Section property types
-    if (["artcc-high", "artcc-low", "artcc", "geo", "high-airway", "low-airway", "sid", "star"].includes(type)) {
+    if (
+      [
+        "artcc-high",
+        "artcc-low",
+        "artcc",
+        "geo",
+        "high-airway",
+        "low-airway",
+        "sid",
+        "star",
+      ].includes(type)
+    ) {
       if (feature.properties.section) {
         return feature.properties.section;
       }
@@ -362,7 +456,9 @@ class NavdataManager {
   }
 
   private getSharedUUID(type: string, name: string): string {
-    const formatted = `${type}-${name}`.toLowerCase().replace(/[^a-z0-9-]/g, "-");
+    const formatted = `${type}-${name}`
+      .toLowerCase()
+      .replace(/[^a-z0-9-]/g, "-");
     return formatted
       .replace(/-+/g, "-") // Replace multiple dashes with single dash
       .replace(/-$/g, ""); // Remove trailing dash
@@ -439,7 +535,10 @@ class NavdataManager {
       }
 
       if (f.properties?.color) {
-        f.properties = convertColorFeaturePropertyToGeojsonProperties(f, (f.properties?.type ?? "") === "region").properties;
+        f.properties = convertColorFeaturePropertyToGeojsonProperties(
+          f,
+          (f.properties?.type ?? "") === "region"
+        ).properties;
       }
     });
 
@@ -461,25 +560,43 @@ class NavdataManager {
     let returnSegment: number[][] = [];
     returnSegment.push(
       "position" in segment.start
-        ? [(segment.start as Navaid).position.lonFloat, (segment.start as Navaid).position.latFloat]
-        : [(segment.start as Position).lonFloat, (segment.start as Position).latFloat]
+        ? [
+            (segment.start as Navaid).position.lonFloat,
+            (segment.start as Navaid).position.latFloat,
+          ]
+        : [
+            (segment.start as Position).lonFloat,
+            (segment.start as Position).latFloat,
+          ]
     );
     returnSegment.push(
       "position" in segment.end
-        ? [(segment.end as Navaid).position.lonFloat, (segment.end as Navaid).position.latFloat]
-        : [(segment.end as Position).lonFloat, (segment.end as Position).latFloat]
+        ? [
+            (segment.end as Navaid).position.lonFloat,
+            (segment.end as Navaid).position.latFloat,
+          ]
+        : [
+            (segment.end as Position).lonFloat,
+            (segment.end as Position).latFloat,
+          ]
     );
     return returnSegment;
   }
 
-  private async generateGeoJsonFilesForType(path: string, type: string, allFeatures: any[]): Promise<void> {
+  private async generateGeoJsonFilesForType(
+    path: string,
+    type: string,
+    allFeatures: any[]
+  ): Promise<void> {
     const features = allFeatures;
     const geojson = {
       type: "FeatureCollection",
       features: features,
     };
     const data = JSON.stringify(geojson);
-    const formattedType = type.replace(/-([a-z])/g, (match, letter) => letter.toUpperCase());
+    const formattedType = type.replace(/-([a-z])/g, (match, letter) =>
+      letter.toUpperCase()
+    );
     await system.writeFile(`${path}/${formattedType}.geojson`, data);
     return;
   }

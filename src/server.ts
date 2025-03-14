@@ -24,25 +24,15 @@ async function startJobs() {
   const neoRadarPath = customNeoRadarPath || getDefaultNeoRadarPath();
   console.log("NeoRadar path: ", neoRadarPath);
 
-  const data = JSON.parse(await system.readFile(inputFilePath)) as InputManifest;
-  console.log("Data: ", data);
+  if (!inputFilePath || !system.fileExistsSync(inputFilePath)) {
+    throw new Error("Input file does not exist");
+  }
 
-  await packageBuilder.build(
-    data.id,
-    data.name,
-    data.description,
-    data.namespace,
-    data.sctPath,
-    data.esePath,
-    data.loginProfilesPath,
-    data.icaoAircraftPath,
-    data.icaoAirlinesPath,
-    data.recatDefinitionPath,
-    data.aliasPath,
-    data.outputDir,
-    data.useSctLabels,
-    data.isGNG
-  );
+  const data = JSON.parse(
+    await system.readFile(inputFilePath)
+  ) as InputManifest;
+
+  await packageBuilder.build(data);
 
   try {
     if (!data.asrPath) {

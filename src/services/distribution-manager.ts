@@ -13,7 +13,9 @@ class DistributionManager {
 
     // Check if the package was successfully built
     if (await system.directoryExists(packagePath)) {
-      const shouldPreparePackage = await this.confirmAction("Do you want to prepare the package for distribution?");
+      const shouldPreparePackage = await this.confirmAction(
+        "Do you want to prepare the package for distribution?"
+      );
 
       if (shouldPreparePackage) {
         await this.mergeBasePackage(packagePath);
@@ -23,10 +25,17 @@ class DistributionManager {
           await this.handlePackageOverride(data.packageOverride, packagePath);
         }
 
-        const shouldInstallPackage = await this.confirmAction("Do you want to install the package into the NeoRadar client?");
+        const shouldInstallPackage = await this.confirmAction(
+          "Do you want to install the package into the NeoRadar client?"
+        );
 
         if (shouldInstallPackage) {
-          await this.installPackage(neoRadarPath, data, profilesPath, packagePath);
+          await this.installPackage(
+            neoRadarPath,
+            data,
+            profilesPath,
+            packagePath
+          );
         }
       }
     } else {
@@ -42,12 +51,17 @@ class DistributionManager {
     console.log("Merged base package with output package.");
   }
 
-  private async handlePackageOverride(overridePath: string, outputPath: string): Promise<void> {
+  private async handlePackageOverride(
+    overridePath: string,
+    outputPath: string
+  ): Promise<void> {
     console.log("Applying package overrides...");
 
     // Check if systems directory exists in the override
     const systemsOverridePath = path.join(overridePath, "systems");
-    const hasSystemsOverride = await system.directoryExists(systemsOverridePath);
+    const hasSystemsOverride = await system.directoryExists(
+      systemsOverridePath
+    );
 
     if (hasSystemsOverride) {
       await this.handleSystemsOverride(systemsOverridePath, outputPath);
@@ -61,7 +75,9 @@ class DistributionManager {
         const targetPath = path.join(outputPath, entry);
 
         if (await system.isDirectory(sourcePath)) {
-          await system.copyDirectory(sourcePath, targetPath, { overwrite: true });
+          await system.copyDirectory(sourcePath, targetPath, {
+            overwrite: true,
+          });
         } else {
           await system.copyFile(sourcePath, targetPath);
         }
@@ -69,9 +85,16 @@ class DistributionManager {
     }
   }
 
-  private async handleSystemsOverride(systemsOverridePath: string, outputPath: string): Promise<void> {
+  private async handleSystemsOverride(
+    systemsOverridePath: string,
+    outputPath: string
+  ): Promise<void> {
     const outputSystemsPath = path.join(outputPath, "systems");
-    const baseSystemsDefaultPath = path.join(this.basePackagePath, "systems", "default");
+    const baseSystemsDefaultPath = path.join(
+      this.basePackagePath,
+      "systems",
+      "default"
+    );
 
     // Get all subdirectories in the systems override
     const systemDirs = await system.readDirectory(systemsOverridePath);
@@ -99,8 +122,17 @@ class DistributionManager {
     }
   }
 
-  private async installPackage(neoRadarPath: string, data: InputManifest, profilesPath: string, packagePath: string): Promise<void> {
-    const neoRadarProfilesPath = path.join(neoRadarPath, "profiles", data.namespace);
+  private async installPackage(
+    neoRadarPath: string,
+    data: InputManifest,
+    profilesPath: string,
+    packagePath: string
+  ): Promise<void> {
+    const neoRadarProfilesPath = path.join(
+      neoRadarPath,
+      "profiles",
+      data.namespace
+    );
     const neoRadarPackagePath = path.join(neoRadarPath, "packages", data.id);
 
     // Delete existing package directory if it exists
@@ -112,7 +144,10 @@ class DistributionManager {
     await system.createDirectory(neoRadarProfilesPath, { recursive: true });
 
     // Copy ASR directory to profiles/namespace directory
-    await system.copyDirectory(profilesPath, neoRadarProfilesPath);
+    if (profilesPath.length > 0 && await system.directoryExists(profilesPath)) {
+      console.log("Copying profiles to NeoRadar client...", profilesPath);
+      await system.copyDirectory(profilesPath, neoRadarProfilesPath);
+    }
 
     // Copy remaining files to packages/id directory
     await system.copyDirectory(packagePath, neoRadarPackagePath);

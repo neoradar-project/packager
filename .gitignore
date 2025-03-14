@@ -124,3 +124,6 @@ charts/**/*.tgz
 .DS_Store
 
 src/data/lfxx/**
+src/data/eixx/**/*
+
+out/
