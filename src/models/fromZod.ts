@@ -2,8 +2,7 @@ import { z } from "zod";
 
 export const GeoJsonPropertiesExtensionSchema = z.object({
   uuid: z.string(),
-  type: z.string().optional(),
-  label: z.string().optional(),
+  value: z.string().optional(),
   lineStyle: z
     .object({
       color: z.array(z.number()),
@@ -71,7 +70,6 @@ export const EseDatasetPositionSchema = z.object({
   facility: z.string(),
   squawkStart: z.string(),
   squawkEnd: z.string(),
-  layerUniqueId: z.number(),
   displaySectorLines: z.array(z.number()).optional(),
   visibilityPoints: z.array(z.tuple([z.number(), z.number()])).optional(),
 });
@@ -92,7 +90,6 @@ export const EseDatasetProcedureSchema = z.object({
   name: z.string(),
   runway: z.string().optional(),
   points: z.array(EseDatasetProcedurePointSchema),
-  layerUniqueId: z.number(),
 });
 export type EseDatasetProcedure = z.infer<typeof EseDatasetProcedureSchema>;
 
@@ -129,7 +126,6 @@ const _sectorDisplaySectorSchema = z.object({
 });
 
 export const EseDatasetSectorSchema = z.object({
-  layerUniqueId: z.number(),
   name: z.string(),
   floor: z.number(),
   ceiling: z.number(),

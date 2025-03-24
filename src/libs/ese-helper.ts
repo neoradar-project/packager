@@ -26,7 +26,6 @@ export class EseHelper {
   private static isGNG: boolean = false;
   private static createEmptySector(): Sector {
     return {
-      layerUniqueId: 0,
       name: "",
       actives: [],
       owners: [],
@@ -132,7 +131,6 @@ export class EseHelper {
     const position = PackageAtcPosition.init(line, this.isGNG);
     if (!position) return;
 
-    position.layerUniqueId = counters.position++;
     result.position.push(position.toJsonObject());
   }
 
@@ -209,7 +207,10 @@ export class EseHelper {
       const radius = Number(parts[parts.length === 5 ? 4 : 3]);
       if (isNaN(radius) || !geo) return;
 
-      const circle = turf.circle(turf.point([geo.lon, geo.lat]), radius, 10, "nauticalmiles");
+      const circle = turf.circle(turf.point([geo.lon, geo.lat]), radius, {
+        steps: 10,
+        units: "nauticalmiles",
+      });
       const circlePoints = circle.geometry.coordinates[0].map((coord: number[]) => {
         const cartesian = toMercator([coord[1], coord[0]]);
         if (!cartesian[0] || !cartesian[1]) {
@@ -258,7 +259,6 @@ export class EseHelper {
   private static handleNewSector(line: string, result: ParsedEseContent, context: SectorHandlerContext): void {
     const parts = line.split(":");
     context.currentSector = {
-      layerUniqueId: context.sectorCounter++,
       name: parts[1],
       actives: [],
       owners: [],

@@ -12,7 +12,6 @@ interface SectorLineDisplay {
 }
 
 export interface Sector {
-  layerUniqueId: number;
   name: string;
   actives: Array<any>;
   owners: string[];
@@ -30,6 +29,5 @@ export interface NseNavaid {
   type: string;
   lat: number;
   lon: number;
-  layerUniqueId: string;
   uuid: string;
 }

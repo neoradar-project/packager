@@ -16,8 +16,6 @@ export class PackageAtcPosition {
 
   visiblityPoints: [number, number][] = [];
 
-  layerUniqueId: number = 0;
-
   constructor(data: any) {
     Object.assign(this, data);
   }
@@ -33,7 +31,6 @@ export class PackageAtcPosition {
       facility: this.facility,
       squawkStart: this.squawkStart,
       squawkEnd: this.squawkEnd,
-      layerUniqueId: this.layerUniqueId,
       visiblityPoints: this.visiblityPoints,
     };
   }

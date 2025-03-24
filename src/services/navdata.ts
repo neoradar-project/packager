@@ -1,15 +1,11 @@
 import debug from "debug";
 import { system } from "./system.js";
-import { PackageAtcPosition } from "../models/position.js";
-import { Procedure } from "../models/procedure.js";
-import { geoHelper } from "../libs/geo-helper.js";
 import { ESE, Position, SCT, toGeoJson } from "sector-file-tools";
 import { multiLineString } from "@turf/turf";
 import { Navaid, Segment } from "sector-file-tools/dist/src/sct.js";
 import { NseNavaid, Sector } from "../models/nse.js";
 import { EseDataset, SectorLine } from "../models/fromZod.js";
 import { convertColorFeaturePropertyToGeojsonProperties } from "../libs/style-helper.js";
-import { v4 as uuidv4 } from "uuid";
 import { EseHelper } from "../libs/ese-helper.js";
 import { toWgs84 } from "@turf/projection";
 const log = debug("NavdataManager");
@@ -247,7 +243,6 @@ class NavdataManager {
           y: item.geometry.coordinates[0],
           lat: latLon[1],
           lon: latLon[0],
-          layerUniqueId: item.properties.id,
           uuid: item.properties.uuid,
         };
       });
