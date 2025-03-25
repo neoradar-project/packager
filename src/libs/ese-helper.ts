@@ -20,6 +20,7 @@ interface SectorHandlerContext {
   sectorCounter: number;
   baseMatrixInt: number;
   numericIDReplacementMatrix: Record<string, number>;
+  processingNewSector: boolean;
 }
 
 export class EseHelper {
@@ -69,6 +70,7 @@ export class EseHelper {
       sectorCounter: counters.sector,
       baseMatrixInt: 690,
       numericIDReplacementMatrix: {},
+      processingNewSector: false,
     };
 
     const lineHandlers = this.createLineHandlers(result, counters, context, allNavaids);
@@ -79,6 +81,11 @@ export class EseHelper {
       if (!this.isValidLine(line)) continue;
 
       if (this.isSectionHeader(line)) {
+        // Check if we're moving to a new section and we have an incomplete sector
+        if (currentSection === "AIRSPACE" && context.processingNewSector) {
+          this.validateAndFinalizeSector(result, context);
+        }
+
         currentSection = this.extractSectionName(line);
         continue;
       }
@@ -87,7 +94,26 @@ export class EseHelper {
       handler(line);
     }
 
+    // Check the last sector at the end of the file
+    if (context.processingNewSector) {
+      this.validateAndFinalizeSector(result, context);
+    }
+
     return result;
+  }
+
+  private static validateAndFinalizeSector(result: ParsedEseContent, context: SectorHandlerContext): void {
+    // If the sector has no borders, remove it from the result
+    if (context.currentSector.borders.length === 0) {
+      // Find the index of the current sector in the result sectors array
+      const sectorIndex = result.sectors.findIndex((s) => s.name === context.currentSector.name);
+      if (sectorIndex !== -1) {
+        // Remove the sector from the array
+        console.warn(`Warning: Sector ${context.currentSector.name} is being added with no borders`);
+      }
+    }
+
+    context.processingNewSector = false;
   }
 
   private static cleanLine(line: string): string {
@@ -160,6 +186,11 @@ export class EseHelper {
     } else if (line.startsWith("COORD:")) {
       this.handleCoord(line, context);
     } else if (line.startsWith("SECTOR:")) {
+      // If we encounter a new SECTOR: line and we're still processing a previous sector,
+      // validate and finalize the previous sector before starting a new one
+      if (context.processingNewSector) {
+        this.validateAndFinalizeSector(result, context);
+      }
       this.handleNewSector(line, result, context);
     } else if (line.startsWith("OWNER:")) {
       this.handleOwner(line, context);
@@ -270,6 +301,7 @@ export class EseHelper {
       displaySectorLines: [],
     };
     result.sectors.push(context.currentSector);
+    context.processingNewSector = true;
   }
 
   private static handleOwner(line: string, context: SectorHandlerContext): void {
