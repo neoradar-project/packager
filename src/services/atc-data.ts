@@ -1,7 +1,7 @@
 import debug from "debug";
 import { system } from "./system.js";
 import { recatDefinition } from "../models/recatDef.model.js";
-import { ATCData, IcaoAircraft, IcaoAirline, LoginProfiles, Sector, Volume, BorderLine } from "../models/atcData.js";
+import { ATCData, IcaoAircraft, IcaoAirline, LoginProfiles, Position, Sector, Volume, BorderLine } from "../models/atcData.js";
 import { ParsedEseContent } from "../libs/ese-helper.js";
 import { NseNavaid } from "../models/nse.js";
 import path from "path";
@@ -14,13 +14,16 @@ export interface NestedLoginProfiles {
   [key: string]: LoginProfiles[];
 }
 
-// Updated ATCData interface to include the nested structure
+// Updated ATCData interface to include the nested structure and positions
 export interface EnhancedATCData extends Omit<ATCData, "loginProfiles"> {
   loginProfiles: NestedLoginProfiles;
+  positions: Record<string, Position>;
 }
 
 class AtcDataManager {
   private nestedProfilesRef: NestedLoginProfiles = {};
+  private positionsRef: Record<string, Position> = {};
+  private callsignToFacilityMap: Record<string, number> = {}; // For storing facility info from login profiles
 
   constructor() {}
 
@@ -37,6 +40,7 @@ class AtcDataManager {
     log("generateAtcData", packageId, loginProfilesFile);
     let atcData: EnhancedATCData = {
       loginProfiles: {},
+      positions: {},
       icaoAircraft: {},
       icaoAirlines: {},
       alias: {},
@@ -46,11 +50,9 @@ class AtcDataManager {
 
     // Check if loginProfilesFile is a directory or a file
     const isDirectory = await this.isDirectory(loginProfilesFile);
-    console.log("isDirectory", isDirectory, loginProfilesFile);
 
     if (isDirectory) {
       // Parse profiles from all files in the directory structure (with flattened keys)
-      console.log("Parsing login profiles from directory structure");
       this.nestedProfilesRef = await this.parseLoginProfilesFromDirectory(loginProfilesFile);
       atcData.loginProfiles = this.nestedProfilesRef;
     } else {
@@ -62,12 +64,14 @@ class AtcDataManager {
 
     // Process sectors and border lines if ESE data is provided
     if (eseProcessedData) {
-      const { sectors, borderLines } = this.transformSectorsAndBorderLines(eseProcessedData, this.flattenLoginProfiles(atcData.loginProfiles));
+      const { sectors, borderLines, positions } = this.transformSectorsAndBorderLines(eseProcessedData);
       atcData.sectors = sectors;
       atcData.borderLines = borderLines;
+      atcData.positions = positions;
+      this.positionsRef = positions;
 
-      // Update login profiles with sector ownership
-      this.updateLoginProfilesWithSectors(this.flattenLoginProfiles(atcData.loginProfiles), eseProcessedData, sectors);
+      // Update positions with sector ownership
+      this.updatePositionsWithSectors(atcData.positions, eseProcessedData, sectors);
     }
 
     // Parse aircraft data
@@ -83,11 +87,9 @@ class AtcDataManager {
       atcData.alias = {};
     }
 
-    // Update the atcData.loginProfiles with the potentially modified reference
-    // This ensures new profiles created during sector processing are included
+    // Update the atcData with the potentially modified references
     atcData.loginProfiles = this.nestedProfilesRef;
-
-    console.log("Final login profiles structure has keys:", Object.keys(atcData.loginProfiles));
+    atcData.positions = this.positionsRef;
 
     // Create output path if it doesn't exist
     const outputDir = `${outputPath}/${packageId}-package/${packageId}/datasets`;
@@ -128,13 +130,11 @@ class AtcDataManager {
       if (index >= 0) {
         // Add the new profile to the same array
         profiles.push(newProfile);
-        console.log(`Added profile ${newProfile.callsign} to location "${key}"`);
         return;
       }
     }
 
     // Fallback to regular add if we can't find the reference profile
-    console.log(`Couldn't find location of reference profile ${referenceProfile.callsign}, using default add method`);
     this.addProfileToStructure(newProfile);
   }
 
@@ -153,110 +153,6 @@ class AtcDataManager {
       // Create a new entry for this facility
       this.nestedProfilesRef[facilityId] = [profile];
     }
-  }
-
-  /**
-   * Calculate left-to-right sequential match score between two strings
-   * (Prioritizes matching characters in sequence from left to right)
-   */
-  private leftToRightMatchScore(target: string, candidate: string): number {
-    // Count matching characters in sequence from left to right
-    let matchScore = 0;
-    let maxMatchRun = 0;
-    let currentMatchRun = 0;
-    let i = 0,
-      j = 0;
-
-    while (i < target.length && j < candidate.length) {
-      if (target[i] === candidate[j]) {
-        currentMatchRun++;
-        // Give higher weight to earlier matches (multiplier based on position)
-        const positionWeight = (target.length - i) * 2;
-        matchScore += 10 * positionWeight;
-        i++;
-        j++;
-      } else {
-        // Try to find the next match by advancing j
-        let found = false;
-        let lookAhead = 1;
-        while (j + lookAhead < candidate.length && lookAhead <= 3) {
-          // Limit look-ahead to 3 chars
-          if (target[i] === candidate[j + lookAhead]) {
-            j += lookAhead;
-            // Penalty for skipping characters
-            matchScore -= lookAhead * 5;
-            found = true;
-            break;
-          }
-          lookAhead++;
-        }
-
-        // If not found by advancing j, advance i
-        if (!found) {
-          maxMatchRun = Math.max(maxMatchRun, currentMatchRun);
-          currentMatchRun = 0;
-          i++;
-          // Penalty for skipping a character in target
-          matchScore -= 10;
-        }
-      }
-    }
-
-    maxMatchRun = Math.max(maxMatchRun, currentMatchRun);
-
-    // Bonus for longer continuous matches
-    const continuousBonus = maxMatchRun * maxMatchRun * 10;
-    matchScore += continuousBonus;
-
-    // Penalize length differences
-    const lengthPenalty = Math.abs(target.length - candidate.length) * 15;
-    matchScore -= lengthPenalty;
-
-    // Additional bonus for prefix match (if the beginning characters match)
-    let prefixLength = 0;
-    while (prefixLength < Math.min(target.length, candidate.length) && target[prefixLength] === candidate[prefixLength]) {
-      prefixLength++;
-    }
-
-    const prefixBonus = prefixLength * prefixLength * 15;
-    matchScore += prefixBonus;
-
-    return matchScore;
-  }
-
-  private findClosestWord(target, candidates) {
-    // Count matching characters from the beginning until a mismatch
-    function countMatchingPrefix(target, word) {
-      let count = 0;
-      for (let i = 0; i < word.length && i < target.length; i++) {
-        if (word[i] === target[i]) {
-          count++;
-        } else {
-          break; // Stop counting at first mismatch
-        }
-      }
-      return count;
-    }
-
-    // Find the candidate with the most matching characters
-    return candidates.reduce((closest, current) => {
-      const closestMatches = countMatchingPrefix(target, closest);
-      const currentMatches = countMatchingPrefix(target, current);
-
-      return currentMatches > closestMatches ? current : closest;
-    }, candidates[0]);
-  }
-
-  private countMatchingPrefix(target, word) {
-    let count = 0;
-    for (let i = 0; i < word.length && i < target.length; i++) {
-      if (word[i] === target[i]) {
-        count++;
-      } else {
-        break;
-      }
-    }
-    return count;
   }
 
   private async parseLoginProfilesFromDirectory(directoryPath: string): Promise<NestedLoginProfiles> {
@@ -293,8 +189,6 @@ class AtcDataManager {
             return aComplexity - bComplexity;
           });
 
-          console.log(`Processing directory ${folderName} with files: ${profileFiles.map((f) => path.basename(f)).join(", ")}`);
-
           // Process each profile file
           for (const profileFile of profileFiles) {
             const fileName = path.basename(profileFile, ".txt");
@@ -319,17 +213,11 @@ class AtcDataManager {
               nestedProfiles[groupKey] = [];
             }
 
-            // Only add profiles that haven't been seen across ANY group
-            console.log(`Processing ${Object.keys(parsedProfiles).length} profiles from ${fileName}`);
-
             Object.values(parsedProfiles).forEach((profile) => {
               // Check against global set of callsigns
               if (!globalCallsigns.has(profile.callsign)) {
                 nestedProfiles[groupKey].push(profile);
                 globalCallsigns.add(profile.callsign);
-                console.log(`Added profile ${profile.callsign} to group ${groupKey}`);
-              } else {
-                console.log(`Skipping duplicate profile ${profile.callsign} in ${fileName}`);
               }
             });
           }
@@ -337,8 +225,6 @@ class AtcDataManager {
       }
     }
 
-    // Log summary
-    console.log(`Parsed ${globalCallsigns.size} unique profiles across ${Object.keys(nestedProfiles).length} groups`);
     return nestedProfiles;
   }
 
@@ -383,24 +269,26 @@ class AtcDataManager {
 
     const data: Record<string, LoginProfiles> = {};
     let currentProfile = "";
+
+    // Create a temporary map for facility information
+    this.callsignToFacilityMap = {};
+
     for (const line of lines) {
       if (line.startsWith("PROFILE:")) {
         const elements = line.split(":");
         currentProfile = elements[1];
 
-        // Extract anchor from callsign (part before * or _)
-        const anchor = elements[1].split(/[\*_]/)[0];
+        // Store facility in temporary map
+        this.callsignToFacilityMap[elements[1]] = Number(elements[3]);
 
+        // Create login profile without facility
         data[currentProfile] = {
           callsign: elements[1],
           range: Number(elements[2]),
-          facility: Number(elements[3]),
           atisLine1: "",
           atisLine2: "",
           atisLine3: "",
           atisLine4: "",
-          sectors: {}, // Initialize empty sectors record
-          anchor: anchor,
         };
         continue;
       }
@@ -414,15 +302,26 @@ class AtcDataManager {
     return data;
   }
 
-  private transformSectorsAndBorderLines(
-    parsedEseContent: ParsedEseContent,
-    loginProfiles: Record<string, LoginProfiles>
-  ): {
+  private transformSectorsAndBorderLines(parsedEseContent: ParsedEseContent): {
     sectors: Record<string, Sector>;
     borderLines: Record<number, BorderLine>;
+    positions: Record<string, Position>;
   } {
     const sectors: Record<string, Sector> = {};
     const borderLines: Record<number, BorderLine> = {};
+    const positions: Record<string, Position> = {};
+
+    // Define facility type mapping
+    const facilityTypeMap: Record<string, number> = {
+      OBS: 0,
+      FSS: 1,
+      DEL: 2,
+      GND: 3,
+      TWR: 4,
+      APP: 5,
+      CTR: 6,
+      ATIS: 7,
+    };
 
     // Convert sector lines to border lines
     parsedEseContent.sectorLines.forEach((sectorLine) => {
@@ -432,15 +331,51 @@ class AtcDataManager {
       };
     });
 
-    // Create lookup maps for efficient access
-    const callsignToLoginProfile = new Map<string, LoginProfiles>();
-    Object.entries(loginProfiles).forEach(([key, profile]) => {
-      callsignToLoginProfile.set(profile.callsign, profile);
+    // Create a mapping of position identifiers to the ESE position objects
+    const identifierToPosition = new Map<string, any>();
+    parsedEseContent.position.forEach((pos) => {
+      identifierToPosition.set(pos.identifier, pos);
     });
 
-    // Track completed identifiers to avoid duplicates
-    const completedIdentifiers = new Set<string>();
-    let sectorIdCounter = 1000; // Start with an arbitrary number
+    // Keep track of which position identifiers already have sectors created for them
+    const identifiersWithSectors = new Set<string>();
+    let sectorIdCounter = 1000; // Start counter for sector IDs
+
+    // First, create all positions from the ESE data
+    parsedEseContent.position.forEach((pos) => {
+      const callsign = pos.callsign;
+      const identifier = pos.identifier;
+      const anchor = callsign.split(/[\*_]/)[0];
+
+      // Determine facility by trying multiple methods
+      let facility = 0; // Default value
+
+      // Method 1: Use value from parsed ESE position if available
+      if (pos.facility && !isNaN(Number(pos.facility))) {
+        facility = Number(pos.facility);
+      }
+      // Method 2: Look up in our temporary facility map
+      else if (this.callsignToFacilityMap[callsign] !== undefined) {
+        facility = this.callsignToFacilityMap[callsign];
+      }
+      // Method 3: Extract from callsign suffix (e.g., APP, CTR, etc.)
+      else {
+        const lastPart = callsign.split("_").pop()?.toUpperCase();
+        if (lastPart && facilityTypeMap[lastPart] !== undefined) {
+          facility = facilityTypeMap[lastPart];
+        }
+      }
+
+      // Add to positions record
+      positions[callsign] = {
+        callsign: callsign,
+        facility: facility,
+        sectors: {}, // Will be populated later
+        anchor: anchor,
+      };
+
+      console.log(`Created position: ${callsign} with identifier ${identifier}`);
+    });
 
     // Process each sector from the parsed ESE content
     for (const oldSector of parsedEseContent.sectors) {
@@ -449,103 +384,34 @@ class AtcDataManager {
 
       const identifier = oldSector.owners[0];
 
-      // Skip if we've already processed this identifier
-      if (completedIdentifiers.has(identifier)) continue;
-
       // Find all sectors with this identifier as the first owner
       const relatedSectors = parsedEseContent.sectors.filter((s) => s.owners && s.owners.length > 0 && s.owners[0] === identifier);
 
       // Find the position with this identifier
-      const position = parsedEseContent.position.find((p) => p.identifier === identifier);
+      const position = identifierToPosition.get(identifier);
 
       if (!position) {
         console.warn(`No position found for identifier ${identifier}`);
         continue;
       }
 
-      // Extract anchor from position callsign
-      const anchor = position.callsign.split(/[\*_]/)[0];
-
-      // Find the corresponding login profile by exact callsign match
-      let loginProfile = callsignToLoginProfile.get(position.callsign);
-
-      if (!loginProfile) {
-        console.log(`No exact login profile found for position ${position.callsign}. Trying to find closest match...`);
-
-        // Split the callsign to find prefix and type
-        const callsignParts = position.callsign.split("*");
-        const baseCallsignPart = callsignParts[0]; // e.g., "LON_SN" from "LON_SN*_CTR"
-
-        // Get the type (last part after "_")
-        const typeMatch = position.callsign.match(/_([^_]+)$/);
-        const positionType = typeMatch ? typeMatch[1] : "";
-
-        if (!positionType) {
-          console.warn(`Could not determine position type from ${position.callsign}`);
-          continue;
-        }
-
-        // Get the facility identifier (first part before "_" or "*")
-        const facilityId = position.callsign.split(/[_*]/)[0];
-
-        // Look for profiles with same facility ID and same position type
-        const similarProfiles: LoginProfiles[] = [];
-
-        for (const [_, profile] of callsignToLoginProfile.entries()) {
-          const profileFacilityId = profile.callsign.split(/[_*]/)[0];
-          const profileTypeMatch = profile.callsign.match(/_([^_]+)$/);
-          const profileType = profileTypeMatch ? profileTypeMatch[1] : "";
-
-          // Check if this profile is for the same facility and same position type
-          if (profileFacilityId === facilityId && profileType === positionType) {
-            similarProfiles.push(profile);
-          }
-        }
-
-        if (similarProfiles.length === 0) {
-          console.warn(`No matching profiles found for facility ${facilityId} and type ${positionType}`);
-          continue;
-        }
-
-        // Find the closest match by comparing left-to-right character sequence
-        let candidateCallsigns = similarProfiles.map((profile) => profile.callsign.split("*")[0]);
-        let closestCallsign = this.findClosestWord(baseCallsignPart, candidateCallsigns);
-
-        // Find the corresponding profile
-        let closestProfile = similarProfiles.find((profile) => profile.callsign.split("*")[0] === closestCallsign);
-        if (!closestProfile) {
-          console.warn(`No closest match found for ${baseCallsignPart}`);
-          continue;
-        }
-        console.log(
-          `Best match: ${closestProfile.callsign} matches ${baseCallsignPart} with ${this.countMatchingPrefix(baseCallsignPart, closestCallsign)} characters`
-        );
-
-        // Create a new login profile based on the closest match
-        loginProfile = {
-          ...closestProfile, // Deep clone to avoid reference issues
-          callsign: position.callsign,
-          anchor: facilityId,
-          sectors: {}, // Reset sectors as they might be different
-        };
-
-        console.log(`Created login profile for ${position.callsign} based on closest match ${closestProfile.callsign}`);
-
-        // Add the new profile to our map so it can be referenced later
-        callsignToLoginProfile.set(position.callsign, loginProfile);
-
-        // Add to the same location as the closest profile
-        this.addProfileToSameLocation(loginProfile, closestProfile);
+      // Skip if we've already processed this identifier
+      if (identifiersWithSectors.has(identifier)) {
+        continue;
       }
+
+      const callsign = position.callsign;
+      const anchor = callsign.split(/[\*_]/)[0];
+      const facility = positions[callsign]?.facility || 0;
 
       // Create the new sector
       const newSector: Sector = {
         id: sectorIdCounter++,
         volumes: [],
         identifier: identifier,
-        frequency: parseInt(position.frequency.replace(".", "")),
+        frequency: parseInt(position.frequency.replace(".", "")) || 0,
         activeAirports: [],
-        facility: loginProfile.facility,
+        facility: facility,
         anchor: anchor,
       };
 
@@ -576,18 +442,48 @@ class AtcDataManager {
       // Add to sectors record
       sectors[identifier] = newSector;
 
-      // Mark this identifier as completed
-      completedIdentifiers.add(identifier);
+      console.log(`Created sector for ${callsign} with identifier ${identifier} and ${newSector.volumes.length} volumes`);
+
+      // Mark this identifier as having a sector
+      identifiersWithSectors.add(identifier);
     }
 
-    return { sectors, borderLines };
+    // Create empty sectors for positions that don't have any sectors
+    // where they are the primary owner (owners[0])
+    parsedEseContent.position.forEach((pos) => {
+      const identifier = pos.identifier;
+
+      // Skip if we've already created a sector for this identifier
+      if (identifiersWithSectors.has(identifier)) {
+        return;
+      }
+
+      // This position doesn't have any sectors where it's the primary owner
+      // Create an empty sector for it
+      const callsign = pos.callsign;
+      const anchor = callsign.split(/[\*_]/)[0];
+      const facility = positions[callsign]?.facility || 0;
+
+      const emptySector: Sector = {
+        id: sectorIdCounter++,
+        volumes: [], // Empty volumes array
+        identifier: identifier,
+        frequency: parseInt(pos.frequency.replace(".", "")) || 0,
+        activeAirports: [],
+        facility: facility,
+        anchor: anchor,
+      };
+
+      // Add to sectors record
+      sectors[identifier] = emptySector;
+
+      console.log(`Created empty sector for position ${callsign} with identifier ${identifier}`);
+    });
+
+    return { sectors, borderLines, positions };
   }
 
-  private updateLoginProfilesWithSectors(
-    loginProfiles: Record<string, LoginProfiles>,
-    parsedEseContent: ParsedEseContent,
-    sectors: Record<string, Sector>
-  ): void {
+  private updatePositionsWithSectors(positions: Record<string, Position>, parsedEseContent: ParsedEseContent, sectors: Record<string, Sector>): void {
     // Create a map from position identifier to callsign
     const identifierToCallsign = new Map<string, string>();
     parsedEseContent.position.forEach((position) => {
@@ -601,33 +497,31 @@ class AtcDataManager {
       // Get the callsign for this identifier
       const callsign = identifierToCallsign.get(identifier);
 
-      if (callsign && loginProfiles[callsign]) {
-        const loginProfile = loginProfiles[callsign];
+      if (callsign && positions[callsign]) {
+        const position = positions[callsign];
 
-        console.log(`Mapping sector ${identifier} to login profile ${callsign}`);
-
-        // Find and add other sectors where this identifier is in owners but not first
+        // Find and add other sectors where this identifier is in owners
         parsedEseContent.sectors.forEach((oldSector) => {
           if (!oldSector.owners || oldSector.owners.length <= 1) return;
 
           const index = oldSector.owners.indexOf(identifier);
+          if (index === -1) return; // This identifier is not an owner of this sector
 
-          const sectorIdentifier = oldSector.owners[0];
-          if (index >= 0) {
-            // If found but not at first position
-            loginProfile.sectors[sectorIdentifier] = index;
-          }
+          const sectorIdentifier = oldSector.owners[0]; // Primary owner
+
+          // Add to position's sectors with appropriate priority
+          position.sectors[sectorIdentifier] = index;
         });
       } else {
-        console.warn(`No login profile found for sector identifier ${identifier}`);
+        console.warn(`No position found for sector identifier ${identifier}`);
       }
     });
 
-    // After all sectors have been added, sort them for each login profile
-    Object.values(loginProfiles).forEach((profile) => {
-      if (Object.keys(profile.sectors).length > 0) {
+    // After all sectors have been added, sort them for each position
+    Object.values(positions).forEach((position) => {
+      if (Object.keys(position.sectors).length > 0) {
         // Get the sectors and priorities into an array for sorting
-        const sectorEntries = Object.entries(profile.sectors);
+        const sectorEntries = Object.entries(position.sectors);
 
         // Sort by priority value (lowest first)
         sectorEntries.sort((a, b) => a[1] - b[1]);
@@ -639,9 +533,11 @@ class AtcDataManager {
         });
 
         // Replace with sorted sectors
-        profile.sectors = orderedSectors;
+        position.sectors = orderedSectors;
 
-        console.log(`Sorted ${sectorEntries.length} sectors for ${profile.callsign}`);
+        console.log(`Position ${position.callsign} has ${Object.keys(orderedSectors).length} sectors`);
+      } else {
+        console.log(`Position ${position.callsign} has no sectors`);
       }
     });
   }

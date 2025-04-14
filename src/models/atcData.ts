@@ -1,11 +1,15 @@
 export interface LoginProfiles {
   callsign: string;
   range: number;
-  facility: number;
   atisLine1: string;
   atisLine2: string;
   atisLine3: string;
   atisLine4: string;
+}
+
+export interface Position {
+  callsign: string;
+  facility: number;
   sectors: Record<string, number>;
   anchor: string;
 }
@@ -51,9 +55,21 @@ export interface Sector {
 
 export interface ATCData {
   loginProfiles: Record<string, LoginProfiles>;
+  positions: Record<string, Position>;
   icaoAircraft: Record<string, IcaoAircraft>;
   icaoAirlines: Record<string, IcaoAirline>;
   alias: Record<string, string>;
   borderLines: Record<number, BorderLine>;
   sectors: Record<string, Sector>;
+}
+
+export enum AtcPositionType {
+  OBS = 0,
+  FSS = 1,
+  DEL = 2,
+  GND = 3,
+  TWR = 4,
+  APP = 5,
+  CTR = 6,
+  ATIS = 7,
 }
