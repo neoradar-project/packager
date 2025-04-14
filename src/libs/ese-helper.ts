@@ -7,7 +7,7 @@ import { geoHelper } from "./geo-helper";
 import * as turf from "@turf/turf";
 import { toMercator, toWgs84 } from "@turf/projection";
 
-interface ParsedEseContent {
+export interface ParsedEseContent {
   position: any[];
   procedure: any[];
   sectors: Sector[];
@@ -210,6 +210,7 @@ export class EseHelper {
   private static handleSectorLine(line: string, result: ParsedEseContent, context: SectorHandlerContext, allNavaids: NseNavaid[]): void {
     const id = line.split(":")[1];
     const isnum = /^\d+$/.test(id);
+    if (id.startsWith("Only") && !this.isGNG) return;
 
     if (!isnum) {
       context.numericIDReplacementMatrix[id] = context.baseMatrixInt++;
@@ -289,6 +290,7 @@ export class EseHelper {
 
   private static handleNewSector(line: string, result: ParsedEseContent, context: SectorHandlerContext): void {
     const parts = line.split(":");
+    if (parts[1].startsWith("Only") && !this.isGNG) return;
     context.currentSector = {
       name: parts[1],
       actives: [],

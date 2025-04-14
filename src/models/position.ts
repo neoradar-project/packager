@@ -14,7 +14,7 @@ export class PackageAtcPosition {
   squawkStart!: string;
   squawkEnd!: string;
 
-  visiblityPoints: [number, number][] = [];
+  visibilityPoints: [number, number][] = [];
 
   constructor(data: any) {
     Object.assign(this, data);
@@ -31,7 +31,7 @@ export class PackageAtcPosition {
       facility: this.facility,
       squawkStart: this.squawkStart,
       squawkEnd: this.squawkEnd,
-      visiblityPoints: this.visiblityPoints,
+      visibilityPoints: this.visibilityPoints,
     };
   }
 
@@ -72,7 +72,7 @@ export class PackageAtcPosition {
         facility: facility,
         squawkStart: data[9].replace("\r", ""),
         squawkEnd: data[10].replace("\r", ""),
-        visiblityPoints: allPoints,
+        visibilityPoints: allPoints,
       });
       return out;
     }

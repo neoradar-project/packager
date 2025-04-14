@@ -22,29 +22,20 @@ class PackageBuilder {
     this.commonPath = "./src/data/common";
   }
 
-  private _vertifyMandatoryFilesExist(data: InputManifest) {
+  private _verifyMandatoryFilesExist(data: InputManifest) {
     if (!data.sctPath || !system.fileExistsSync(data.sctPath)) {
       throw new Error("Missing SCT path or file does not exist");
     }
     if (!data.esePath || !system.fileExistsSync(data.esePath)) {
       throw new Error("Missing ESE path or file does not exist");
     }
-    if (
-      !data.loginProfilesPath ||
-      !system.fileExistsSync(data.loginProfilesPath)
-    ) {
+    if (!data.loginProfilesPath || !system.fileExistsSync(data.loginProfilesPath)) {
       throw new Error("Missing login profiles path");
     }
-    if (
-      !data.icaoAircraftPath ||
-      !system.fileExistsSync(data.icaoAircraftPath)
-    ) {
+    if (!data.icaoAircraftPath || !system.fileExistsSync(data.icaoAircraftPath)) {
       throw new Error("Missing ICAO aircraft file path");
     }
-    if (
-      !data.icaoAirlinesPath ||
-      !system.fileExistsSync(data.icaoAirlinesPath)
-    ) {
+    if (!data.icaoAirlinesPath || !system.fileExistsSync(data.icaoAirlinesPath)) {
       throw new Error("Missing ICAO airlines file path");
     }
   }
@@ -53,30 +44,21 @@ class PackageBuilder {
     this.outputPath = inputManifest.outputDir;
 
     // First check if all mandatory files are present
-    this._vertifyMandatoryFilesExist(inputManifest);
+    this._verifyMandatoryFilesExist(inputManifest);
 
-    await system
-      .createDirectory(this.outputPath)
-      .then(() => console.log("outputPath created"));
+    await system.createDirectory(this.outputPath).then(() => console.log("outputPath created"));
 
     const sctData = parseSct(await system.readFile(inputManifest.sctPath));
-    const eseData = parseEse(
-      sctData,
-      await system.readFile(inputManifest.esePath)
-    );
+    const eseData = parseEse(sctData, await system.readFile(inputManifest.esePath));
 
-    console.log(
-      "Generating package: ",
-      inputManifest.namespace,
-      inputManifest.name
-    );
+    console.log("Generating package: ", inputManifest.namespace, inputManifest.name);
     const packagePath = `${this.outputPath}/${inputManifest.id}-package/${inputManifest.id}`;
     // clean
     await system.deleteDirectory(packagePath);
     // create
     await system.createDirectory(packagePath);
 
-    // Package datasets
+    // Generate datasets from SCT and ESE data
     const datasets = await navdata.generateDataSets(
       inputManifest.id,
       sctData,
@@ -86,12 +68,19 @@ class PackageBuilder {
       inputManifest.useSctLabels
     );
 
-    console.log("datasets", datasets);
+    console.log("Datasets generated:", datasets);
 
     await sleep(1000);
 
-    // Package global ATC Data
+    // Process raw ESE file to extract navaid, sector, and position information
+    console.log("Generating navdata...");
+    const allNavaids = await navdata.generateNavdata(inputManifest.id, inputManifest.namespace, inputManifest.esePath, this.outputPath, inputManifest.isGNG);
 
+    console.log("Processing ESE content...");
+    const parsedEseContent = await navdata.parseEseContent(inputManifest.esePath, allNavaids, inputManifest.isGNG);
+
+    // Generate ATC data with the parsed ESE content
+    console.log("Generating ATC data...");
     await atcData.generateAtcdata(
       inputManifest.id,
       inputManifest.loginProfilesPath,
@@ -99,22 +88,14 @@ class PackageBuilder {
       inputManifest.icaoAirlinesPath,
       inputManifest.recatDefinitionPath,
       inputManifest.aliasPath,
-      this.outputPath
-    );
-
-    // Generating computable navdata
-    await navdata.generateNavdata(
-      inputManifest.id,
-      inputManifest.namespace,
-      inputManifest.esePath,
       this.outputPath,
-      inputManifest.isGNG
+      parsedEseContent // Pass the parsed ESE content to generate sector data
     );
 
-    // generate manifest
+    // Generate manifest
+    console.log("Generating manifest...");
     const manifest = {
-      $schema:
-        "https://raw.githubusercontent.com/neoradar-project/schemas/refs/heads/main/package/manifest.schema.json",
+      $schema: "https://raw.githubusercontent.com/neoradar-project/schemas/refs/heads/main/package/manifest.schema.json",
       id: inputManifest.id,
       name: inputManifest.name,
       version: "1.0.0",
@@ -125,10 +106,9 @@ class PackageBuilder {
       centerPoint: [847183.3480445864, -6195983.977450224],
     } as Package;
 
-    await system.writeFile(
-      `${packagePath}/manifest.json`,
-      JSON.stringify(manifest, null, 2)
-    );
+    await system.writeFile(`${packagePath}/manifest.json`, JSON.stringify(manifest, null, 2));
+
+    console.log("Package build completed successfully!");
   }
 }
 
