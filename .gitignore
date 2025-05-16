@@ -127,3 +127,5 @@ src/data/lfxx/**
 src/data/eixx/**/*
 
 out/
+
+data/
